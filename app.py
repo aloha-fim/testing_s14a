@@ -1,4 +1,4 @@
-from new_york_sunshine import app
+from project_solar import app
 
 if __name__ == '__main__':
     app.run(debug=True)
