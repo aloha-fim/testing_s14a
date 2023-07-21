@@ -19,7 +19,7 @@ def register():
                     password=form.password.data)
         
         db.session.add(user)
-        db.sessions.commit()
+        db.session.commit()
         flash('Thanks for registration!')
         return redirect(url_for('users.login'))
     

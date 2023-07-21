@@ -22,6 +22,11 @@ app.secret_key = environ.get("SECRET_KEY")
 db = SQLAlchemy(app)
 Migrate(app,db)
 
+# flask db init
+# flask db migrate -m "first migration"
+# flask db upgrade
+
+
 #################
 # LOGIN CONFIGS
 login_manager = LoginManager()
