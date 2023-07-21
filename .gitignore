@@ -65,6 +65,7 @@ venv
 *.eslintcache
 *#
 .#*
+*.pkl
 
 /src/mongo/*/*Debug*/
 /src/mongo/*/*/*Debug*/
