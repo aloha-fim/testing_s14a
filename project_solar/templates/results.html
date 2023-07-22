@@ -1,21 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 
+<br>
+<br>
 <section class="content-section">
-
     		<form name="predictForm" method="POST" action="/predict" onsubmit="return validateForm()">
     			<div class="form-group">
     				<div class="row">
     				 	<div class="col-lg-6">
     				 		<h1>Solar Sales Predictor</h1>
-    				 		<p> NYC will be energy deficient by 2025, importing from Canada.</p>
+    				 		<p> NYC will be energy deficient by 2025, having to import energy from Canada.
+                                Input parameters to predict sales price of homes in the Boston area.  
+                            </p>
     				 		<h1>{% if label %} {{ label }} {% endif %}</h1>
 							<br>
 							<button class="btn btn-lg btn-primary" type="submit">Predict</button>
 						</div>
-
-
-                <p>Beds</p><br>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <p>Input Number of Beds</p>
                 <div class="form-group">
                     <div class="col-xs-1">
                       <label for="beds">Select list:</label>
@@ -35,11 +41,10 @@
                       </select>
                     </div>
                 </div>
-
                 <p><small>Beds</small></p>
         		<br>
-
-                <p>Baths</p><br>
+                <br>
+                <p>Input Number of Baths</p>
                 <div class="form-group">
                     <div class="col-xs-1">
                       <label for="baths">Select list:</label>
@@ -57,8 +62,8 @@
                 </div>
 				<p><small>Baths </small></p>
                 <br>
-
-				<p>SQFT</p><br>
+                <br>
+				<p>Input Square Feet</p>
                 <div class="form-group">
                     <div class="col-xs-1">
                       <label for="sqft">Select list:</label>
@@ -74,12 +79,7 @@
                 </div>
                 <p><small>in sqft</small></p>
                 <br>
-                
-
-                    </div>
-                </div>
             </form>
-
 </section>
 
 {% endblock %}

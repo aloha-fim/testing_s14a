@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
+  <br>
   <div class="jumbotron">
     <h1 class="display-4">NY Sunshine</h1>
     <p>Welcome to creating your own solar farm</p>
   </div>
-
+  <br>
   <div class="container">
 
     {# Go through each solar post #}
@@ -24,7 +25,7 @@
     </div>
 
    {% endfor %}
-
+   <br>
    <nav aria-label="Page navigation example">
      <ul class="pagination justify-content-center">
        {% for page_num in solar_posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
