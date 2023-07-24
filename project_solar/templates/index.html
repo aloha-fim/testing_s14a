@@ -11,11 +11,9 @@
     {# Go through each solar post #}
     {% for post in solar_posts.items %}
 
-    <div class="card" >
-
+    <div class="card" style="width: 18rem;" >
+      <img src="{{url_for('static',filename='profile_pics/'+current_user.profile_image)}}" class="card-img-top" alt="...">
       <div class="card-body">
-
-
         <h2><a class="card-title" href="{{ url_for('solar_posts.solar_post', solar_post_id=post.id) }}">{{ post.title }}</a></h2>
         <a href="{{ url_for('users.user_posts', username=post.author.username) }}">Written By: {{ post.author.username }}</a>
         <p>Published on: {{ post.date.strftime('%Y-%m-%d') }}</p>
@@ -23,6 +21,7 @@
         <a href="{{ url_for('solar_posts.solar_post', solar_post_id=post.id) }}" class="btn btn-primary">Read Solar Post</a>
       </div>
     </div>
+    <br>
 
    {% endfor %}
    <br>
