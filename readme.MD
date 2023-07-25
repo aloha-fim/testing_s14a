@@ -1,1 +1,3 @@
 {% comment %} <img src="{{url_for('static',filename='profile_pics/'+current_user.profile_image)}}" class="card-img-top" alt="..."> {% endcomment %}
+
+<img src="{{url_for('static',filename='profile_pics/'+user.profile_image)}}" >

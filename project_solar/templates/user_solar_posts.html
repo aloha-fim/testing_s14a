@@ -10,6 +10,7 @@
 
 
 {% for post in solar_posts.items  %}
+  <img src="{{url_for('static',filename='profile_pics/'+post.author.profile_image)}}" class="card-img-top" alt="...">
   <h2> <a href="{{url_for('solar_posts.solar_post',solar_post_id=post.id)}}">{{post.title}}</a> </h2>
   Written By: <a href="{{url_for('users.user_posts',username=post.author.username)}}">{{post.author.username}}</a>
   <p class='text-muted'>Published on: {{post.date.strftime("%Y-%m-%d")}}</p>

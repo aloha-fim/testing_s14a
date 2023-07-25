@@ -16,7 +16,7 @@ import sklearn
 
 solar_posts = Blueprint('solar_posts',__name__)
 
-file = open('C:/Users/frede/harvard/s14a/best_model_scaled.pkl', 'rb')
+file = open('./best_model_scaled.pkl', 'rb')
 model_best = joblib.load(file)
 file.close()
 
