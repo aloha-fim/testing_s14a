@@ -16,10 +16,8 @@ import sklearn
 
 solar_posts = Blueprint('solar_posts',__name__)
 
-# modellg = joblib.load("regr.pkl")
-
-file = open('C:/Users/frede/harvard/s14a/regr.pkl', 'rb')
-modellg = joblib.load(file)
+file = open('C:/Users/frede/harvard/s14a/best_model_scaled.pkl', 'rb')
+model_best = joblib.load(file)
 file.close()
 
 #CREATE
@@ -109,7 +107,7 @@ def make_prediction():
         # make prediction
         entered_li = ([beds, baths, sqft])
 
-        prediction = modellg.predict(np.array(entered_li).astype(float).reshape(1, -1))
+        prediction = model_best.predict(np.array(entered_li).astype(float).reshape(1, -1))
         
         label = str(np.squeeze(prediction.round(2)))
 
