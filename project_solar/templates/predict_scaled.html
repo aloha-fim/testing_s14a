@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% block title %}Real Estate{% endblock %} {% block
+    header %}
+    <div
+      class="max-w-6xl p-4 mx-auto bg-white sm:px-6 lg:px-8 dark:bg-neutral-900 dark:text-white"
+    >
+      <h1 class="text-3xl">Real Estate</h1>
+    </div>
+    {% endblock %} {% block content %}
+    <div
+      class="max-w-6xl p-4 mx-auto bg-white sm:px-6 lg:px-8 dark:bg-neutral-900 dark:text-white"
+    >
+      {% comment %} {% if prediction %}
+      <h2 class="text-2xl font-bold mt-4">Estimated price: {{ prediction }}</h2>
+      <p class="mt-2">This estimate is based on:</p>
+      <ul>
+        <li>Beds: {{ request.form.beds }}</li>
+        <li>Baths: {{ request.form.baths }}</li>
+        <li>Sqft: {{ request.form.sqft }}</li>
+        <li>Age: {{ request.form.age }}</li>
+        <li>Lot Size: {{ request.form.lotsize }}</li>
+      </ul>
+      {% endif %} {% endcomment %}
+      <form
+        action="{{ url_for('solar_posts.predicted_scaled') }}"
+        method="post"
+        class="bg-white dark:bg-gray-800 p-4"
+      >
+        <div class="mb-4">
+          <label for="beds" class="block mb-2 text-gray-700 dark:text-gray-300"
+            >Beds:</label
+          >
+          <input
+            type="number"
+            id="beds"
+            name="beds"
+            class="block w-full border border-gray-300 px-4 py-2 rounded-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-indigo-500 dark:focus:ring-indigo-900"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="baths" class="block mb-2 text-gray-700 dark:text-gray-300"
+            >Baths:</label
+          >
+          <input
+            type="number"
+            id="baths"
+            name="baths"
+            class="block w-full border border-gray-300 px-4 py-2 rounded-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-indigo-500 dark:focus:ring-indigo-900"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="sqft" class="block mb-2 text-gray-700 dark:text-gray-300"
+            >Sqft:</label
+          >
+          <input
+            type="number"
+            id="sqft"
+            name="sqft"
+            class="block w-full border border-gray-300 px-4 py-2 rounded-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-indigo-500 dark:focus:ring-indigo-900"
+            required
+          />
+        </div>
+        {% comment %} <div class="mb-4">
+          <label for="age" class="block mb-2 text-gray-700 dark:text-gray-300"
+            >Age:</label
+          >
+          <input
+            type="number"
+            id="age"
+            name="age"
+            class="block w-full border border-gray-300 px-4 py-2 rounded-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-indigo-500 dark:focus:ring-indigo-900"
+            required
+          />
+        </div>
+        <div class="mb-4">
+          <label for="lotsize" class="block mb-2 text-gray-700 dark:text-gray-300"
+            >Lot Size:</label
+          >
+          <input
+            type="number"
+            id="lotsize"
+            name="lotsize"
+            class="block w-full border border-gray-300 px-4 py-2 rounded-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-indigo-500 dark:focus:ring-indigo-900"
+            required
+          />
+        </div> {% endcomment %}
+        <button
+          type="submit"
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-300 dark:bg-indigo-600 dark:hover:bg-indigo-800 dark:focus:ring-indigo-700"
+        >
+          Predict
+        </button>
+      </form>
+    </div>
+    {% endblock %}

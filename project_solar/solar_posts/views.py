@@ -13,12 +13,25 @@ import numpy as np
 import pandas as pd
 import sklearn
 
+import os
+import pickle
+
 
 solar_posts = Blueprint('solar_posts',__name__)
 
 file = open('./best_model_scaled.pkl', 'rb')
 model_best = joblib.load(file)
 file.close()
+
+#Alternate refactor of file upload
+# Define the path to the model files
+BEST_MODEL_FILE_NAME_SCALED = "best_model_scaled.pkl"
+
+current_dir = os.path.dirname(os.path.realpath(__file__))
+
+BEST_MODEL_PICKLE_PATH_SCALED = os.path.join(current_dir, BEST_MODEL_FILE_NAME_SCALED)
+
+
 
 #CREATE
 @solar_posts.route('/create', methods=['GET','POST'])
@@ -112,3 +125,47 @@ def make_prediction():
         label = str(np.squeeze(prediction.round(2)))
 
         return render_template('results.html', label=label)
+
+
+
+@solar_posts.route("/predict_scaled")
+# Load model, get user-inputted data features from form, and then predict sales price to be displayed
+# Will need to process input address to return latitude and longitude using API
+def predict_scaled():
+    return render_template("predict_scaled.html")
+
+@solar_posts.route("/predicted_scaled", methods=["GET", "POST"])
+# Load model, get user-inputted data features from form, and then predict sales price to be displayed
+def predicted_scaled():
+    if request.method == "POST":
+
+        # Load the trained model
+        with open(BEST_MODEL_PICKLE_PATH_SCALED, "rb") as boston_real_estate_file:
+            model = pickle.load(boston_real_estate_file)
+
+        # Get form data
+        beds = float(request.form.get("beds"))
+        baths = float(request.form.get("baths"))
+        sqft = float(request.form.get('sqft'))
+
+
+        # Prepare the feature vector for prediction
+        feature_vector = [[beds, baths, sqft]]
+
+        # Make prediction
+        prediction = model.predict(feature_vector)
+
+        # Convert prediction to a string so it can be displayed
+        prediction_string = str(prediction[0])
+
+        # build a dictionary with the data
+
+        property_dict = {
+            "beds": beds,
+            "baths": baths,
+            "prediction": prediction_string,
+        }
+
+        return render_template("predicted_scaled.html", property_dict=property_dict)
+
+    return render_template("index.html")
