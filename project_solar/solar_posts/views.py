@@ -139,9 +139,9 @@ def predict_scaled():
 def predicted_scaled():
     if request.method == "POST":
 
-        # Load the trained model
-        with open(BEST_MODEL_PICKLE_PATH_SCALED, "rb") as boston_real_estate_file:
-            model = pickle.load(boston_real_estate_file)
+        # # Load the trained model
+        # with open(BEST_MODEL_FILE_NAME_SCALED, "rb") as boston_real_estate_file:
+        #     model = pickle.load(boston_real_estate_file)
 
         # Get form data
         beds = float(request.form.get("beds"))
@@ -153,7 +153,7 @@ def predicted_scaled():
         feature_vector = [[beds, baths, sqft]]
 
         # Make prediction
-        prediction = model.predict(feature_vector)
+        prediction = model_best.predict(feature_vector)
 
         # Convert prediction to a string so it can be displayed
         prediction_string = str(prediction[0])
@@ -163,6 +163,7 @@ def predicted_scaled():
         property_dict = {
             "beds": beds,
             "baths": baths,
+            "sqft": sqft,
             "prediction": prediction_string,
         }
 
