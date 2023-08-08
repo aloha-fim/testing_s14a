@@ -7,13 +7,19 @@ import torch
 import bz2
 import pickle
 # import _pickle as cpickle
+from dotenv import load_dotenv
+import os
+from os import environ
+
+load_dotenv(".env")
+
 
 
 def latlong(addr):
     lat = -1
     long = -1
 
-    url = "https://eec19846-geocoder-us-census-bureau-v1.p.rapidapi.com/locations/onelineaddress"
+    url = environ.get("GEO_URL")
 
     querystring = {
         "benchmark": "Public_AR_Current",
@@ -22,8 +28,8 @@ def latlong(addr):
     }
 
     headers = {
-        "X-RapidAPI-Key": "4316680bd9msh5c56619450f4b95p1dec81jsn7056174d5be5",
-        "X-RapidAPI-Host": "eec19846-geocoder-us-census-bureau-v1.p.rapidapi.com",
+        "X-RapidAPI-Key": environ.get("X-RapidAPI-Key"),
+        "X-RapidAPI-Host": environ.get("X-RapidAPI-Host"),
     }
 
     response = requests.get(url, headers=headers, params=querystring)
