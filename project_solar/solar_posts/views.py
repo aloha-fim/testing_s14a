@@ -292,6 +292,6 @@ def predicted_scaled_best():
             "cam_img_url": cam_image_url
         }
                 
-        return render_template("predicted_scaled.html", property_dict=property_dict)
+        return render_template("predicted_scaled_best.html", property_dict=property_dict)
 
     return render_template("index.html")
