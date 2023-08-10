@@ -15,6 +15,21 @@ import sklearn
 
 import os
 import pickle
+import zipfile
+import torch
+
+from PIL import Image
+#VSCode Command(or Ctrl)+Shift+P then searching "select python interpreter" and actually select the python environment where you installed the transformers library.
+from transformers import ViTForImageClassification, ViTImageProcessor
+
+from utils import latlong, load_model, extract_pickle_file, extract_zip_file, decompress_pickle
+
+from cnn_image_features import get_cnn_features
+from cnn_cam import get_cam
+
+from torchvision.utils import save_image
+
+import matplotlib.pyplot as plt
 
 
 solar_posts = Blueprint('solar_posts',__name__)
@@ -22,6 +37,26 @@ solar_posts = Blueprint('solar_posts',__name__)
 file = open('best_model_scaled.pkl', 'rb')
 model_best = joblib.load(file)
 file.close()
+
+# Define the path to the model files
+BEST_MODEL_FILE_NAME_SCALED = "best_model_scaled.pkl"
+BEST_MODEL_ZIP_NAME_SCALED = "best_model_scaled.zip"
+BEST_MODEL_PBZ2 = "best_model.pkl"
+BEST_MODEL_PBZ2_CNN = "best_model_cnn.pkl"
+
+current_dir = os.path.dirname(os.path.realpath(__file__))
+
+BEST_MODEL_PICKLE_PATH_SCALED = os.path.join(current_dir, BEST_MODEL_FILE_NAME_SCALED)
+BEST_MODEL_ZIP_PATH_SCALED = os.path.join(current_dir, BEST_MODEL_ZIP_NAME_SCALED)
+BEST_MODEL_PBZ2_PATH = os.path.join(current_dir, BEST_MODEL_PBZ2)
+BEST_MODEL_PBZ2_CNN_PATH = os.path.join(current_dir, BEST_MODEL_PBZ2_CNN)
+
+
+# Load the pre-trained Vision Transformer model
+vit_model = ViTForImageClassification.from_pretrained("google/vit-base-patch16-224")
+processor = ViTImageProcessor.from_pretrained("google/vit-base-patch16-224")
+
+
 
 
 #CREATE
@@ -161,6 +196,102 @@ def predicted_scaled():
             "prediction": prediction_string,
         }
 
+        return render_template("predicted_scaled.html", property_dict=property_dict)
+
+    return render_template("index.html")
+
+
+@solar_posts.route("/predicted_scaled_best", methods=["GET", "POST"])
+# Load model, get user-inputted data features from form, and then predict sales price to be displayed
+# Will need to process input address to return latitude and longitude using API
+def predicted_scaled_best():
+    if request.method == "POST":
+        
+        # Get the image file from the POST request
+        image_file = request.files.get("propertyimage")
+        
+        # Define the directory for uploads and create it if it doesn't exist
+        upload_dir = os.path.join(os.path.dirname(__file__), "static", "uploads")
+        if not os.path.exists(upload_dir):
+            os.makedirs(upload_dir)
+
+        # Define the path to save the image
+        image_path = os.path.join(upload_dir, image_file.filename)
+
+        image = None
+        img_features = None
+
+        if image_file != None:
+            # Convert the image file to a PIL Image and save it
+            image = Image.open(image_file.stream)
+            img_features = get_cnn_features(image)
+            image.save(image_path)
+
+        # get CAM image
+        cam_image = get_cam(image)
+        plt.imshow(cam_image)
+        plt.axis('off')
+        plt.tight_layout()
+        plt.savefig(upload_dir +'/cnn_'+ image_file.filename)
+        # Define the path to save the image
+        
+        image_url = url_for("static", filename="uploads/" + image_file.filename)
+        cam_image_url = url_for("static", filename="uploads/" + 'cnn_'+ image_file.filename)
+
+        # Get form data
+        address = request.form.get("address")
+        beds = float(request.form.get("beds"))
+        baths = float(request.form.get("baths"))
+        age = float(request.form.get("age"))
+        lotsize = float(request.form.get("lotsize"))
+        garages = float(request.form.get("garages"))
+        sqrft = float(request.form.get('sqrft'))
+        
+        # get latitude and longitude
+        lat, lon = latlong(address)
+
+        # Prepare the feature vector for prediction
+        feature_vector = [[age, lotsize, garages, lat, lon, beds, baths, sqrft]]
+
+        with open(BEST_MODEL_PBZ2_CNN_PATH, "rb") as boston_real_estate_file:
+            model_cnn = pickle.load(boston_real_estate_file)
+
+       # decompress bz2 file
+        #model = decompress_pickle(BEST_MODEL_PBZ2_PATH)
+
+        with open(BEST_MODEL_PBZ2_PATH, "rb") as boston_real_estate_file:
+            model = pickle.load(boston_real_estate_file)
+        
+        # Make prediction        
+        prediction = model.predict(feature_vector)
+
+        [feature_vector[0].append(x) for x in img_features]
+
+        # decompress bz2 file
+        # model_cnn = decompress_pickle(BEST_MODEL_PBZ2_CNN_PATH)
+
+        prediction_cnn = model_cnn.predict(feature_vector)
+
+        # Convert prediction to a string so it can be displayed
+        prediction_string = str(prediction[0])
+        
+        prediction_cnn_string = str(prediction_cnn[0])
+
+        # build a dictionary with the data
+
+        property_dict = {
+            "address": address,
+            "beds": beds,
+            "baths": baths,
+            "lotsize": lotsize,
+            "garages": garages,
+            "squarefeet":sqrft, 
+            "prediction": prediction_string,
+            "prediction_cnn": prediction_cnn_string,
+            "image_url": image_url,
+            "cam_img_url": cam_image_url
+        }
+                
         return render_template("predicted_scaled.html", property_dict=property_dict)
 
     return render_template("index.html")
