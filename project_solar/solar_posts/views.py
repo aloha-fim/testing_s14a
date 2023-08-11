@@ -201,6 +201,13 @@ def predicted_scaled():
     return render_template("index.html")
 
 
+@solar_posts.route("/predict_scaled_best_input")
+# Load model, get user-inputted data features from form, and then predict sales price to be displayed
+# Will need to process input address to return latitude and longitude using API
+def predict_scaled_best_input():
+    return render_template("predicted_scaled_best_input.html")
+
+
 @solar_posts.route("/predicted_scaled_best", methods=["GET", "POST"])
 # Load model, get user-inputted data features from form, and then predict sales price to be displayed
 # Will need to process input address to return latitude and longitude using API
