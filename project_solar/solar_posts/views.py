@@ -260,14 +260,17 @@ def predicted_scaled_best():
         # Prepare the feature vector for prediction
         feature_vector = [[age, lotsize, garages, lat, lon, beds, baths, sqrft]]
 
-        with open(BEST_MODEL_PBZ2_CNN_PATH, "rb") as boston_real_estate_file:
-            model_cnn = pickle.load(boston_real_estate_file)
+        with open(BEST_MODEL_PBZ2_CNN_PATH, "rb") as cnn_file:
+            model_cnn = joblib.load(cnn_file)
+            cnn_file.close()
+
 
        # decompress bz2 file
         #model = decompress_pickle(BEST_MODEL_PBZ2_PATH)
 
         with open(BEST_MODEL_PBZ2_PATH, "rb") as boston_real_estate_file:
-            model = pickle.load(boston_real_estate_file)
+            model = joblib.load(boston_real_estate_file)
+            boston_real_estate_file.close()
         
         # Make prediction        
         prediction = model.predict(feature_vector)
