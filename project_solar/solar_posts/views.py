@@ -218,10 +218,14 @@ def predicted_scaled_best():
         image_file = request.files.get("propertyimage")
         
         # Define the directory for uploads and create it if it doesn't exist
-        upload_dir = os.path.join(os.path.dirname(__file__), "static", "uploads")
+        # upload_dir = os.path.join(os.path.dirname(__file__), "static", "uploads")
+        # if not os.path.exists(upload_dir):
+        #     os.makedirs(upload_dir)
+
+        upload_dir = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'static/uploads'))
         if not os.path.exists(upload_dir):
             os.makedirs(upload_dir)
-
+            
         # Define the path to save the image
         image_path = os.path.join(upload_dir, image_file.filename)
 
@@ -241,7 +245,6 @@ def predicted_scaled_best():
         plt.tight_layout()
         plt.savefig(upload_dir +'/cnn_'+ image_file.filename)
         # Define the path to save the image
-        
         image_url = url_for("static", filename="uploads/" + image_file.filename)
         cam_image_url = url_for("static", filename="uploads/" + 'cnn_'+ image_file.filename)
 
@@ -304,4 +307,4 @@ def predicted_scaled_best():
                 
         return render_template("predicted_scaled_best.html", property_dict=property_dict)
 
-    return render_template("index.html")
+    return render_template("predicted_scaled_best_input.html")
