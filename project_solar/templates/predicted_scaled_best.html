@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
+{% extends "flip_card.html" %}
 {% block content %}
   <br>
-  <div class="jumbotron">
+  <!--<div class="jumbotron">
     <h1 class="display-4">Predicted Price before:</h1>
     <span class="color-text-a">$ {{property_dict.prediction}}</span>
     <h1 class="title-single">Predicted Price after:</h1>
@@ -25,22 +25,46 @@
           <span>{{property_dict.garages}}</span></a>
       </div>
     </div>
-    <br>
+    <br>                       
+  </div> -->
 
-    <div class="card" style="width: 18rem;" >
-      <div class="card-body">
-        <img src={{property_dict.cam_img_url}} alt=""> 
+  <div class="grid-wrapper">
+  
+  <!-- Card -->
+  <div class="card-container box">
+    <div class="card-flip">
+      <!-- Card Front -->
+      <div class="card front">
+        <img src={{property_dict.cam_img_url}} class="card-img-top img-fluid" alt="movie-poster">
+          <div class="card-block">
+            <h5 class="card-title">Address</h5>
+                <p class="card-text">{{property_dict.address}}</p>
+                  <p class="card-text"><small class="text-muted">Prediction: {{property_dict.prediction_cnn}} </small></p>
+            </div>
       </div>
+      <!-- End Card Front -->
+  
+      <!-- Card Back -->
+      <div class="card back">
+        <div class="card-header warning-color"></div>
+          <div class="card-block text-center">
+            <h4 class="card-title">Beds</h4>
+            <p class="card-text"><a href="#" class="rating">{{property_dict.beds}}</a></p>
+            <h4 class="card-title">Baths</h4>
+            <p class="card-text"><a href="#" class="rating">{{property_dict.baths}}</a></p>
+            <a href="#" class="btn orange">Press</a>
+          </div>
+              <img class="movie" src={{property_dict.image_url}} alt="back-img">
+        </div>
+        <!-- End Card Back -->
     </div>
-                               
+  </div>
+  <!-- End Card -->
+  
   </div>
 
 
-
-
-
-
-
+  
 {% endblock %}
 
 
