@@ -23,10 +23,10 @@
   </li>
     {% if current_user.is_authenticated %}
     <li class="nav-link"><a href="{{ url_for('users.logout') }}">Log Out</a></li>
-    <li class="nav-link"><a href="{{ url_for('users.account') }}">Account</a></li>
-    <li class="nav-link"><a href="{{ url_for('solar_posts.create_post') }}">Create Post</a></li>
-    <li class="nav-link"><a href="{{ url_for('solar_posts.input_predict') }}">Create Prediction</a></li>
-    <li class="nav-link"><a href="{{ url_for('solar_posts.predict_scaled') }}">Create Scaled Prediction</a></li>
+    <li class="nav-link"><a href="{{ url_for('users.account') }}">Your Account</a></li>
+    <li class="nav-link"><a href="{{ url_for('solar_posts.create_post') }}">Create Camp Post</a></li>
+    <li class="nav-link"><a href="{{ url_for('solar_posts.input_predict') }}">Create Price Prediction</a></li> 
+    <!-- <li class="nav-link"><a href="{{ url_for('solar_posts.predict_scaled') }}">Create Scaled Prediction</a></li> -->
     <li class="nav-link"><a href="{{ url_for('solar_posts.predict_scaled_best_input') }}">Create Vision Prediction</a></li>
 
     {% else %}

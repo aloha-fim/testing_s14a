@@ -133,11 +133,12 @@ def delete_post(solar_post_id):
     flash('Solar Post Deleted')
     return redirect(url_for('core.index'))
 
+#original linear regression route for result
 @solar_posts.route("/inputprediction")
 def input_predict():
     return render_template('results.html')
 
-
+#original linear regression route for input
 @solar_posts.route('/predict', methods = ['POST', 'GET'])
 
 def make_prediction():
@@ -161,13 +162,14 @@ def make_prediction():
         return render_template('results.html', label=label)
 
 
-
+# refactored linear regression route for result
 @solar_posts.route("/predict_scaled")
 # Load model, get user-inputted data features from form, and then predict sales price to be displayed
 # Will need to process input address to return latitude and longitude using API
 def predict_scaled():
     return render_template("predict_scaled.html")
 
+# refactored linear regression route for input
 @solar_posts.route("/predicted_scaled", methods=["GET", "POST"])
 # Load model, get user-inputted data features from form, and then predict sales price to be displayed
 def predicted_scaled():
@@ -208,14 +210,14 @@ def predicted_scaled():
 
     return render_template("index.html")
 
-
+# Transformer CNN route for result
 @solar_posts.route("/predict_scaled_best_input")
 # Load model, get user-inputted data features from form, and then predict sales price to be displayed
 # Will need to process input address to return latitude and longitude using API
 def predict_scaled_best_input():
     return render_template("predicted_scaled_best_input.html")
 
-
+# Transformer CNN route for input
 @solar_posts.route("/predicted_scaled_best", methods=["GET", "POST"])
 # Load model, get user-inputted data features from form, and then predict sales price to be displayed
 # Will need to process input address to return latitude and longitude using API
