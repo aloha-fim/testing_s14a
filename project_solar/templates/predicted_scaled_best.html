@@ -35,11 +35,11 @@
     <div class="card-flip">
       <!-- Card Front -->
       <div class="card front">
-        <img src={{property_dict.cam_img_url}} class="card-img-top img-fluid" alt="movie-poster">
+        <img src={{property_dict.image_url}} class="card-img-top img-fluid" alt="listing photo">
           <div class="card-block">
-            <h5 class="card-title">Address</h5>
+            <h4 class="card-title">Address</h4>
                 <p class="card-text">{{property_dict.address}}</p>
-                  <p class="card-text"><small class="text-muted">Prediction: {{property_dict.prediction_cnn}} </small></p>
+                  <p class="card-text"><small class="text-muted">Prediction: {{"$%0.2f"|format(property_dict.prediction_cnn|float)}} </small></p>
             </div>
       </div>
       <!-- End Card Front -->
@@ -52,9 +52,9 @@
             <p class="card-text"><a href="#" class="rating">{{property_dict.beds}}</a></p>
             <h4 class="card-title">Baths</h4>
             <p class="card-text"><a href="#" class="rating">{{property_dict.baths}}</a></p>
-            <a href="#" class="btn orange">Press</a>
+            <a href="#" class="btn orange">AI Feature</a>
           </div>
-              <img class="movie" src={{property_dict.image_url}} alt="back-img">
+              <img class="movie" src={{property_dict.cam_img_url}} alt="CNN image">
         </div>
         <!-- End Card Back -->
     </div>

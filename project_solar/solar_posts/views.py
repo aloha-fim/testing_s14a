@@ -51,6 +51,14 @@ BEST_MODEL_ZIP_PATH_SCALED = os.path.join(current_dir, BEST_MODEL_ZIP_NAME_SCALE
 BEST_MODEL_PBZ2_PATH = os.path.join(current_dir, BEST_MODEL_PBZ2)
 BEST_MODEL_PBZ2_CNN_PATH = os.path.join(current_dir, BEST_MODEL_PBZ2_CNN)
 
+with open(BEST_MODEL_PBZ2_CNN_PATH, "rb") as cnn_file:
+    model_cnn = joblib.load(cnn_file)
+    cnn_file.close()
+
+with open(BEST_MODEL_PBZ2_PATH, "rb") as boston_real_estate_file:
+    model = joblib.load(boston_real_estate_file)
+    boston_real_estate_file.close()
+
 
 # Load the pre-trained Vision Transformer model
 vit_model = ViTForImageClassification.from_pretrained("google/vit-base-patch16-224")
@@ -225,7 +233,7 @@ def predicted_scaled_best():
         upload_dir = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'static/uploads'))
         if not os.path.exists(upload_dir):
             os.makedirs(upload_dir)
-            
+
         # Define the path to save the image
         image_path = os.path.join(upload_dir, image_file.filename)
 
@@ -262,26 +270,12 @@ def predicted_scaled_best():
 
         # Prepare the feature vector for prediction
         feature_vector = [[age, lotsize, garages, lat, lon, beds, baths, sqrft]]
-
-        with open(BEST_MODEL_PBZ2_CNN_PATH, "rb") as cnn_file:
-            model_cnn = joblib.load(cnn_file)
-            cnn_file.close()
-
-
-       # decompress bz2 file
-        #model = decompress_pickle(BEST_MODEL_PBZ2_PATH)
-
-        with open(BEST_MODEL_PBZ2_PATH, "rb") as boston_real_estate_file:
-            model = joblib.load(boston_real_estate_file)
-            boston_real_estate_file.close()
         
         # Make prediction        
         prediction = model.predict(feature_vector)
 
         [feature_vector[0].append(x) for x in img_features]
 
-        # decompress bz2 file
-        # model_cnn = decompress_pickle(BEST_MODEL_PBZ2_CNN_PATH)
 
         prediction_cnn = model_cnn.predict(feature_vector)
 
