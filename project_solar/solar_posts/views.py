@@ -38,6 +38,10 @@ file = open('best_model_scaled.pkl', 'rb')
 model_best = joblib.load(file)
 file.close()
 
+boston_real_estate_file = open('best_model_scaled.pkl', 'rb')   # 'rb' for reading binary file
+model_scaled = joblib.load(boston_real_estate_file)     
+boston_real_estate_file.close() 
+
 # Define the path to the model files
 BEST_MODEL_FILE_NAME_SCALED = "best_model_scaled.pkl"
 BEST_MODEL_ZIP_NAME_SCALED = "best_model_scaled.zip"
@@ -175,9 +179,6 @@ def predict_scaled():
 def predicted_scaled():
     if request.method == "POST":
 
-        boston_real_estate_file = open('best_model_scaled.pkl', 'rb')   # 'rb' for reading binary file
-        model = joblib.load(boston_real_estate_file)     
-        boston_real_estate_file.close()   
         # # Load the trained model, but cannot use pickle because save was in joblib
         # with open("best_model_scaled.pkl", "rb") as boston_real_estate_file:
         #     model = pickle.load(boston_real_estate_file)
@@ -192,7 +193,7 @@ def predicted_scaled():
         feature_vector = [[beds, baths, sqft]]
 
         # Make prediction
-        prediction = model.predict(feature_vector)
+        prediction = model_scaled.predict(feature_vector)
 
         # Convert prediction to a string so it can be displayed
         prediction_string = str(prediction[0])
