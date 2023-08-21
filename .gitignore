@@ -5,6 +5,10 @@ import_csv_data_tosql.py
 # testing
 /coverage
 
+
+# node
+node_modules
+
 # misc
 .DS_Store
 .env.local
