@@ -16,3 +16,7 @@ def index():
 @core.route('/info')
 def info():
     return render_template('info.html')
+
+@core.route('/start')
+def start():
+    return render_template('index-directory.html')
