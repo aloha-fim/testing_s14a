@@ -3,7 +3,7 @@ from project_solar.models import SolarPost
 
 core = Blueprint('core',__name__)
 
-@core.route('/')
+@core.route('/start')
 def index():
     '''
     This is the home page view calling paginate.
@@ -17,6 +17,6 @@ def index():
 def info():
     return render_template('info.html')
 
-@core.route('/start')
+@core.route('/')
 def start():
     return render_template('index-directory.html')
