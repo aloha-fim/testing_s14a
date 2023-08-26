@@ -305,3 +305,12 @@ def predicted_scaled_best():
         return render_template("predicted_scaled_best.html", property_dict=property_dict)
 
     return render_template("predicted_scaled_best_input.html")
+
+
+
+
+# Add a listing
+@solar_posts.route("/add_listing")
+# Listing add
+def add_listing():
+    return render_template("add-listing.html")
