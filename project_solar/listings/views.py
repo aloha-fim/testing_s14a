@@ -6,3 +6,11 @@ from project_solar.listings.forms import ListingPostForm
 
 
 listings = Blueprint('listings',__name__)
+
+@listings.route('/create_creation')
+def create_listing():
+    return render_template('join-us.html')
+
+@listings.route('/add_listing')
+def add_listing():
+    return render_template('add-listing.html')
