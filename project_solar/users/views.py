@@ -47,7 +47,7 @@ def login():
             next = request.args.get('next')
 
             if next ==None or not next[0]=='/':
-                next = url_for('core.index')
+                next = url_for('core.start')
 
             return redirect(next)
         
