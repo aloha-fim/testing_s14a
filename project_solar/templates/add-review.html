@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ottoHi</title>
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="forvava.com">
+	<meta name="description" content="ottoHi">
+
+	<!-- Dark mode -->
+	<script>
+		const storedTheme = localStorage.getItem('theme')
+ 
+		const getPreferredTheme = () => {
+			if (storedTheme) {
+				return storedTheme
+			}
+			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+		}
+
+		const setTheme = function (theme) {
+			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				document.documentElement.setAttribute('data-bs-theme', 'dark')
+			} else {
+				document.documentElement.setAttribute('data-bs-theme', theme)
+			}
+		}
+
+		setTheme(getPreferredTheme())
+
+		window.addEventListener('DOMContentLoaded', () => {
+		    var el = document.querySelector('.theme-icon-active');
+			if(el != 'undefined' && el != null) {
+				const showActiveTheme = theme => {
+				const activeThemeIcon = document.querySelector('.theme-icon-active use')
+				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
+				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
+
+				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
+					element.classList.remove('active')
+				})
+
+				btnToActive.classList.add('active')
+				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+			}
+
+			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+				if (storedTheme !== 'light' || storedTheme !== 'dark') {
+					setTheme(getPreferredTheme())
+				}
+			})
+
+			showActiveTheme(getPreferredTheme())
+
+			document.querySelectorAll('[data-bs-theme-value]')
+				.forEach(toggle => {
+					toggle.addEventListener('click', () => {
+						const theme = toggle.getAttribute('data-bs-theme-value')
+						localStorage.setItem('theme', theme)
+						setTheme(theme)
+						showActiveTheme(theme)
+					})
+				})
+
+			}
+		})
+		
+	</script>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="static/assets/images/favicon.ico">
+
+	<!-- Google Font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="static/assets/vendor/font-awesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css">
+	<link rel="stylesheet" type="text/css" href="static/assets/vendor/choices/css/choices.min.css">
+	<link rel="stylesheet" type="text/css" href="static/assets/vendor/flatpickr/css/flatpickr.min.css">
+	<link rel="stylesheet" type="text/css" href="static/assets/vendor/stepper/css/bs-stepper.min.css">
+	<link rel="stylesheet" type="text/css" href="static/assets/vendor/quill/css/quill.snow.css">
+	<link rel="stylesheet" type="text/css" href="static/assets/vendor/dropzone/css/dropzone.css">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="static/assets/css/style.css">
+
+</head>
+
+<body>
+
+
+<!-- **************** MAIN CONTENT START **************** -->
+<main>
+	
+<!-- =======================
+Page Banner START -->
+<section class="pb-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center">
+				<h1 class="fs-2 mb-2">Add a Review</h1>
+				<p class="mb-0">Start Now.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- =======================
+Page Banner END -->
+
+<!-- =======================
+Steps START -->
+<section>
+	<div class="container">
+		<div id="stepper" class="bs-stepper stepper-outline">
+			<!-- Step Buttons START -->
+			<div class="bs-stepper-header" role="tablist">
+				
+				<!-- Step 1 -->
+				<div class="step" data-target="#step-1">
+					<div class="text-center">
+						<button type="button" class="btn btn-link step-trigger mb-0" role="tab" id="steppertrigger1" aria-controls="step-1">
+							<span class="bs-stepper-circle">1</span>
+						</button>
+						<h6 class="bs-stepper-label d-none d-md-block">Review</h6>
+					</div>
+				</div>
+			</div>
+			<!-- Step Buttons END -->
+
+			<!-- Step content START -->
+			<div class="bs-stepper-content p-0 pt-4 pt-md-5">
+				<div class="row g-4">
+
+					<!-- Main content START -->
+					<div class="col-12">
+						<form onsubmit="return false">
+
+							<!-- Step 1 content START -->
+							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
+								<div class="vstack gap-4">
+									<!-- Title -->
+									<h4 class="mb-0">Review</h4>
+
+									<!-- Listing price START -->
+									<div class="card shadow">
+										<!-- Card header -->
+										<div class="card-header border-bottom">
+											<h5 class="mb-0">Listing Price</h5>
+										</div>
+			
+										<!-- Card body START -->
+										<div class="card-body">
+											<div class="row g-4">
+												<!-- Currency -->
+												<div class="col-md-6">
+													<label class="form-label">Currency</label>
+													<select class="form-select js-choice border-0 z-index-9 bg-transparent">
+														<option value="">Select item</option>
+														<option>USD</option>
+														<option>EURRO</option>
+														<option>VND</option>
+													</select>
+												</div>
+
+												<!-- Base Price -->
+												<div class="col-md-6">
+													<label class="form-label">Base Price *</label>
+													<input type="text" class="form-control" placeholder="Enter price">
+												</div>
+
+												<!-- Discount -->
+												<div class="col-md-6">
+													<label class="form-label">Discount *</label>
+													<input type="text" class="form-control" placeholder="Enter discount">
+												</div>
+
+												<!-- Rating -->
+												<div class="col-md-6">
+													<label class="form-label">Rating</label>
+													<select class="form-select js-choice border-0 z-index-9 bg-transparent">
+														<option value="">Select item</option>
+														<option>★★★★★</option>
+														<option>★★★★☆</option>
+														<option>★★★☆☆</option>
+														<option>★★☆☆☆</option>
+														<option>★☆☆☆☆</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<!-- Card body END -->
+									</div>
+									<!-- Listing price END -->
+
+									<!-- Listing policy START -->
+									<div class="card shadow">
+										<!-- Card header -->
+										<div class="card-header border-bottom">
+											<h5 class="mb-0">Review Detail</h5>
+										</div>
+			
+										<!-- Card body START -->
+										<div class="card-body">
+											<div class="row g-4">
+												<!-- Descriptions -->
+												<div class="col-12">
+													<label class="form-label">Add description *</label>
+													<!-- Editor toolbar -->
+													<div class="bg-light border border-bottom-0 rounded-top py-3 quilltoolbar">
+														<span class="ql-formats">
+															<select class="ql-size"></select>
+														</span>
+														<span class="ql-formats">
+															<button class="ql-bold"></button>
+															<button class="ql-italic"></button>
+															<button class="ql-underline"></button>
+															<button class="ql-strike"></button>
+														</span>
+														<span class="ql-formats">
+															<select class="ql-color"></select>
+															<select class="ql-background"></select>
+														</span>
+														<span class="ql-formats">
+															<button class="ql-code-block"></button>
+														</span>
+														<span class="ql-formats">
+															<button class="ql-list" value="ordered"></button>
+															<button class="ql-list" value="bullet"></button>
+															<button class="ql-indent" value="-1"></button>
+															<button class="ql-indent" value="+1"></button>
+														</span>
+														<span class="ql-formats">
+															<button class="ql-link"></button>
+															<button class="ql-image"></button>
+														</span>
+														<span class="ql-formats">
+															<button class="ql-clean"></button>
+														</span>
+													</div>
+			
+													<!-- Main toolbar -->
+													<div class="bg-body border rounded-bottom h-400px overflow-hidden quilleditor">
+														<br>
+														<h1>In under 400 words</h1>
+														<br>
+														<p>Think about it and just write for 2 minutes</p>
+													</div>
+												</div>
+
+												<!-- Cancellation options -->
+												<div class="col-md-6">
+													<label class="form-label">Cancellation options</label>
+													<select class="form-select js-choice border-0 z-index-9 bg-transparent" data-position="top">
+														<option value="">Select item</option>
+														<option>Non Refundable</option>
+														<option>Refundable</option>
+													</select>
+												</div>
+
+												<!-- Charges -->
+												<div class="col-md-6">
+													<label class="form-label">Charges *</label>
+													<input type="text" class="form-control" placeholder="Enter charges">
+												</div>
+											</div>
+										</div>
+										<!-- Card body END -->
+									</div>
+									<!-- Listing policy END -->
+
+									<!-- Step 3 button -->
+									<div class="d-flex justify-content-between">
+										<a href="listing-added.html" class="btn btn-success mb-0">Add Review</a>
+									</div>
+								</div>
+							</div>
+							<!-- Step 1 content END -->
+
+						</form>
+					</div>
+					<!-- Main content END -->
+
+				</div>						
+			</div>
+			<!-- Step content END -->
+		</div>
+	</div>
+</section>
+<!-- =======================
+Steps END -->
+
+</main>
+<!-- **************** MAIN CONTENT END **************** -->
+
+<!-- =======================
+Footer START -->
+<footer class="bg-dark p-3">
+	<div class="container">
+		<div class="row align-items-center">
+
+			<!-- Widget -->
+			<div class="col-md-4">
+				<div class="text-center text-md-start mb-3 mb-md-0">
+					<a href="{{ url_for('core.start') }}"> <img class="h-30px" src="static/assets/images/about/otto.png" alt="logo"> </a>
+				</div> 
+			</div>
+			
+			<!-- Widget -->
+			<div class="col-md-4">
+				<div class="text-muted text-primary-hover"> Copyrights ©2023 Forvava</div>
+			</div>
+
+			<!-- Widget -->
+			<div class="col-md-4">
+				<ul class="list-inline mb-0 text-center text-md-end">
+					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-facebook"></i></a></li>
+					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-instagram"></i></a></li>
+					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-linkedin-in"></i></a></li>
+					<li class="list-inline-item ms-2"><a href="#"><i class="text-white fab fa-twitter"></i></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- =======================
+Footer END -->
+
+<!-- Back to top -->
+<div class="back-top"></div>
+
+<!-- Bootstrap JS -->
+<script src="static/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Vendors -->
+<script src="static/assets/vendor/choices/js/choices.min.js"></script>
+<script src="static/assets/vendor/flatpickr/js/flatpickr.min.js"></script>
+<script src="static/assets/vendor/stepper/js/bs-stepper.min.js"></script>
+<script src="static/assets/vendor/quill/js/quill.min.js"></script>
+<script src="static/assets/vendor/dropzone/js/dropzone.js"></script>
+
+<!-- ThemeFunctions -->
+<script src="static/assets/js/functions.js"></script>
+
+</body>
+</html>
