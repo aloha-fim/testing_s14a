@@ -68,8 +68,8 @@ class ListingPost(db.Model):
     city = db.Column(db.String(140),nullable=False)
     postal_code = db.Column(db.String(140),nullable=False)
     street = db.Column(db.String(140),nullable=False)
-    longitude = db.Column(db.Integer, primary_key=True)
-    latitude = db.Column(db.Integer, primary_key=True)
+    longitude = db.Column(db.String(140),nullable=False)
+    latitude = db.Column(db.String(140),nullable=False)
     thumbnail_image = db.Column(db.String(140),nullable=False)
     gallery_image = db.Column(db.String(140),nullable=False)
     amenities = db.Column(db.String(140),nullable=False)
@@ -80,7 +80,7 @@ class ListingPost(db.Model):
     room_name = db.Column(db.String(140),nullable=False)
     room_thumbnail_image = db.Column(db.String(140),nullable=False)
     room_price = db.Column(db.String(140),nullable=False)
-    discount = db.Column(db.Integer, primary_key=True)
+    discount = db.Column(db.String(140),nullable=False)
     additional_info = db.Column(db.String(140),nullable=False)
 
     def __init__(self,listing_type,listing_name,user_id):
