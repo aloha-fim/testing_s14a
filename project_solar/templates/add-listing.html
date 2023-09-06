@@ -172,7 +172,7 @@ Steps START -->
 												<!-- Choose type -->
 												<div class="col-12">
 													<label class="form-label">Choose listing type *</label>
-													<select class="form-select js-choice">
+													<select class="form-select js-choice" id="listing_type" name="listing_type">
 														<option value="">Select type</option>
 														<option>Bare Land</option>
 														<option>Backyard</option>
@@ -185,14 +185,14 @@ Steps START -->
 												<!-- Listing Name -->
 												<div class="col-12">
 													<label class="form-label">Listing name *</label>
-													<input class="form-control" type="text" placeholder="Enter place name">
+													<input class="form-control" type="text" placeholder="Enter place name" id="listing_name" name="listing_name">
 													<small>Short but Sweet to the point</small>
 												</div>
 
 												<!-- listing type -->
 												<div class="col-12">
 													<label class="form-label">Amount of land to plant crops *</label>
-													<div class="d-sm-flex">
+													<div class="d-sm-flex" id="amount_land" name="amount_land">
 														<!-- Radio -->
 														<div class="form-check radio-bg-light me-4">
 															<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
@@ -220,7 +220,7 @@ Steps START -->
 												<!-- Short description -->
 												<div class="col-12">
 													<label class="form-label">Short description *</label>
-													<textarea class="form-control" rows="2" placeholder="Enter keywords"></textarea>
+													<textarea class="form-control" id="short_description" name="short_description" rows="2" placeholder="Enter keywords"></textarea>
 												</div>
 											</div>
 										</div>
@@ -241,7 +241,7 @@ Steps START -->
 												<!-- Country type -->
 												<div class="col-md-6">
 													<label class="form-label">Country/Region *</label>
-													<select class="form-select js-choice">
+													<select class="form-select js-choice" id="country" name="country">
 														<option value="">Select Country</option>
 														<option>India</option>
 														<option>Usa</option>
@@ -253,7 +253,7 @@ Steps START -->
 												<!-- State -->
 												<div class="col-md-6">
 													<label class="form-label">State *</label>
-													<select class="form-select js-choice" data-search-enabled="true">
+													<select class="form-select js-choice" data-search-enabled="true" id="state" name="state">
 														<option value="">Select state</option>
 														<option>India</option>
 														<option>Usa</option>
@@ -265,31 +265,31 @@ Steps START -->
 												<!-- City -->
 												<div class="col-md-6">
 													<label class="form-label">City *</label>
-													<input class="form-control" type="text" placeholder="Enter city">
+													<input class="form-control" type="text" placeholder="Enter city" id="city" name="city">
 												</div>
 
 												<!-- Postal number -->
 												<div class="col-md-6">
 													<label class="form-label">Postal Code number *</label>
-													<input class="form-control" type="text" placeholder="Enter postal number">
+													<input class="form-control" type="text" placeholder="Enter postal number" id="postal_code" name="postal_code">
 												</div>
 
 												<!-- Street -->
 												<div class="col-12">
 													<label class="form-label">Street *</label>
-													<input class="form-control" type="text" placeholder="Enter street">
+													<input class="form-control" type="text" placeholder="Enter street" id="street" name="street">
 												</div>
 
 												<!-- Latitude -->
 												<div class="col-md-6">
 													<label class="form-label">Latitude *</label>
-													<input class="form-control" type="text" placeholder="Enter latitude">
+													<input class="form-control" type="text" placeholder="Enter latitude" id="latitude" name="latitude">
 												</div>
 
 												<!-- Longitude -->
 												<div class="col-md-6">
 													<label class="form-label">Longitude *</label>
-													<input class="form-control" type="text" placeholder="Enter longitude">
+													<input class="form-control" type="text" placeholder="Enter longitude" id="longitude" name="longitude">
 												</div>
 
 												<!-- Detailed address -->
@@ -316,14 +316,14 @@ Steps START -->
 												<!-- Thumbnail image -->
 												<div class="col-12">
 													<label class="form-label">Upload thumbnail image *</label>
-													<input class="form-control" type="file" name="my-image" id="image" accept="image/gif, image/jpeg, image/png">
+													<input class="form-control" type="file" name="thumbnail_image" id="thumbnail_image" accept="image/gif, image/jpeg, image/png">
 													<p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. Large images will be cropped to 4:3 to fit our thumbnails/previews.</p>
 												</div>
 
 												<!-- Image Gallery -->
 												<div class="col-12">
 													<label class="form-label">Upload image gallery *</label>
-													<div class="dropzone dropzone-custom" data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}'>
+													<div class="dropzone dropzone-custom" name="gallery_image" id="gallery_image" data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}' >
 														<div class="dz-message needsclick">
 															<i class="bi bi-upload display-3"></i>    
 															<p>Drop files here or click to upload.</p>
@@ -383,7 +383,7 @@ Steps START -->
 												<!-- Select Amenities -->
 												<div class="col-12">
 													<label class="form-label">Select amenities *</label>
-													<select class="form-select js-choice border-0 z-index-9 bg-transparent" multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true">
+													<select class="form-select js-choice border-0 z-index-9 bg-transparent" name="amenities" id="amenities"  multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true">
 														<option value="">Select amenities</option>
 														<option>Swimming pool</option>
 														<option>Spa</option>
@@ -437,7 +437,7 @@ Steps START -->
 													</div>
 			
 													<!-- Main toolbar -->
-													<div class="bg-body border rounded-bottom h-400px overflow-hidden quilleditor">
+													<div class="bg-body border rounded-bottom h-400px overflow-hidden quilleditor" name="listing_description" id="listing_description" >
 														<br>
 														<h1>Quill Rich Text Editor</h1>
 														<br>
@@ -464,19 +464,19 @@ Steps START -->
 												<!-- Total Floor -->
 												<div class="col-md-4">
 													<label class="form-label">Total Floor *</label>
-													<input type="text" class="form-control" placeholder="Enter total floors">
+													<input type="text" class="form-control" name="total_floor" id="total_floor" placeholder="Enter total floors">
 												</div>
 
 												<!-- Total Floor -->
 												<div class="col-md-4">
 													<label class="form-label">Total Room *</label>
-													<input type="text" class="form-control" placeholder="Enter total rooms">
+													<input type="text" class="form-control" name="total_room" id="total_room" placeholder="Enter total rooms">
 												</div>
 												
 												<!-- Room area -->
 												<div class="col-md-4">
 													<label class="form-label">Room area *</label>
-													<input type="text" class="form-control" placeholder="Enter area in sq.ft">
+													<input type="text" class="form-control" name="room_area" id="room_area" placeholder="Enter area in sq.ft">
 												</div>
 											</div>
 										</div>
@@ -497,31 +497,31 @@ Steps START -->
 												<!-- Room name -->
 												<div class="col-md-6">
 													<label class="form-label">Room name *</label>
-													<input type="text" class="form-control" placeholder="Enter name">
+													<input type="text" class="form-control" placeholder="Enter name" name="room_name" id="room_name" >
 												</div>
 
 												<!-- First Name -->
 												<div class="col-md-6">
 													<label class="form-label">Room thumbnail image *</label>
-													<input class="form-control" type="file" name="my-image" id="image-2" accept="image/gif, image/jpeg, image/png">
+													<input class="form-control" type="file" name="my-image" id="image-2" accept="image/gif, image/jpeg, image/png" name="room_thumbnail_image" id="room_thumbnail_image" >
 												</div>
 
 												<!-- Room Price -->
 												<div class="col-md-6">
 													<label class="form-label">Room Price *</label>
-													<input type="text" class="form-control" placeholder="Enter price">
+													<input type="text" class="form-control" placeholder="Enter price" name="room_price" id="room_price" >
 												</div>
 
 												<!-- Discount -->
 												<div class="col-md-6">
 													<label class="form-label">Discount *</label>
-													<input type="text" class="form-control" placeholder="Enter discount">
+													<input type="text" class="form-control" placeholder="Enter discount" name="discount" id="discount" >
 												</div>
 
 												<!-- Additional info -->
 												<div class="col-md-6">
 													<label class="form-label">Additional info</label>
-													<select class="form-select js-choice border-0 z-index-9 bg-transparent">
+													<select class="form-select js-choice border-0 z-index-9 bg-transparent" name="additional_info" id="additional_info" >
 														<option value="">Select item</option>
 														<option>Non Refundable</option>
 														<option>Free Cancellation</option>
@@ -541,7 +541,7 @@ Steps START -->
 									<!-- Step 2 button -->
 									<div class="hstack gap-2 flex-wrap justify-content-between">
 										<button class="btn btn-secondary prev-btn mb-0">Previous</button>
-										<a href="listing-added.html" class="btn btn-success mb-0">Add Listing</a>
+										<button type="submit" name="submit" class="btn btn-success mb-0">Add Listing</button>
 									</div>
 								</div>	
 							</div>
