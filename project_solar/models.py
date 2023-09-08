@@ -18,6 +18,7 @@ class User(db.Model,UserMixin):
     password_hash = db.Column(db.String(128))
 
     posts = db.relationship('SolarPost',backref='author',lazy=True)
+    listing_posts = db.relationship('ListingPost',backref='author',lazy=True)
 
     def __init__(self,email,username,password):
         self.email = email
