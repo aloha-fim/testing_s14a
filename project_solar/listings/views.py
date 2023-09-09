@@ -1,8 +1,10 @@
-from flask import render_template, url_for, flash, abort, request, redirect, Blueprint
+from flask import render_template, url_for, flash, abort, request, redirect, Blueprint, current_app
 from flask_login import current_user, login_required
 from project_solar import db
 from project_solar.models import ListingPost
 from project_solar.listings.forms import ListingPostForm
+import os
+
 
 
 listings = Blueprint('listings',__name__)
@@ -16,6 +18,10 @@ def create_listing():
 def add_listing():
 
     form = ListingPostForm()
+
+    if request.method == 'POST':
+        for f in request.files.getlist('file'):
+            f.save(os.path.join(os.path.join(listings.root_path, 'upload'), f.filename))
 
     if form.validate_on_submit():
         listing = ListingPost(user_id=current_user.id,
