@@ -71,15 +71,12 @@ class ListingPost(db.Model):
     street = db.Column(db.String(140),nullable=False)
     longitude = db.Column(db.String(140),nullable=False)
     latitude = db.Column(db.String(140),nullable=False)
-    thumbnail_image = db.Column(db.String(140),nullable=False)
-    gallery_image = db.Column(db.String(140),nullable=False)
     amenities = db.Column(db.String(140),nullable=False)
     listing_description = db.Column(db.String(140),nullable=False)
     total_floor = db.Column(db.String(140),nullable=False)
     total_room = db.Column(db.String(140),nullable=False)
     room_area = db.Column(db.String(140),nullable=False)
     room_name = db.Column(db.String(140),nullable=False)
-    room_thumbnail_image = db.Column(db.String(140),nullable=False)
     room_price = db.Column(db.String(140),nullable=False)
     discount = db.Column(db.String(140),nullable=False)
     additional_info = db.Column(db.String(140),nullable=False)
@@ -92,3 +89,22 @@ class ListingPost(db.Model):
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date} -- {self.listing_name}"
     
+class ListingPictures(db.Model):
+    
+    users = db.relationship(User)
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
+
+    date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
+    thumbnail_image = db.Column(db.String(140),nullable=False)
+    gallery_image = db.Column(db.String(140),nullable=False)
+    room_thumbnail_image = db.Column(db.String(140),nullable=False)
+
+    def __init__(self,thumbnail_image,gallery_image,user_id):
+        self.thumbnail_image = thumbnail_image
+        self.gallery_image = gallery_image
+        self.user_id = user_id
+
+    def __repr__(self):
+        return f"Post ID: {self.id} -- Date: {self.date} -- {self.thumbnail_image}"
