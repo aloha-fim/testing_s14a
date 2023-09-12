@@ -23,9 +23,25 @@ app.secret_key = environ.get("SECRET_KEY")
 db = SQLAlchemy(app)
 Migrate(app,db)
 
-# flask db init
-# flask db migrate -m "first migration"
-# flask db upgrade
+############################################################
+# START localhost virtual environment ######################
+# virtualenv venv for python 2.7 and Windows 
+# python3 -m venv venv for python 3+  
+# source venv/bin/activate 
+# .\venv\Scripts\activate for Windows  
+# pip install -r requirements.txt for setup
+# pip freeze > requirements.txt for update after pip install
+# python3 app.py
+############################################################
+
+############################################################
+# Flask DB commands after pip3 install migrate workflow ####
+# 1) flask db init
+# 2) flask db migrate -m "first migration"
+# 3) flask db upgrade   
+# to push migrations
+# 4) python3 app.py
+############################################################
 
 
 #################

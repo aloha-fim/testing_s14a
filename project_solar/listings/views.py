@@ -13,7 +13,7 @@ listings = Blueprint('listings',__name__)
 def create_listing():
     return render_template('join-us.html')
 
-@listings.route('/add_listing',methods=['GET','POST'])
+@listings.route('/add_listing',methods=['POST', 'GET'])
 @login_required
 def add_listing():
 
@@ -45,14 +45,14 @@ def add_listing():
         db.session.add(listing)
         db.session.commit()
         flash('Thanks for Listing!')
-        return redirect(url_for('listing.pictures'))
+        return redirect(url_for('listings.upload'))
     
     return render_template('add-listing.html',form=form)
 
 
-@listings.route('/add_picture_listing',methods=['GET','POST'])
+@listings.route('/upload',methods=['POST', 'GET'])
 @login_required
-def add_picture_listing():
+def upload():
 
     form = ListingPictureForm()
 
