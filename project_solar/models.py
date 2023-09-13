@@ -71,6 +71,24 @@ class ListingPost(db.Model):
     street = db.Column(db.String(140),nullable=False)
     longitude = db.Column(db.String(140),nullable=False)
     latitude = db.Column(db.String(140),nullable=False)
+
+    def __init__(self,listing_type,listing_name,user_id):
+        self.listing_type = listing_type
+        self.listing_name = listing_name
+        self.user_id = user_id
+
+    def __repr__(self):
+        return f"Post ID: {self.id} -- Date: {self.date} -- {self.listing_name}"
+
+
+class ListingSecondPost(db.Model):
+    
+    users = db.relationship(User)
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
+
+    date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     amenities = db.Column(db.String(140),nullable=False)
     listing_description = db.Column(db.String(140),nullable=False)
     total_floor = db.Column(db.String(140),nullable=False)
@@ -81,14 +99,14 @@ class ListingPost(db.Model):
     discount = db.Column(db.String(140),nullable=False)
     additional_info = db.Column(db.String(140),nullable=False)
 
-    def __init__(self,listing_type,listing_name,user_id):
-        self.listing_type = listing_type
-        self.listing_name = listing_name
+    def __init__(self,total_floor,total_room,user_id):
+        self.total_floor = total_floor
+        self.total_room = total_room
         self.user_id = user_id
 
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date} -- {self.listing_name}"
-    
+
 class ListingPictures(db.Model):
     
     users = db.relationship(User)

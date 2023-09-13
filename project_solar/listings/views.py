@@ -1,8 +1,8 @@
 from flask import render_template, url_for, flash, abort, request, redirect, Blueprint, current_app
 from flask_login import current_user, login_required
 from project_solar import db
-from project_solar.models import ListingPost, ListingPictures
-from project_solar.listings.forms import ListingPostForm, ListingPictureForm
+from project_solar.models import ListingPost, ListingSecondPost, ListingPictures
+from project_solar.listings.forms import ListingPostForm, ListingSecondPostForm, ListingPictureForm
 import os
 
 
@@ -49,6 +49,31 @@ def add_listing():
     
     return render_template('add-listing.html',form=form)
 
+
+@listings.route('/add_second_listing',methods=['POST', 'GET'])
+@login_required
+def add_second_listing():
+
+    form = ListingSecondPostForm()
+
+    if form.validate_on_submit():
+        listing = ListingSecondPost(user_id=current_user.id,
+                    amenities = form.amenities.data,
+                    listing_description = form.listing_description.data,
+                    total_floor = form.total_floor.data,
+                    total_room = form.total_room.data,
+                    room_area = form.room_area.data,
+                    room_name = form.room_name.data,
+                    room_price = form.room_price.data,   
+                    discount = form.discount.data,                                                                                                                   
+                    additional_info=form.additional_info.data)
+        
+        db.session.add(listing)
+        db.session.commit()
+        flash('Thanks for Listing!')
+        return redirect(url_for('listings.upload'))
+    
+    return render_template('add-second-listing.html',form=form)
 
 @listings.route('/upload',methods=['POST', 'GET'])
 @login_required

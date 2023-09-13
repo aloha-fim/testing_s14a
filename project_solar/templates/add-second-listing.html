@@ -118,16 +118,17 @@ Steps START -->
 		<div id="stepper" class="bs-stepper stepper-outline">
 			<!-- Step Buttons START -->
 			<div class="bs-stepper-header" role="tablist">
-				<!-- Step 1 -->
-				<div class="step" data-target="#step-1">
+				<!-- Step 2 -->
+				<div class="step" data-target="#step-2">
 					<div class="text-center">
-						<button type="button" class="btn btn-link step-trigger mb-0" role="tab" id="steppertrigger1" aria-controls="step-1">
-							<span class="bs-stepper-circle">1</span>
+						<button type="button" class="btn btn-link step-trigger mb-0" role="tab" id="steppertrigger2" aria-controls="step-2">
+							<span class="bs-stepper-circle">2</span>
 						</button>
-						<h6 class="bs-stepper-label d-none d-md-block">Basic Information</h6>
+						<h6 class="bs-stepper-label d-none d-md-block">Detailed Information</h6>
 					</div>
 				</div>
 				<div class="line"></div>
+
 			</div>
 			<!-- Step Buttons END -->
 
@@ -139,163 +140,174 @@ Steps START -->
 					<div class="col-12">
 						<!--<form onsubmit="return false">-->
 						<form method="post">
-
-							<!-- Step 1 content START -->
-							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
+							<!-- Step 2 content START -->
+							<div id="step-2" role="tabpanel" class="content fade" aria-labelledby="steppertrigger2">
 								<div class="vstack gap-4">
 									<!-- Title -->
-									<h4 class="mb-0">Basic Information</h4>
+									<h4 class="mb-0">Detailed Information</h4>
 
-									<!-- Listing category START -->
+									<!-- Overview START -->
 									<div class="card shadow">
 										<!-- Card header -->
 										<div class="card-header border-bottom">
-											<!-- Title -->
-											<h5 class="mb-0">Choose Listing Category</h5>
+											<h5 class="mb-0">Overview</h5>
 										</div>
 			
 										<!-- Card body START -->
 										<div class="card-body">
 											<div class="row g-4">
-												<!-- Choose type -->
+												<!-- Select Amenities -->
 												<div class="col-12">
-													<label class="form-label">Choose listing type *</label>
-													<select class="form-select js-choice" id="listing_type" name="listing_type">
-														<option value="">Select type</option>
-														<option>Bare Land</option>
-														<option>Backyard</option>
-														<option>Farm</option>
+													<label class="form-label">Select amenities *</label>
+													<select class="form-select js-choice border-0 z-index-9 bg-transparent" name="amenities" id="amenities"  multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true">
+														<option value="">Select amenities</option>
+														<option>Swimming pool</option>
+														<option>Spa</option>
+														<option>Kid's play area</option>
 													</select>
-													<small>Reforest: the environment</small>
+													<small>Maximum of 14 keywords. Keywords should all be in lowercase and separated by commas. e.g. javascript, react, marketing</small>
 												</div>
 
-												<!-- Listing Name -->
+												<!-- Descriptions -->
 												<div class="col-12">
-													<label class="form-label">Listing name *</label>
-													<input class="form-control" type="text" placeholder="Enter place name" id="listing_name" name="listing_name">
-													<small>Short but Sweet to the point</small>
-												</div>
-
-												<!-- listing type -->
-												<div class="col-12">
-													<label class="form-label">Amount of land to plant crops *</label>
-													<div class="d-sm-flex" id="amount_land" name="amount_land">
-														<!-- Radio -->
-														<div class="form-check radio-bg-light me-4">
-															<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-															<label class="form-check-label" for="flexRadioDefault1">
-																Entire Place
-															</label>
-														</div>
-													<!-- Radio -->
-														<div class="form-check radio-bg-light me-4">
-															<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-															<label class="form-check-label" for="flexRadioDefault2">
-																Partial Place
-															</label>
-														</div>
-													<!-- Radio -->
-														<div class="form-check radio-bg-light">
-															<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
-															<label class="form-check-label" for="flexRadioDefault3">
-																2 x 4 plots
-															</label>
-														</div>
+													<label class="form-label">Add description *</label>
+													<!-- Editor toolbar -->
+													<div class="bg-light border border-bottom-0 rounded-top py-3 quilltoolbar">
+														<span class="ql-formats">
+															<select class="ql-size"></select>
+														</span>
+														<span class="ql-formats">
+															<button class="ql-bold"></button>
+															<button class="ql-italic"></button>
+															<button class="ql-underline"></button>
+															<button class="ql-strike"></button>
+														</span>
+														<span class="ql-formats">
+															<select class="ql-color"></select>
+															<select class="ql-background"></select>
+														</span>
+														<span class="ql-formats">
+															<button class="ql-code-block"></button>
+														</span>
+														<span class="ql-formats">
+															<button class="ql-list" value="ordered"></button>
+															<button class="ql-list" value="bullet"></button>
+															<button class="ql-indent" value="-1"></button>
+															<button class="ql-indent" value="+1"></button>
+														</span>
+														<span class="ql-formats">
+															<button class="ql-link"></button>
+															<button class="ql-image"></button>
+														</span>
+														<span class="ql-formats">
+															<button class="ql-clean"></button>
+														</span>
 													</div>
-												</div>
-
-												<!-- Short description -->
-												<div class="col-12">
-													<label class="form-label">Short description *</label>
-													<textarea class="form-control" id="short_description" name="short_description" rows="2" placeholder="Enter keywords"></textarea>
+			
+													<!-- Main toolbar -->
+													<div class="bg-body border rounded-bottom h-400px overflow-hidden quilleditor" name="listing_description" id="listing_description" >
+														<br>
+														<h1>Text Editor</h1>
+														<br>
+														<p>Start typing below.</p>
+														<br>
+													</div>
 												</div>
 											</div>
 										</div>
 										<!-- Card body END -->
-									</div>
-									<!-- Listing category END -->
+									</div>	
+									<!-- Overview END -->
 
-									<!-- Listing location START -->
+									<!-- Size of listing START -->
 									<div class="card shadow">
 										<!-- Card header -->
 										<div class="card-header border-bottom">
-											<h5 class="mb-0">Listing Location</h5>
+											<h5 class="mb-0">Size Of Your Listing</h5>
 										</div>
 			
 										<!-- Card body START -->
 										<div class="card-body">
-											<div class="row g-3">
-												<!-- Country type -->
-												<div class="col-md-6">
-													<label class="form-label">Country/Region *</label>
-													<select class="form-select js-choice" id="country" name="country">
-														<option value="">Select Country</option>
-														<option>Usa</option>
-														<option>Japan</option>
-														<option>United Kingdom</option>
-													</select>
+											<div class="row g-4">
+												<!-- Total Floor -->
+												<div class="col-md-4">
+													<label class="form-label">Total Floor *</label>
+													<input type="text" class="form-control" name="total_floor" id="total_floor" placeholder="Enter total floors">
 												</div>
 
-												<!-- State -->
-												<div class="col-md-6">
-													<label class="form-label">State *</label>
-													<select class="form-select js-choice" data-search-enabled="true" id="state" name="state">
-														<option value="">Select state</option>
-														<option>Usa</option>
-														<option>Japan</option>
-														<option>United Kingdom</option>
-													</select>
+												<!-- Total Floor -->
+												<div class="col-md-4">
+													<label class="form-label">Total Room *</label>
+													<input type="text" class="form-control" name="total_room" id="total_room" placeholder="Enter total rooms">
 												</div>
-
-												<!-- City -->
-												<div class="col-md-6">
-													<label class="form-label">City *</label>
-													<input class="form-control" type="text" placeholder="Enter city" id="city" name="city">
-												</div>
-
-												<!-- Postal number -->
-												<div class="col-md-6">
-													<label class="form-label">Postal Code number *</label>
-													<input class="form-control" type="text" placeholder="Enter postal number" id="postal_code" name="postal_code">
-												</div>
-
-												<!-- Street -->
-												<div class="col-12">
-													<label class="form-label">Street *</label>
-													<input class="form-control" type="text" placeholder="Enter street" id="street" name="street">
-												</div>
-
-												<!-- Latitude -->
-												<div class="col-md-6">
-													<label class="form-label">Latitude *</label>
-													<input class="form-control" type="text" placeholder="Enter latitude" id="latitude" name="latitude">
-												</div>
-
-												<!-- Longitude -->
-												<div class="col-md-6">
-													<label class="form-label">Longitude *</label>
-													<input class="form-control" type="text" placeholder="Enter longitude" id="longitude" name="longitude">
-												</div>
-
-												<!-- Detailed address -->
-												<div class="col-12">
-													<iframe class="w-100 h-300px grayscale rounded" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.9663095343008!2d-74.00425878428698!3d40.74076684379132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259bf5c1654f3%3A0xc80f9cfce5383d5d!2sGoogle!5e0!3m2!1sen!2sin!4v1586000412513!5m2!1sen!2sin" height="500" style="border:0;" aria-hidden="false" tabindex="0"></iframe>	
+												
+												<!-- Room area -->
+												<div class="col-md-4">
+													<label class="form-label">Room area *</label>
+													<input type="text" class="form-control" name="room_area" id="room_area" placeholder="Enter area in sq.ft">
 												</div>
 											</div>
 										</div>
 										<!-- Card body END -->
-									</div>
-									<!-- Listing location END -->
+									</div>	
+									<!-- Size of listing END -->
 
-									<!-- Step 1 button -->
-									<div class="text-end">
+									<!-- Room options START -->
+									<div class="card shadow">
+										<!-- Card header -->
+										<div class="card-header border-bottom">
+											<h5 class="mb-0">Room Options</h5>
+										</div>
+			
+										<!-- Card body START -->
+										<div class="card-body">
+											<div class="row g-4">
+												<!-- Room name -->
+												<div class="col-md-6">
+													<label class="form-label">Room name *</label>
+													<input type="text" class="form-control" placeholder="Enter name" name="room_name" id="room_name" >
+												</div>
+
+												<!-- Room Price -->
+												<div class="col-md-6">
+													<label class="form-label">Room Price *</label>
+													<input type="text" class="form-control" placeholder="Enter price" name="room_price" id="room_price" >
+												</div>
+
+												<!-- Discount -->
+												<div class="col-md-6">
+													<label class="form-label">Discount *</label>
+													<input type="text" class="form-control" placeholder="Enter discount" name="discount" id="discount" >
+												</div>
+
+												<!-- Additional info -->
+												<div class="col-md-6">
+													<label class="form-label">Additional info</label>
+													<select class="form-select js-choice border-0 z-index-9 bg-transparent" name="additional_info" id="additional_info" >
+														<option value="">Select item</option>
+														<option>Non Refundable</option>
+														<option>Free Cancellation</option>
+													</select>
+												</div>
+
+												<!-- Button -->
+												<div class="col-12">
+													<a href="#" class="btn btn-sm btn-primary-soft mb-0"><i class="bi bi-plus-circle me-2"></i>Add New Room</a>
+												</div>
+											</div>
+										</div>
+										<!-- Card body END -->
+									</div>	
+									<!-- Room options END -->
+
+									<!-- Step 2 button -->
+									<div class="hstack gap-2 flex-wrap justify-content-between">
+										<button class="btn btn-secondary prev-btn mb-0">Previous</button>
 										<button type="submit" name="submit" class="btn btn-success mb-0">Add Listing</button>
 									</div>
-								</div>
+								</div>	
 							</div>
-							<!-- Step 1 content END -->
-
-
+							<!-- Step 2 content END -->
 						</form>
 					</div>
 					<!-- Main content END -->
