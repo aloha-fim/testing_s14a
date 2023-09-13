@@ -31,21 +31,12 @@ def add_listing():
                     postal_code = form.postal_code.data,
                     street = form.street.data,
                     longitude = form.longitude.data,
-                    latitude = form.latitude.data,
-                    amenities = form.amenities.data,
-                    listing_description = form.listing_description.data,
-                    total_floor = form.total_floor.data,
-                    total_room = form.total_room.data,
-                    room_area = form.room_area.data,
-                    room_name = form.room_name.data,
-                    room_price = form.room_price.data,   
-                    discount = form.discount.data,                                                                                                                   
-                    additional_info=form.additional_info.data)
+                    latitude = form.latitude.data)
         
         db.session.add(listing)
         db.session.commit()
         flash('Thanks for Listing!')
-        return redirect(url_for('listings.upload'))
+        return redirect(url_for('listings.add_second_listing'))
     
     return render_template('add-listing.html',form=form)
 
