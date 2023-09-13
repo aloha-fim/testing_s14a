@@ -60,17 +60,17 @@ class ListingPost(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
 
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
-    listing_type = db.Column(db.String(140),nullable=False)
-    listing_name = db.Column(db.String(140),nullable=False)
-    amount_land = db.Column(db.String(140),nullable=False)
-    short_description = db.Column(db.String(140),nullable=False)
-    country = db.Column(db.String(140),nullable=False)
-    state = db.Column(db.String(140),nullable=False)
-    city = db.Column(db.String(140),nullable=False)
-    postal_code = db.Column(db.String(140),nullable=False)
-    street = db.Column(db.String(140),nullable=False)
-    longitude = db.Column(db.String(140),nullable=False)
-    latitude = db.Column(db.String(140),nullable=False)
+    listing_type = db.Column(db.String(140))
+    listing_name = db.Column(db.String(140))
+    amount_land = db.Column(db.String(140))
+    short_description = db.Column(db.String(140))
+    country = db.Column(db.String(140))
+    state = db.Column(db.String(140))
+    city = db.Column(db.String(140))
+    postal_code = db.Column(db.String(140))
+    street = db.Column(db.String(140))
+    longitude = db.Column(db.String(140))
+    latitude = db.Column(db.String(140))
 
     def __init__(self,listing_type,listing_name,user_id):
         self.listing_type = listing_type

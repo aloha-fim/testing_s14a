@@ -14,7 +14,7 @@ class ListingPostForm(FlaskForm):
     street = StringField('Street')
     longitude = StringField('Longitude')
     latitude = StringField('Latitude')
-    submit = SubmitField("Post")
+    submit = SubmitField("Add Listing")
 
 class ListingSecondPostForm(FlaskForm):
     amenities = StringField('Amenities',validators=[DataRequired()])

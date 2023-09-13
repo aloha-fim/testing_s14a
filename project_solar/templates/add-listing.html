@@ -1,3 +1,5 @@
+{% block content %}	
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -95,7 +97,7 @@
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
-{% block content %}	
+
 <!-- =======================
 Page Banner START -->
 <section class="pb-0">
@@ -138,8 +140,8 @@ Steps START -->
 					<!-- Main content START -->
 					<div class="col-12">
 						<!--<form onsubmit="return false">-->
-						<form method="post">
-
+						<form method="POST" role="form">
+							{{form.hidden_tag()}}
 							<!-- Step 1 content START -->
 							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
 								<div class="vstack gap-4">
@@ -161,10 +163,10 @@ Steps START -->
 												<div class="col-12">
 													<label class="form-label">Choose listing type *</label>
 													<select class="form-select js-choice" id="listing_type" name="listing_type">
-														<option value="">Select type</option>
-														<option>Bare Land</option>
-														<option>Backyard</option>
-														<option>Farm</option>
+														<option>Select type</option>
+														<option value="Bare Land">Bare Land</option>
+														<option value="Backyard">Backyard</option>
+														<option value="Farm<">Farm</option>
 													</select>
 													<small>Reforest: the environment</small>
 												</div>
@@ -182,21 +184,21 @@ Steps START -->
 													<div class="d-sm-flex" id="amount_land" name="amount_land">
 														<!-- Radio -->
 														<div class="form-check radio-bg-light me-4">
-															<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+															<input class="form-check-input" type="radio" name="amount_land" value="Entire Place" id="flexRadioDefault1" checked>
 															<label class="form-check-label" for="flexRadioDefault1">
 																Entire Place
 															</label>
 														</div>
 													<!-- Radio -->
 														<div class="form-check radio-bg-light me-4">
-															<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+															<input class="form-check-input" type="radio" name="amount_land" value="Partial Place" id="flexRadioDefault2">
 															<label class="form-check-label" for="flexRadioDefault2">
 																Partial Place
 															</label>
 														</div>
 													<!-- Radio -->
 														<div class="form-check radio-bg-light">
-															<input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+															<input class="form-check-input" type="radio" name="amount_land" value="2 x 4 plots" id="flexRadioDefault3">
 															<label class="form-check-label" for="flexRadioDefault3">
 																2 x 4 plots
 															</label>
@@ -229,10 +231,10 @@ Steps START -->
 												<div class="col-md-6">
 													<label class="form-label">Country/Region *</label>
 													<select class="form-select js-choice" id="country" name="country">
-														<option value="">Select Country</option>
-														<option>Usa</option>
-														<option>Japan</option>
-														<option>United Kingdom</option>
+														<option>Select Country</option>
+														<option value="Usa">Usa</option>
+														<option value="Japan">Japan</option>
+														<option value="United Kingdom">United Kingdom</option>
 													</select>
 												</div>
 
@@ -240,10 +242,10 @@ Steps START -->
 												<div class="col-md-6">
 													<label class="form-label">State *</label>
 													<select class="form-select js-choice" data-search-enabled="true" id="state" name="state">
-														<option value="">Select state</option>
-														<option>Usa</option>
-														<option>Japan</option>
-														<option>United Kingdom</option>
+														<option>Select state</option>
+														<option value="Usa">Usa</option>
+														<option value="Japan">Japan</option>
+														<option value="United Kingdom">United Kingdom</option>
 													</select>
 												</div>
 
@@ -289,7 +291,7 @@ Steps START -->
 
 									<!-- Step 1 button -->
 									<div class="text-end">
-										<button type="submit" name="submit" class="btn btn-success mb-0">Add Listing</button>
+										<button type="submit" name="submit" value="submit" class="btn btn-success mb-0">Add Listing</button>
 									</div>
 								</div>
 							</div>

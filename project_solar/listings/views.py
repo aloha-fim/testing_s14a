@@ -36,14 +36,14 @@ def add_listing():
         db.session.add(listing)
         db.session.commit()
         flash('Thanks for Listing!')
-        return redirect(url_for('listings.add_second_listing'))
+        return redirect(url_for('listings.second_listing'))
     
     return render_template('add-listing.html',form=form)
 
 
-@listings.route('/add_second_listing',methods=['POST', 'GET'])
+@listings.route('/second_listing',methods=['POST', 'GET'])
 @login_required
-def add_second_listing():
+def second_listing():
 
     form = ListingSecondPostForm()
 
