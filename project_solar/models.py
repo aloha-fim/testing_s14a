@@ -105,7 +105,7 @@ class ListingSecondPost(db.Model):
         self.user_id = user_id
 
     def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date} -- {self.listing_name}"
+        return f"Post ID: {self.id} -- Date: {self.date} -- {self.amenities}"
 
 class ListingPictures(db.Model):
     
