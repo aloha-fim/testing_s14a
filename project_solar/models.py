@@ -72,13 +72,22 @@ class ListingPost(db.Model):
     longitude = db.Column(db.String(140))
     latitude = db.Column(db.String(140))
 
-    def __init__(self,listing_type,amount_land,user_id):
+    def __init__(self,listing_type,listing_name,amount_land,short_description,country,state,city,postal_code,street,longitude,latitude,user_id):
         self.listing_type = listing_type
+        self.listing_name = listing_name
         self.amount_land = amount_land
+        self.short_description = short_description
+        self.country = country
+        self.state = state
+        self.city = city
+        self.postal_code = postal_code
+        self.street = street
+        self.longitude = longitude
+        self.latitude = latitude
         self.user_id = user_id
 
     def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date} -- {self.listing_name}"
+        return f"Post ID: {self.id} -- Date: {self.date}"
 
 
 class ListingSecondPost(db.Model):
