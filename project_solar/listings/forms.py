@@ -1,11 +1,11 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, FileField
+from wtforms import StringField, SubmitField, FileField, RadioField
 from wtforms.validators import DataRequired
 
 class ListingPostForm(FlaskForm):
     listing_type = StringField('Listing Type')
     listing_name = StringField('Listing Name')
-    amount_land = StringField('Amount Land')
+    amount_land = RadioField('amount_land', choices = [('1','1'), ('2','2'), ('3', '3')])
     short_description = StringField('Short Description')
     country = StringField('Country')
     state = StringField('State')

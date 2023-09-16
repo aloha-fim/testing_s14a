@@ -62,7 +62,7 @@ class ListingPost(db.Model):
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     listing_type = db.Column(db.String(140))
     listing_name = db.Column(db.String(140))
-    amount_land = db.Column(db.String(140))
+    amount_land = db.Column(db.Integer)
     short_description = db.Column(db.String(140))
     country = db.Column(db.String(140))
     state = db.Column(db.String(140))
@@ -72,9 +72,9 @@ class ListingPost(db.Model):
     longitude = db.Column(db.String(140))
     latitude = db.Column(db.String(140))
 
-    def __init__(self,listing_type,listing_name,user_id):
+    def __init__(self,listing_type,amount_land,user_id):
         self.listing_type = listing_type
-        self.listing_name = listing_name
+        self.amount_land = amount_land
         self.user_id = user_id
 
     def __repr__(self):
