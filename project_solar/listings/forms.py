@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, FileField, RadioField
+from wtforms import StringField, SubmitField, FileField, RadioField, TextAreaField
 from wtforms.validators import DataRequired
 
 class ListingPostForm(FlaskForm):
@@ -18,7 +18,7 @@ class ListingPostForm(FlaskForm):
 
 class ListingSecondPostForm(FlaskForm):
     amenities = StringField('Amenities',validators=[DataRequired()])
-    listing_description = StringField('Listing Description',validators=[DataRequired()])
+    listing_description = TextAreaField('Listing Description',validators=[DataRequired()])
     total_floor = StringField('Total Floor',validators=[DataRequired()])
     total_room = StringField('Total Room',validators=[DataRequired()])
     room_area = StringField('Room Area',validators=[DataRequired()])

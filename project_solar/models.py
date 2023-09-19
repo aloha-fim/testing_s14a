@@ -98,7 +98,7 @@ class ListingSecondPost(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
 
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
-    amenities = db.Column(db.String(140),nullable=False)
+    amenities = db.Column(db.PickleType,nullable=False)
     listing_description = db.Column(db.String(140),nullable=False)
     total_floor = db.Column(db.String(140),nullable=False)
     total_room = db.Column(db.String(140),nullable=False)
