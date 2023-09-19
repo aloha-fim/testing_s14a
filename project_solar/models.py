@@ -108,13 +108,20 @@ class ListingSecondPost(db.Model):
     discount = db.Column(db.String(140),nullable=False)
     additional_info = db.Column(db.String(140),nullable=False)
 
-    def __init__(self,total_floor,total_room,user_id):
+    def __init__(self,amenities,listing_description,total_floor,total_room,room_area,room_name,room_price,discount,additional_info,user_id):
+        self.amenities = amenities
+        self.listing_description = listing_description
         self.total_floor = total_floor
         self.total_room = total_room
+        self.room_area = room_area
+        self.room_name = room_name
+        self.room_price = room_price
+        self.discount = discount
+        self.additional_info = additional_info
         self.user_id = user_id
 
     def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date} -- {self.amenities}"
+        return f"Post ID: {self.id} -- Date: {self.date}"
 
 class ListingPictures(db.Model):
     
