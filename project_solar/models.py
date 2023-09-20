@@ -19,6 +19,7 @@ class User(db.Model,UserMixin):
 
     posts = db.relationship('SolarPost',backref='author',lazy=True)
     listing_posts = db.relationship('ListingPost',backref='author',lazy=True)
+    listing_second_posts = db.relationship('ListingSecondPost',backref='author',lazy=True)
 
     def __init__(self,email,username,password):
         self.email = email
@@ -62,7 +63,7 @@ class ListingPost(db.Model):
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     listing_type = db.Column(db.String(140))
     listing_name = db.Column(db.String(140))
-    amount_land = db.Column(db.Integer)
+    amount_land = db.Column(db.String(140))
     short_description = db.Column(db.String(140))
     country = db.Column(db.String(140))
     state = db.Column(db.String(140))

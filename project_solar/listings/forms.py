@@ -17,15 +17,15 @@ class ListingPostForm(FlaskForm):
     submit = SubmitField("Add Listing")
 
 class ListingSecondPostForm(FlaskForm):
-    amenities = StringField('Amenities',validators=[DataRequired()])
-    listing_description = TextAreaField('Listing Description',validators=[DataRequired()])
-    total_floor = StringField('Total Floor',validators=[DataRequired()])
-    total_room = StringField('Total Room',validators=[DataRequired()])
-    room_area = StringField('Room Area',validators=[DataRequired()])
-    room_name = StringField('Room Name',validators=[DataRequired()])
-    room_price = StringField('Room Price',validators=[DataRequired()])
-    discount = StringField('Discount',validators=[DataRequired()])
-    additional_info = StringField('Additional Info',validators=[DataRequired()])
+    amenities = StringField('Amenities')
+    listing_description = TextAreaField('Listing Description')
+    total_floor = StringField('Total Floor')
+    total_room = StringField('Total Room')
+    room_area = StringField('Room Area')
+    room_name = StringField('Room Name')
+    room_price = StringField('Room Price')
+    discount = StringField('Discount')
+    additional_info = StringField('Additional Info')
     submit = SubmitField("Post")
 
 class ListingPictureForm(FlaskForm):
