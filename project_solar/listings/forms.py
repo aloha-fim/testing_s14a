@@ -26,7 +26,7 @@ class ListingSecondPostForm(FlaskForm):
     room_price = StringField('Room Price')
     discount = StringField('Discount')
     additional_info = StringField('Additional Info')
-    submit = SubmitField("Post")
+    submit = SubmitField("Add Listing")
 
 class ListingPictureForm(FlaskForm):
     thumbnail_image =  FileField('Thumbnail Image',validators=[DataRequired()])
