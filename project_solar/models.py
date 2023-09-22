@@ -99,15 +99,15 @@ class ListingSecondPost(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
 
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
-    amenities = db.Column(db.PickleType,nullable=False)
-    listing_description = db.Column(db.String(140),nullable=False)
-    total_floor = db.Column(db.String(140),nullable=False)
-    total_room = db.Column(db.String(140),nullable=False)
-    room_area = db.Column(db.String(140),nullable=False)
-    room_name = db.Column(db.String(140),nullable=False)
-    room_price = db.Column(db.String(140),nullable=False)
-    discount = db.Column(db.String(140),nullable=False)
-    additional_info = db.Column(db.String(140),nullable=False)
+    amenities = db.Column(db.PickleType)
+    listing_description = db.Column(db.String(140))
+    total_floor = db.Column(db.String(140))
+    total_room = db.Column(db.String(140))
+    room_area = db.Column(db.String(140))
+    room_name = db.Column(db.String(140))
+    room_price = db.Column(db.String(140))
+    discount = db.Column(db.String(140))
+    additional_info = db.Column(db.String(140))
 
     def __init__(self,amenities,listing_description,total_floor,total_room,room_area,room_name,room_price,discount,additional_info,user_id):
         self.amenities = amenities
