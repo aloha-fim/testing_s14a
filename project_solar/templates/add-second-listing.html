@@ -139,7 +139,8 @@ Steps START -->
 					<!-- Main content START -->
 					<div class="col-12">
 						<!--<form onsubmit="return false">-->
-						<form method="post">
+						<form method="POST" role="form">
+							{{form.hidden_tag()}}
 							<!-- Step 2 content START -->
 							<div id="step-2" role="tabpanel" class="content fade" aria-labelledby="steppertrigger2">
 								<div class="vstack gap-4">
@@ -158,59 +159,16 @@ Steps START -->
 											<div class="row g-4">
 												<!-- Select Amenities -->
 												<div class="col-12">
-													<label class="form-label">Select amenities *</label>
-													<select class="form-select js-choice border-0 z-index-9 bg-transparent" name="amenities" id="amenities"  multiple="multiple" aria-label=".form-select-sm" data-max-item-count="15" data-remove-item-button="true">
-														<option>Select amenities</option>
-														<option value="outdoor fire">Fire spot</option>
-														<option value="jacuzzi">Spa</option>
-														<option value="laundry">Laundry</option>
-													</select>
-													<small>Maximum of 14 keywords. Keywords should all be in lowercase and separated by commas. e.g. javascript, react, marketing</small>
+													<label class="form-label">Add amenities *</label>
+													<!-- Main toolbar -->
+													<textarea class="form-control" name="amenities" id="amenities" rows="2"></textarea>
 												</div>
 
 												<!-- Descriptions -->
 												<div class="col-12">
 													<label class="form-label">Add description *</label>
-													<!-- Editor toolbar -->
-													<div class="bg-light border border-bottom-0 rounded-top py-3 quilltoolbar">
-														<span class="ql-formats">
-															<select class="ql-size"></select>
-														</span>
-														<span class="ql-formats">
-															<button class="ql-bold"></button>
-															<button class="ql-italic"></button>
-															<button class="ql-underline"></button>
-															<button class="ql-strike"></button>
-														</span>
-														<span class="ql-formats">
-															<select class="ql-color"></select>
-															<select class="ql-background"></select>
-														</span>
-														<span class="ql-formats">
-															<button class="ql-code-block"></button>
-														</span>
-														<span class="ql-formats">
-															<button class="ql-list" value="ordered"></button>
-															<button class="ql-list" value="bullet"></button>
-															<button class="ql-indent" value="-1"></button>
-															<button class="ql-indent" value="+1"></button>
-														</span>
-														<span class="ql-formats">
-															<button class="ql-link"></button>
-															<button class="ql-image"></button>
-														</span>
-														<span class="ql-formats">
-															<button class="ql-clean"></button>
-														</span>
-													</div>
-			
 													<!-- Main toolbar -->
-													<div class="bg-body border rounded-bottom h-400px overflow-hidden quilleditor" name="listing_description" id="listing_description" >
-														<br>
-														<h1>type now</h1>
-														<br>
-														<br>
-													</div>
+													<textarea class="form-control" name="listing_description" id="listing_description" rows="5"></textarea>
 												</div>
 											</div>
 										</div>
@@ -297,7 +255,7 @@ Steps START -->
 									<!-- Step 2 button -->
 									<div class="hstack gap-2 flex-wrap justify-content-between">
 										<button class="btn btn-secondary prev-btn mb-0">Previous</button>
-										<button type="submit" name="submit" class="btn btn-success mb-0">Add Listing</button>
+										<button type="submit" name="submit" value="submit" class="btn btn-success mb-0">Add Listing</button>
 									</div>
 								</div>	
 							</div>

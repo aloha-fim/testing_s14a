@@ -18,7 +18,7 @@ class ListingPostForm(FlaskForm):
 
 class ListingSecondPostForm(FlaskForm):
     amenities = StringField('Amenities')
-    listing_description = TextAreaField('Listing Description')
+    listing_description = StringField('Listing Description')
     total_floor = StringField('Total Floor')
     total_room = StringField('Total Room')
     room_area = StringField('Room Area')
