@@ -72,15 +72,14 @@ def upload():
 
     form = ListingPictureForm()
 
-    if request.method == 'POST':
+    if form.validate_on_submit():
+
         for f in request.files.getlist('file'):
             f.save(os.path.join(os.path.join(listings.root_path, 'upload'), f.filename))
-
-    if form.validate_on_submit():
+    
         listing_pictures = ListingPictures(user_id=current_user.id,
                     thumbnail_image = form.thumbnail_image.data,
-                    gallery_image = form.gallery_image.data,
-                    room_thumbnail_image = form.room_thumbnail_image.data)
+                    gallery_image = form.gallery_image.data)
         
         db.session.add(listing_pictures)
         db.session.commit()
