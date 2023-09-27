@@ -9,6 +9,11 @@ import os
 
 listings = Blueprint('listings',__name__)
 
+
+@listings.route('/listing_confirm')
+def listing_confirm():
+    return render_template('listing-added.html')
+
 @listings.route('/create_creation')
 def create_listing():
     return render_template('join-us.html')
@@ -84,6 +89,6 @@ def upload():
         db.session.add(listing_pictures)
         db.session.commit()
         flash('Thanks for Listing!')
-        return redirect(url_for('core.start'))
+        return redirect(url_for('listings.listing_confirm'))
     
     return render_template('add-pictures-listing.html',form=form)
