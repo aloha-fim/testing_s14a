@@ -9,6 +9,9 @@ import os
 
 listings = Blueprint('listings',__name__)
 
+@listings.route('/results_list')
+def results():
+    return render_template('tour-grid.html')
 
 @listings.route('/listing_confirm')
 def listing_confirm():
