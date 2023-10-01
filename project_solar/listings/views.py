@@ -11,7 +11,9 @@ listings = Blueprint('listings',__name__)
 
 @listings.route('/results_list')
 def results():
-    return render_template('tour-grid.html')
+    page = request.args.get('page',1,type=int)
+    posts = ListingPost.query.order_by(ListingPost.date.desc()).paginate(page=page,per_page=5)
+    return render_template('tour-grid.html', posts=posts)
 
 @listings.route('/listing_confirm')
 def listing_confirm():

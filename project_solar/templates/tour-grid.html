@@ -494,7 +494,7 @@ Tour grid START -->
 				</div>
 			</div>
 			<!-- Card item END -->
-
+			{% for post in posts %}
 			<!-- Card item START -->
 			<div class="col-md-6 col-xl-4">
 				<div class="card card-hover-shadow pb-0 h-100">
@@ -505,7 +505,7 @@ Tour grid START -->
 						<!-- Overlay -->
 						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
 							<!-- Card overlay top -->
-							<div> <span class="badge text-bg-dark">Adventure</span> </div>
+							<div> <span class="badge text-bg-dark">{{post.listing_name}}</span> </div>
 							<!-- Card overlay bottom -->
 							<div class="w-100 mt-auto">
 								<!-- Card category -->
@@ -514,6 +514,7 @@ Tour grid START -->
 						</div>
 					</div>
 					<!-- Image -->
+			{% endfor %}
 
 					<!-- Card body START -->
 					<div class="card-body px-3">
