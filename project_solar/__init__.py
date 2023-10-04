@@ -36,7 +36,7 @@ Migrate(app,db)
 
 ############################################################
 # Flask DB commands after pip3 install migrate workflow ####
-# 1) flask db init
+# 1) flask db init / flask db stamp head
 # 2) flask db migrate -m "first migration"
 # 3) flask db upgrade   
 # to push migrations
