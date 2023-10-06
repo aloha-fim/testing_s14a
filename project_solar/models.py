@@ -74,8 +74,8 @@ class ListingPost(db.Model):
     longitude = db.Column(db.String(140))
     latitude = db.Column(db.String(140))
 
-    listing_second_posts = db.relationship('ListingSecondPost',backref='author',lazy=True)
-    listing_picture_posts = db.relationship('ListingPictures',backref='author',lazy=True)
+    listing_second_post = db.relationship('ListingSecondPost',back_populates="listing_main_post")
+    listing_picture_post = db.relationship('ListingPictures',back_populates="listing_main_post")
 
     def __init__(self,listing_type,listing_name,amount_land,short_description,country,state,city,postal_code,street,longitude,latitude,user_id):
         self.listing_type = listing_type
@@ -98,7 +98,7 @@ class ListingPost(db.Model):
 class ListingSecondPost(db.Model):
     
     users = db.relationship(User)
-    listings = db.relationship(ListingPost)
+    listing_main_post = db.relationship('ListingPost',back_populates="listing_second_post")
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
@@ -133,7 +133,7 @@ class ListingSecondPost(db.Model):
 class ListingPictures(db.Model):
     
     users = db.relationship(User)
-    listings = db.relationship(ListingPost)
+    listing_main_post = db.relationship('ListingPost',back_populates="listing_picture_post")
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
