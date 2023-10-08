@@ -102,7 +102,8 @@ class ListingSecondPost(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
-    listing_id = db.Column(db.Integer,db.ForeignKey('listing_post.id'))
+    listing_id = db.Column(db.Integer,db.ForeignKey('listing_post.id'),primary_key=True, autoincrement=True)
+    
 
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     amenities = db.Column(db.String(140))
@@ -137,7 +138,7 @@ class ListingPictures(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
-    listing_id = db.Column(db.Integer,db.ForeignKey('listing_post.id'))
+    listing_id = db.Column(db.Integer,db.ForeignKey('listing_post.id'),primary_key=True, autoincrement=True)
 
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     thumbnail_image = db.Column(db.String(140))

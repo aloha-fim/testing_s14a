@@ -259,7 +259,7 @@ Tour grid START -->
 					<!-- Overlay item -->
 					<div class="position-relative">
 						<!-- Image -->
-						<img src={{post.gallery_image}} class="card-img-top" alt="Card image">
+						<img src={{post.thumbnail_image}} class="card-img-top" alt="Card image">
 						<!-- Overlay -->
 						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
 							<!-- Card overlay top -->
@@ -286,7 +286,7 @@ Tour grid START -->
 								<i class="fa-solid fa-hotel text-info me-2"></i>{{post.city}}
 							</li>
 							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-person-skating text-danger me-2"></i>2 Activities
+								<i class="fa-solid fa-person-skating text-danger me-2"></i>{{post.amenities}}
 							</li>
 						</ul>
 					</div>
@@ -298,7 +298,7 @@ Tour grid START -->
 						<div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
 							<!-- Price -->
 							<div class="hstack gap-2">
-								<h5 class="fw-normal text-success mb-0">$845</h5>
+								<h5 class="fw-normal text-success mb-0">{{post.discount}}</h5>
 								<small>/per person</small>
 							</div>
 							<!-- Button -->

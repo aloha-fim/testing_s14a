@@ -13,8 +13,8 @@ listings = Blueprint('listings',__name__)
 def results():
     page = request.args.get('page',1,type=int)
     posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(
-         ListingPost.id == ListingSecondPost.id,
-         ListingSecondPost.id == ListingPictures.id).all()
+         ListingPost.id == ListingSecondPost.listing_id,
+         ListingSecondPost.listing_id == ListingPictures.listing_id).all()
     
    # posts = ListingPost.query.order_by(ListingPost.date.desc()).paginate(page=page,per_page=5)
     return render_template('tour-grid.html', posts=posts)
