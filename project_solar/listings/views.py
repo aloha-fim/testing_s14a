@@ -12,12 +12,10 @@ listings = Blueprint('listings',__name__)
 @listings.route('/results_list')
 def results():
     page = request.args.get('page',1,type=int)
-    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(
-         ListingPost.id == ListingSecondPost.listing_id,
-         ListingSecondPost.listing_id == ListingPictures.listing_id).all()
-    
+    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).join(ListingSecondPost,ListingSecondPost.id==ListingPost.id).join(ListingPictures,ListingPictures.id==ListingPost.id).all()    
    # posts = ListingPost.query.order_by(ListingPost.date.desc()).paginate(page=page,per_page=5)
     return render_template('tour-grid.html', posts=posts)
+
 
 @listings.route('/listing_confirm')
 def listing_confirm():

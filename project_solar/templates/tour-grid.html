@@ -251,7 +251,8 @@ Tour grid START -->
 			</div>
 		</div>
 		<!-- Filter and content END -->
-		{% for post in posts %}
+		{% for item in posts %}
+		{% for post in item %}
 		<div class="row g-4">
 			<!-- Card item START -->
 			<div class="col-md-6 col-xl-4">
@@ -314,6 +315,8 @@ Tour grid START -->
 
 		</div> <!-- Row END -->
 		{% endfor %}
+		{% endfor %}
+
 
 		<!-- Pagination -->
 		<div class="row">
