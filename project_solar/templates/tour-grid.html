@@ -260,7 +260,7 @@ Tour grid START -->
 					<!-- Overlay item -->
 					<div class="position-relative">
 						<!-- Image -->
-						<img src={{post.thumbnail_image}} class="card-img-top" alt="Card image">
+				<img src="{{url_for('static',filename=post.thumbnail_image)}}" class="card-img-top" alt="Card image">
 						<!-- Overlay -->
 						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
 							<!-- Card overlay top -->
@@ -273,8 +273,6 @@ Tour grid START -->
 						</div>
 					</div>
 					<!-- Image -->
-				
-			
 					<!-- Card body START -->
 					<div class="card-body px-3">
 						<!-- Title -->
@@ -292,7 +290,6 @@ Tour grid START -->
 						</ul>
 					</div>
 					<!-- Card body END -->
-
 					<!-- Card footer START-->
 					<div class="card-footer pt-0">
 						<!-- Price and Button -->
@@ -312,7 +309,6 @@ Tour grid START -->
 				</div>
 			</div>
 			<!-- Card item END -->
-
 		</div> <!-- Row END -->
 		{% endfor %}
 		{% endfor %}

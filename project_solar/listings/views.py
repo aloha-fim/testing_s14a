@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 from project_solar import db
 from project_solar.models import ListingPost, ListingSecondPost, ListingPictures
 from project_solar.listings.forms import ListingPostForm, ListingSecondPostForm, ListingPictureForm
+from project_solar.listings.picture_handler import add_listing_pic
 import os
 
 
@@ -12,7 +13,7 @@ listings = Blueprint('listings',__name__)
 @listings.route('/results_list')
 def results():
     page = request.args.get('page',1,type=int)
-    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).join(ListingSecondPost,ListingSecondPost.id==ListingPost.id).join(ListingPictures,ListingPictures.id==ListingPost.id).all()    
+    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).join(ListingSecondPost,ListingPost.id==ListingSecondPost.id).join(ListingPictures,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=10)   
    # posts = ListingPost.query.order_by(ListingPost.date.desc()).paginate(page=page,per_page=5)
     return render_template('tour-grid.html', posts=posts)
 
@@ -83,18 +84,21 @@ def second_listing():
 def upload():
 
     form = ListingPictureForm()
-
+    
     if form.validate_on_submit():
 
         for f in request.files.getlist('file'):
-            f.save(os.path.join(os.path.join(listings.root_path, 'upload'), f.filename))
-    
+            f.save(os.path.join(os.path.join(listings.root_path, 'static'), f.filename))
+            #f.save(os.path.join(current_app.root_path, 'static\listing_pics',f.filename))
+
+       
         listing_pictures = ListingPictures(user_id=current_user.id,
                     thumbnail_image = form.thumbnail_image.data,
                     gallery_image = form.gallery_image.data)
-        
+
         db.session.add(listing_pictures)
         db.session.commit()
+
         flash('Thanks for Listing!')
         return redirect(url_for('listings.listing_confirm'))
     
