@@ -13,7 +13,8 @@ listings = Blueprint('listings',__name__)
 @listings.route('/results_list')
 def results():
     page = request.args.get('page',1,type=int)
-    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).join(ListingSecondPost,ListingPost.id==ListingSecondPost.id).join(ListingPictures,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=10)   
+    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=10)   
+   # posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).join(ListingSecondPost,ListingPost.id==ListingSecondPost.id).join(ListingPictures,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=10)   
    # posts = ListingPost.query.order_by(ListingPost.date.desc()).paginate(page=page,per_page=5)
     return render_template('tour-grid.html', posts=posts)
 
@@ -88,8 +89,9 @@ def upload():
     if form.validate_on_submit():
 
         for f in request.files.getlist('file'):
-            f.save(os.path.join(os.path.join(listings.root_path, 'static'), f.filename))
-            #f.save(os.path.join(current_app.root_path, 'static\listing_pics',f.filename))
+            #f.save(os.path.join(os.path.join(listings.root_path, 'static'), f.filename))
+            f.save(os.path.join(current_app.root_path, 'static\listing_pics',f.filename))
+            #f.save(os.path.join(listings.root_path, 'static\uploads', f.filename))
 
        
         listing_pictures = ListingPictures(user_id=current_user.id,

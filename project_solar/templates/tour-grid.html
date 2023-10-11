@@ -251,8 +251,8 @@ Tour grid START -->
 			</div>
 		</div>
 		<!-- Filter and content END -->
-		{% for item in posts %}
-		{% for post in item %}
+		{% for post, second, picture in posts %}
+		
 		<div class="row g-4">
 			<!-- Card item START -->
 			<div class="col-md-6 col-xl-4">
@@ -260,7 +260,7 @@ Tour grid START -->
 					<!-- Overlay item -->
 					<div class="position-relative">
 						<!-- Image -->
-				<img src="{{url_for('static',filename=post.thumbnail_image)}}" class="card-img-top" alt="Card image">
+				<img src="{{url_for('static',filename='listing_pics/')}}"{{picture.thumbnail_image}} class="card-img-top" alt="Card image">
 						<!-- Overlay -->
 						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
 							<!-- Card overlay top -->
@@ -285,7 +285,7 @@ Tour grid START -->
 								<i class="fa-solid fa-hotel text-info me-2"></i>{{post.city}}
 							</li>
 							<li class="nav-item h6 fw-normal mb-0">
-								<i class="fa-solid fa-person-skating text-danger me-2"></i>{{post.amenities}}
+								<i class="fa-solid fa-person-skating text-danger me-2"></i>{{second.amenities}}
 							</li>
 						</ul>
 					</div>
@@ -296,7 +296,7 @@ Tour grid START -->
 						<div class="d-sm-flex justify-content-sm-between align-items-center flex-wrap">
 							<!-- Price -->
 							<div class="hstack gap-2">
-								<h5 class="fw-normal text-success mb-0">{{post.discount}}</h5>
+								<h5 class="fw-normal text-success mb-0">{{second.discount}}</h5>
 								<small>/per person</small>
 							</div>
 							<!-- Button -->
@@ -310,7 +310,7 @@ Tour grid START -->
 			</div>
 			<!-- Card item END -->
 		</div> <!-- Row END -->
-		{% endfor %}
+		
 		{% endfor %}
 
 
