@@ -10,6 +10,26 @@ import os
 
 listings = Blueprint('listings',__name__)
 
+
+
+
+@listings.route('/tour_detail', defaults={"listing_id": None}, methods=["GET"])
+@listings.route("/tour_detail/<int:listing_id>", methods=["GET","POST"])
+def details(listing_id):
+     
+    # if no listing_id provided, redirect to prior page
+	#if listing_id == None:
+	#	return redirect(url_for("listings.results"))
+      
+    # get user or 404
+    #listingdetails = ListingPost.query.join(ListingSecondPost, ListingPost.id==ListingSecondPost.id).join(ListingPictures, ListingPost.id==ListingPictures.id).filter_by(id=listing_id).first_or_404()    
+    #listingdetails = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).first_or_404()
+    listingPosts = ListingPost.query.filter_by(id=listing_id)
+    listingSecondPosts = ListingSecondPost.query.filter_by(id=listing_id)
+    listingPicturePosts = ListingPictures.query.filter_by(id=listing_id)
+    
+    return render_template('tour-detail.html', listingPosts=listingPosts, listingSecondPosts=listingSecondPosts, listingPicturePosts=listingPicturePosts)
+
 @listings.route('/results_list')
 def results():
     page = request.args.get('page',1,type=int)

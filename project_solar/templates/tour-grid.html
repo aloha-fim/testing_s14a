@@ -276,7 +276,7 @@ Tour grid START -->
 					<!-- Card body START -->
 					<div class="card-body px-3">
 						<!-- Title -->
-						<h5 class="card-title mb-0"><a href="tour-detail.html" class="stretched-link">{{post.short_description}}</a></h5>
+						<h5 class="card-title mb-0"><a href="{{url_for('listings.details', listing_id=post.id)}}" class="stretched-link">{{post.short_description}}</a></h5>
 						<span class="small"><i class="far fa-calendar-alt me-2"></i>{{post.amount_land}}</span>
 
 						<!-- List -->
@@ -301,7 +301,7 @@ Tour grid START -->
 							</div>
 							<!-- Button -->
 							<div class="mt-2 mt-sm-0">
-								<a href="#" class="btn btn-sm btn-primary mb-0">View Details</a>    
+								<a href="{{url_for('listings.details', listing_id=post.id)}}" class="btn btn-sm btn-primary mb-0">View Details</a>    
 							</div>
 						</div>
 					</div>
