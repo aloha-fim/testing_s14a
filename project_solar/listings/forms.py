@@ -30,6 +30,6 @@ class ListingSecondPostForm(FlaskForm):
     submit = SubmitField("Add Listing")
 
 class ListingPictureForm(FlaskForm):
-    thumbnail_image =  FileField('Thumbnail Image',validators=[FileAllowed(['jpg', 'png'])])
+    thumbnail_image =  FileField('Thumbnail Image',validators=[FileAllowed(['jpg', 'png','jpeg'])])
     gallery_image =  FileField('Gallery Image')
     submit = SubmitField("Post")
