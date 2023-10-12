@@ -6,12 +6,7 @@ from project_solar.listings.forms import ListingPostForm, ListingSecondPostForm,
 from project_solar.listings.picture_handler import add_listing_pic
 import os
 
-
-
-listings = Blueprint('listings',__name__, template_folder="templates", static_folder='static')
-
-
-
+listings = Blueprint('listings',__name__, template_folder="templates")
 
 @listings.route("/tour_detail/<int:listing_id>", methods=["GET","POST"])
 def details(listing_id):
@@ -105,10 +100,10 @@ def upload():
 
     form = ListingPictureForm()
 
-    if request.method == 'POST':
+    if request.method == "POST":
         for f in request.files.getlist('file'):
             #f.save(os.path.join(os.path.join(listings.root_path, 'static'), f.filename))
-            f.save(os.path.join(os.path.join(current_app.root_path, 'project_solar/static/listing_pics'),f.filename))
+            f.save(os.path.join(os.path.join(current_app.root_path, 'static/listing_pics'),f.filename))
             #f.save(os.path.join(listings.root_path, 'static\listing_pics', f.filename))
             #f.save(os.path.join(current_app.root_path, 'static\listing_pics',f.filename))
             #f.save(os.path.join(os.path.join(listings.root_path, 'upload'), f.filename))
