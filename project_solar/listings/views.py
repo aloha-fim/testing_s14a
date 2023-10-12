@@ -8,12 +8,11 @@ import os
 
 
 
-listings = Blueprint('listings',__name__)
+listings = Blueprint('listings',__name__, template_folder="templates", static_folder='static')
 
 
 
 
-@listings.route('/tour_detail', defaults={"listing_id": None}, methods=["GET"])
 @listings.route("/tour_detail/<int:listing_id>", methods=["GET","POST"])
 def details(listing_id):
      
@@ -28,7 +27,7 @@ def details(listing_id):
     listingSecondPosts = ListingSecondPost.query.filter_by(id=listing_id)
     listingPicturePosts = ListingPictures.query.filter_by(id=listing_id)
     
-    return render_template('tour-detail.html', listingPosts=listingPosts, listingSecondPosts=listingSecondPosts, listingPicturePosts=listingPicturePosts)
+    return render_template('listings/tour-detail.html', listingPosts=listingPosts, listingSecondPosts=listingSecondPosts, listingPicturePosts=listingPicturePosts)
 
 @listings.route('/results_list')
 def results():
@@ -36,16 +35,16 @@ def results():
     posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=50)   
    # posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).join(ListingSecondPost,ListingPost.id==ListingSecondPost.id).join(ListingPictures,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=10)   
    # posts = ListingPost.query.order_by(ListingPost.date.desc()).paginate(page=page,per_page=5)
-    return render_template('tour-grid.html', posts=posts)
+    return render_template('listings/tour-grid.html', posts=posts)
 
 
 @listings.route('/listing_confirm')
 def listing_confirm():
-    return render_template('listing-added.html')
+    return render_template('listings/listing-added.html')
 
 @listings.route('/create_creation')
 def create_listing():
-    return render_template('join-us.html')
+    return render_template('listings/join-us.html')
 
 @listings.route('/add_listing',methods=['POST', 'GET'])
 @login_required
@@ -72,7 +71,7 @@ def add_listing():
         flash('Thanks for Listing!')
         return redirect(url_for('listings.second_listing'))
     
-    return render_template('add-listing.html',form=form)
+    return render_template('listings/add-listing.html',form=form)
 
 
 @listings.route('/second_listing',methods=['POST', 'GET'])
@@ -98,7 +97,7 @@ def second_listing():
         flash('Thanks for Listing!')
         return redirect(url_for('listings.upload'))
     
-    return render_template('add-second-listing.html',form=form)
+    return render_template('listings/add-second-listing.html',form=form)
 
 @listings.route('/upload',methods=['POST', 'GET'])
 @login_required
@@ -109,7 +108,7 @@ def upload():
     if request.method == 'POST':
         for f in request.files.getlist('file'):
             #f.save(os.path.join(os.path.join(listings.root_path, 'static'), f.filename))
-            f.save(os.path.join(os.path.join(current_app.root_path, 'static/listing_pics'),f.filename))
+            f.save(os.path.join(os.path.join(current_app.root_path, 'project_solar/static/listing_pics'),f.filename))
             #f.save(os.path.join(listings.root_path, 'static\listing_pics', f.filename))
             #f.save(os.path.join(current_app.root_path, 'static\listing_pics',f.filename))
             #f.save(os.path.join(os.path.join(listings.root_path, 'upload'), f.filename))
@@ -126,4 +125,4 @@ def upload():
         flash('Thanks for Listing!')
         return redirect(url_for('listings.listing_confirm'))
     
-    return render_template('add-pictures-listing.html',form=form)
+    return render_template('listings/add-pictures-listing.html',form=form)

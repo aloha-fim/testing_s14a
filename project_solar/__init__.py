@@ -60,6 +60,6 @@ from project_solar.solar_posts.views import solar_posts
 from project_solar.error_pages.handlers import error_pages
 app.register_blueprint(core)
 app.register_blueprint(users)
-app.register_blueprint(listings)
+app.register_blueprint(listings, url_prefix="/listings")
 app.register_blueprint(solar_posts)
 app.register_blueprint(error_pages)

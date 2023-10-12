@@ -1,5 +1,6 @@
-{% extends "index_header.html" %}
+{% extends "layouts/index_header.html" %}
 {% block content %}
+
 
 
 <!DOCTYPE html>
@@ -12,68 +13,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="OttoHI">
 
-	<!-- Dark mode -->
-	<script>
-		const storedTheme = localStorage.getItem('theme')
- 
-		const getPreferredTheme = () => {
-			if (storedTheme) {
-				return storedTheme
-			}
-			return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-		}
-
-		const setTheme = function (theme) {
-			if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-				document.documentElement.setAttribute('data-bs-theme', 'dark')
-			} else {
-				document.documentElement.setAttribute('data-bs-theme', theme)
-			}
-		}
-
-		setTheme(getPreferredTheme())
-
-		window.addEventListener('DOMContentLoaded', () => {
-		    var el = document.querySelector('.theme-icon-active');
-			if(el != 'undefined' && el != null) {
-				const showActiveTheme = theme => {
-				const activeThemeIcon = document.querySelector('.theme-icon-active use')
-				const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
-				const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
-
-				document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-					element.classList.remove('active')
-				})
-
-				btnToActive.classList.add('active')
-				activeThemeIcon.setAttribute('href', svgOfActiveBtn)
-			}
-
-			window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
-				if (storedTheme !== 'light' || storedTheme !== 'dark') {
-					setTheme(getPreferredTheme())
-				}
-			})
-
-			showActiveTheme(getPreferredTheme())
-
-			document.querySelectorAll('[data-bs-theme-value]')
-				.forEach(toggle => {
-					toggle.addEventListener('click', () => {
-						const theme = toggle.getAttribute('data-bs-theme-value')
-						localStorage.setItem('theme', theme)
-						setTheme(theme)
-						showActiveTheme(theme)
-					})
-				})
-
-			}
-		})
-		
-	</script>
-
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="static/assets/images/favicon.ico">
+	<!-- <link rel="shortcut icon" href="static/assets/images/favicon.ico"> -->
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/images/favicon.ico')}}">
 
 	<!-- Google Font -->
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -81,13 +23,18 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap">
 
 	<!-- Plugins CSS -->
-	<link rel="stylesheet" type="text/css" href="static/assets/vendor/font-awesome/css/all.min.css">
-	<link rel="stylesheet" type="text/css" href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css">
-	<link rel="stylesheet" type="text/css" href="static/assets/vendor/splide-master/dist/css/splide.min.css">
-	<link rel="stylesheet" type="text/css" href="static/assets/vendor/glightbox/css/glightbox.css">
+	<!-- <link rel="stylesheet" type="text/css" href="static/assets/vendor/font-awesome/css/all.min.css"> -->
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/font-awesome/css/all.min.css')}}">
+	<!-- <link rel="stylesheet" type="text/css" href="static/assets/vendor/bootstrap-icons/bootstrap-icons.css"> -->
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css')}}">
+	<!-- <link rel="stylesheet" type="text/css" href="static/assets/vendor/splide-master/dist/css/splide.min.css"> -->
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/splide-master/dist/css/splide.min.css')}}">
+	<!-- <link rel="stylesheet" type="text/css" href="static/assets/vendor/glightbox/css/glightbox.css"> -->
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/glightbox/css/glightbox.css')}}">
 
 	<!-- Theme CSS -->
-	<link rel="stylesheet" type="text/css" href="static/assets/css/style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="static/assets/css/style.css"> -->
+	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
 
 </head>
 
@@ -158,37 +105,37 @@ Main Banner START -->
 				<div class="splide splide-main mb-3" data-splide='{"type" : "fade","autoplay": true,"heightRatio":0.5,"pagination":false,"arrows":false,"cover":true,"lazyLoad":"sequential"}'>
 					<div class="splide__track">
 						<ul class="splide__list">
-							<li class="splide__slide rounded"><img src="static/assets/images/gallery/04.jpg" alt="">
+							<li class="splide__slide rounded"><img src="{{url_for('static', filename='assets/images/gallery/04.jpg')}}" alt="">
 								<!-- Glightbox image -->
-								<a href="static/assets/images/gallery/04.jpg" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
+								<a href="{{url_for('static', filename='assets/images/gallery/04.jpg')}}" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
 							</li>
-							<li class="splide__slide rounded"><img src="static/assets/images/gallery/05.jpg" alt="">
+							<li class="splide__slide rounded"><img src="{{url_for('static', filename='assets/images/gallery/05.jpg')}}" alt="">
 								<!-- Glightbox image -->
-								<a href="static/assets/images/gallery/05.jpg" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
+								<a href="{{url_for('static', filename='assets/images/gallery/05.jpg')}}" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
 							</li>
-							<li class="splide__slide rounded"><img src="static/assets/images/gallery/03.jpg" alt="">
+							<li class="splide__slide rounded"><img src="{{url_for('static', filename='assets/images/gallery/03.jpg')}}" alt="">
 								<!-- Glightbox image -->
-								<a href="static/assets/images/gallery/03.jpg" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
+								<a href="{{url_for('static', filename='assets/images/gallery/03.jpg')}}" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
 							</li>
-							<li class="splide__slide rounded"><img src="static/assets/images/gallery/09.jpg" alt="">
+							<li class="splide__slide rounded"><img src="{{url_for('static', filename='assets/images/gallery/09.jpg')}}" alt="">
 								<!-- Glightbox image -->
-								<a href="static/assets/images/gallery/09.jpg" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
+								<a href="{{url_for('static', filename='assets/images/gallery/09.jpg')}}" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
 							</li>
-							<li class="splide__slide rounded"><img src="static/assets/images/gallery/10.jpg" alt="">
+							<li class="splide__slide rounded"><img src="{{url_for('static', filename='assets/images/gallery/10.jpg')}}" alt="">
 								<!-- Glightbox image -->
-								<a href="static/assets/images/gallery/10.jpg" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
+								<a href="{{url_for('static', filename='assets/images/gallery/10.jpg')}}" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
 							</li>
-							<li class="splide__slide rounded"><img src="static/images/gallery/06.jpg" alt="">
+							<li class="splide__slide rounded"><img src="{{url_for('static', filename='assets/images/gallery/06.jpg')}}" alt="">
 								<!-- Glightbox image -->
-								<a href="static/assets/images/gallery/06.jpg" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
+								<a href="{{url_for('static', filename='assets/images/gallery/06.jpg')}}" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
 							</li>
-							<li class="splide__slide rounded"><img src="static/assets/images/gallery/07.jpg" alt="">
+							<li class="splide__slide rounded"><img src="{{url_for('static', filename='assets/images/gallery/07.jpg')}}" alt="">
 								<!-- Glightbox image -->
-								<a href="static/assets/images/gallery/07.jpg" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
+								<a href="{{url_for('static', filename='assets/images/gallery/07.jpg')}}" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
 							</li>
-							<li class="splide__slide rounded"><img src="static/assets/images/gallery/08.jpg" alt="">
+							<li class="splide__slide rounded"><img src="{{url_for('static', filename='assets/images/gallery/08.jpg')}}" alt="">
 								<!-- Glightbox image -->
-								<a href="static/assets/images/gallery/08.jpg" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
+								<a href="{{url_for('static', filename='assets/images/gallery/08.jpg')}}" class="stretched-link" data-glightbox="" data-gallery="banner"></a>
 							</li>
 						</ul>
 					</div>
@@ -197,14 +144,14 @@ Main Banner START -->
 				<div class="splide splide-thumb" data-splide='{"rewind":true,"fixedWidth":200,"fixedHeight":120,"isNavigation":true,"gap":20,"focus":"center","pagination":false,"cover":true,"lazyLoad":"sequential","breakpoints":{"600":{"fixedWidth":150,"fixedHeight":80}}}'>
 					<div class="splide__track">
 						<ul class="splide__list">
-							<li class="splide__slide"><img src="static/assets/images/gallery/04.jpg" alt=""></li>
-							<li class="splide__slide"><img src="static/assets/images/gallery/05.jpg" alt=""></li>
-							<li class="splide__slide"><img src="static/assets/images/gallery/03.jpg" alt=""></li>
-							<li class="splide__slide"><img src="static/assets/images/gallery/09.jpg" alt=""></li>
-							<li class="splide__slide"><img src="static/assets/images/gallery/10.jpg" alt=""></li>
-							<li class="splide__slide"><img src="static/assets/images/gallery/06.jpg" alt=""></li>
-							<li class="splide__slide"><img src="static/assets/images/gallery/07.jpg" alt=""></li>
-							<li class="splide__slide"><img src="static/assets/images/gallery/08.jpg" alt=""></li>
+							<li class="splide__slide"><img src="{{url_for('static', filename='assets/images/gallery/04.jpg')}}" alt=""></li>
+							<li class="splide__slide"><img src="{{url_for('static', filename='assets/images/gallery/05.jpg')}}" alt=""></li>
+							<li class="splide__slide"><img src="{{url_for('static', filename='assets/images/gallery/03.jpg')}}" alt=""></li>
+							<li class="splide__slide"><img src="{{url_for('static', filename='assets/images/gallery/09.jpg')}}" alt=""></li>
+							<li class="splide__slide"><img src="{{url_for('static', filename='assets/images/gallery/10.jpg')}}" alt=""></li>
+							<li class="splide__slide"><img src="{{url_for('static', filename='assets/images/gallery/06.jpg')}}" alt=""></li>
+							<li class="splide__slide"><img src="{{url_for('static', filename='assets/images/gallery/07.jpg')}}" alt=""></li>
+							<li class="splide__slide"><img src="{{url_for('static', filename='assets/images/gallery/08.jpg')}}" alt=""></li>
 						</ul>
 					</div>
 					<!-- Arrows -->
@@ -391,7 +338,7 @@ Tabs-content START -->
 																<!-- Air line name -->
 																<div class="col-md-3">
 																	<!-- Image -->
-																	<img src="static/assets/images/element/09.svg" class="w-80px mb-3" alt="">
+																	<img src="{{url_for('static', filename='assets/images/element/09.svg')}}" class="w-80px mb-3" alt="">
 																	<!-- Title -->
 																	<h6 class="fw-normal small mb-0">Phillippines Airline</h6>
 																</div>
@@ -446,7 +393,7 @@ Tabs-content START -->
 																<!-- Card image -->
 																<div class="col-sm-4 col-xl-3">
 																	<div class="bg-light rounded-3 px-4 py-5">
-																		<img src="static/assets/images/category/cab/seadan.svg" alt="">
+																		<img src="{{url_for('static', filename='assets/images/category/cab/seadan.svg')}}" alt="">
 																	</div>
 																</div>
 								
@@ -486,7 +433,7 @@ Tabs-content START -->
 															<div class="row g-2 g-sm-4">
 																<!-- Card image -->
 																<div class="col-sm-4">
-																	<img src="static/assets/images/category/hotel/4by3/04.jpg" class="card-img" alt="Card image">
+																	<img src="{{url_for('static', filename='assets/images/category/hotel/4by3/04.jpg')}}" class="card-img" alt="Card image">
 																</div>
 								
 																<!-- Card title and rating -->
@@ -536,7 +483,7 @@ Tabs-content START -->
 															<div class="row g-2 g-sm-4 align-items-center">
 																<!-- Card image -->
 																<div class="col-sm-4">
-																	<img src="static/assets/images/category/tour/4by3/04.jpg" class="card-img" alt="">
+																	<img src="{{url_for('static', filename='assets/images/category/tour/4by3/04.jpg')}}" class="card-img" alt="">
 																</div>
 								
 																<!-- Card title and rating -->
@@ -596,13 +543,13 @@ Tabs-content START -->
 		
 												<div class="row g-4">
 													<div class="col-md-4">
-														<img src="static/assets/images/category/tour/4by3/03.jpg" class="rounded-3" alt="">
+														<img src="{{url_for('static', filename='assets/images/category/tour/4by3/03.jpg')}}" class="rounded-3" alt="">
 													</div>
 													<div class="col-md-4">
-														<img src="static/assets/images/category/tour/4by3/02.jpg" class="rounded-3" alt="">
+														<img src="{{url_for('static', filename='assets/images/category/tour/4by3/02.jpg')}}" class="rounded-3" alt="">
 													</div>
 													<div class="col-md-4">
-														<img src="static/assets/images/category/tour/4by3/01.jpg" class="rounded-3" alt="">
+														<img src="{{url_for('static', filename='assets/images/category/tour/4by3/01.jpg')}}" class="rounded-3" alt="">
 													</div>
 												</div>
 
@@ -893,14 +840,17 @@ Footer END -->
 <div class="back-top"></div>
 
 <!-- Bootstrap JS -->
-<script src="static/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="static/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
+<link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js')}}">
 
 <!-- Vendors -->
-<script src="static/assets/vendor/splide-master/dist/js/splide.min.js"></script>
-<script src="static/assets/vendor/glightbox/js/glightbox.js"></script>
-
+<!-- <script src="static/assets/vendor/splide-master/dist/js/splide.min.js"></script> -->
+<link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/splide-master/dist/js/splide.min.js')}}">
+<!-- <script src="static/assets/vendor/glightbox/js/glightbox.js"></script> -->
+<link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/glightbox/js/glightbox.js')}}">
 <!-- ThemeFunctions -->
-<script src="static/assets/js/functions.js"></script>
+<!-- <script src="static/assets/js/functions.js"></script> -->
+<link rel="stylesheet" href="{{url_for('static', filename='assets/js/functions.js')}}">
 
 </body>
 </html>
