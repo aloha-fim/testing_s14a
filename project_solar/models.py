@@ -141,9 +141,9 @@ class ListingPictures(db.Model):
     thumbnail_image = db.Column(db.String(140))
     gallery_image = db.Column(db.String(140))
 
-    def __init__(self,thumbnail_image,gallery_image,user_id):
+    def __init__(self,thumbnail_image,user_id):
         self.thumbnail_image = thumbnail_image
-        self.gallery_image = gallery_image
+        #self.gallery_image = gallery_image
         self.user_id = user_id
 
     def __repr__(self):

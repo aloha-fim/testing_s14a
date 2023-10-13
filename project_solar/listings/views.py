@@ -1,10 +1,12 @@
 from flask import render_template, url_for, flash, abort, request, redirect, Blueprint, current_app
 from flask_login import current_user, login_required
+from werkzeug.utils import secure_filename
 from project_solar import db
 from project_solar.models import ListingPost, ListingSecondPost, ListingPictures
 from project_solar.listings.forms import ListingPostForm, ListingSecondPostForm, ListingPictureForm
 from project_solar.listings.picture_handler import add_listing_pic
 import os
+
 
 listings = Blueprint('listings',__name__, template_folder="templates")
 
@@ -94,25 +96,38 @@ def second_listing():
     
     return render_template('listings/add-second-listing.html',form=form)
 
-@listings.route('/upload',methods=['POST', 'GET'])
+@listings.route('/upload', methods=['POST', 'GET'])
 @login_required
 def upload():
 
     form = ListingPictureForm()
 
-    if request.method == "POST":
-        for f in request.files.getlist('file'):
+    if request.method == 'POST':
+
+       
+        #for f in request.files.getlist('file'):
+        for file in request.files.getlist('file'):
+            #filename = secure_filename(f.filename)
             #f.save(os.path.join(os.path.join(listings.root_path, 'static'), f.filename))
-            f.save(os.path.join(os.path.join(current_app.root_path, 'static/listing_pics'),f.filename))
+            file.save(os.path.join(os.path.join(listings.root_path, 'static'), file.filename))
+            #file.save(os.path.join(current_app.config['GALLERY_FOLDER'], file.filename))
             #f.save(os.path.join(listings.root_path, 'static\listing_pics', f.filename))
             #f.save(os.path.join(current_app.root_path, 'static\listing_pics',f.filename))
             #f.save(os.path.join(os.path.join(listings.root_path, 'upload'), f.filename))
-    
+            #f.save(os.path.join(current_app.root_path + '/'+ 'static/listing_pics/'),f.filename)
+            #f.save(os.path.join(os.path.join(listings.root_path, 'static'), f.filename))
+
+        #files_filenames = []
+        #for file in request.files.getlist('files'):
+            ##file_filename = secure_filename(file.filename)
+            #file.save(os.path.join(current_app.config['UPLOAD_FOLDER'], file.filename))
+            #files_filenames.append(file.filename)
+
     if form.validate_on_submit():
-       
+        #filename = secure_filename(form.thumbnail_image.data.filename)
         listing_pictures = ListingPictures(user_id=current_user.id,
-                    thumbnail_image = form.thumbnail_image.data,
-                    gallery_image = form.gallery_image.data)
+                    thumbnail_image = form.thumbnail_image.data)
+                    #gallery_image = form.gallery_image.data)
 
         db.session.add(listing_pictures)
         db.session.commit()
