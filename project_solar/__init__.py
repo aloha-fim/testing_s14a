@@ -11,9 +11,7 @@ load_dotenv(".env")
 
 
 app = Flask(__name__)
-UPLOAD_FOLDER = '/static/listing_pics'
-GALLERY_FOLDER = '/static/uploads'
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+
 
 #########################
 ###### DATABASE SETUP ###
@@ -21,8 +19,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = environ.get("SECRET_KEY")
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['GALLERY_FOLDER'] = GALLERY_FOLDER
+
 
 
 
@@ -30,6 +27,8 @@ app.config['GALLERY_FOLDER'] = GALLERY_FOLDER
 
 db = SQLAlchemy(app)
 Migrate(app,db)
+
+app.app_context().push()
 
 ############################################################
 # START localhost virtual environment ######################

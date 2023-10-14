@@ -147,7 +147,7 @@ Steps START -->
 
 					<!-- Main content START -->
 					<div class="col-12">
-						<form action="{{ url_for('listings.upload') }}" method="post">
+						<form action="{{ url_for('listings.upload') }}" method="post" enctype=multipart/form-data>
 							{{form.hidden_tag()}}
 							<!-- Step 1 content START -->
 							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
@@ -170,7 +170,7 @@ Steps START -->
 												<div class="col-12">
 													<label class="form-label">Upload thumbnail image *</label>
 													<!-- <input class="form-control" type="file" name="thumbnail_image" id="thumbnail_image" accept="image/gif, image/jpeg, image/png, image/jpg"> -->
-													<input class="form-control" type="file" name="thumbnail_image" id="thumbnail_image">
+													<input class="form-control" type="file" name="thumbnail_image" id="thumbnail_image" accept="image/gif, image/jpeg, image/png, image/jpg">
 													<p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. Large images will be cropped to 4:3 to fit our thumbnails/previews.</p>
 												</div>
 												
