@@ -170,15 +170,15 @@ Tabs START -->
 					</li>
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-2" data-bs-toggle="pill" data-bs-target="#tour-pills-tab2" type="button" role="tab" aria-controls="tour-pills-tab2" aria-selected="false">Itinerary</button>
+						<button class="nav-link mb-0" id="tour-pills-tab-2" data-bs-toggle="pill" data-bs-target="#tour-pills-tab2" type="button" role="tab" aria-controls="tour-pills-tab2" aria-selected="false">Start</button>
 					</li>
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-3" data-bs-toggle="pill" data-bs-target="#tour-pills-tab3" type="button" role="tab" aria-controls="tour-pills-tab3" aria-selected="false">Inclusions & Exclusion</button>
+						<button class="nav-link mb-0" id="tour-pills-tab-3" data-bs-toggle="pill" data-bs-target="#tour-pills-tab3" type="button" role="tab" aria-controls="tour-pills-tab3" aria-selected="false">Finish</button>
 					</li>
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-4" data-bs-toggle="pill" data-bs-target="#tour-pills-tab4" type="button" role="tab" aria-controls="tour-pills-tab4" aria-selected="false">Tour Policy</button>
+						<button class="nav-link mb-0" id="tour-pills-tab-4" data-bs-toggle="pill" data-bs-target="#tour-pills-tab4" type="button" role="tab" aria-controls="tour-pills-tab4" aria-selected="false">Harvest</button>
 					</li>
 				</ul> 
 				<!-- Outer tabs END -->
@@ -357,7 +357,7 @@ Tabs-content START -->
 																<!-- Card image -->
 																<div class="col-sm-4 col-xl-3">
 																	<div class="bg-light rounded-3 px-4 py-5">
-																		<img src="{{url_for('static', filename='assets/images/category/cab/seadan.svg')}}" alt="">
+																		<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
 																	</div>
 																</div>
 								
@@ -397,7 +397,7 @@ Tabs-content START -->
 															<div class="row g-2 g-sm-4">
 																<!-- Card image -->
 																<div class="col-sm-4">
-																	<img src="{{url_for('static', filename='assets/images/category/hotel/4by3/04.jpg')}}" class="card-img" alt="Card image">
+																	<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
 																</div>
 								
 																<!-- Card title and rating -->
@@ -447,7 +447,7 @@ Tabs-content START -->
 															<div class="row g-2 g-sm-4 align-items-center">
 																<!-- Card image -->
 																<div class="col-sm-4">
-																	<img src="{{url_for('static', filename='assets/images/category/tour/4by3/04.jpg')}}" class="card-img" alt="">
+																	<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
 																</div>
 								
 																<!-- Card title and rating -->
@@ -507,13 +507,13 @@ Tabs-content START -->
 		
 												<div class="row g-4">
 													<div class="col-md-4">
-														<img src="{{url_for('static', filename='assets/images/category/tour/4by3/03.jpg')}}" class="rounded-3" alt="">
+														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
 													</div>
 													<div class="col-md-4">
-														<img src="{{url_for('static', filename='assets/images/category/tour/4by3/02.jpg')}}" class="rounded-3" alt="">
+														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
 													</div>
 													<div class="col-md-4">
-														<img src="{{url_for('static', filename='assets/images/category/tour/4by3/01.jpg')}}" class="rounded-3" alt="">
+														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
 													</div>
 												</div>
 
