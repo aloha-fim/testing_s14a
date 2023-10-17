@@ -247,16 +247,17 @@ Tour grid START -->
 			</div>
 		</div>
 		<!-- Filter and content END -->
-		{% for post, second, picture in posts %}
+		
 		
 		<div class="row g-4">
+			{% for post, second, picture in posts %}
 			<!-- Card item START -->
 			<div class="col-md-6 col-xl-4">
 				<div class="card card-hover-shadow pb-0 h-100">
 					<!-- Overlay item -->
 					<div class="position-relative">
 						<!-- Image -->
-				<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img-top" alt="Card image">
+						<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img-top" alt="Card image">
 						<!-- Overlay -->
 						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
 							<!-- Card overlay top -->
@@ -304,18 +305,20 @@ Tour grid START -->
 				</div>
 			</div>
 			<!-- Card item END -->
-			
+			{% endfor %}
 		</div> <!-- Row END -->
 		<br>
-		{% endfor %}
-
-
+		
 		<br>
-		<div class="row">
+	</div>
+</section>
+
+<section class="pt-0">
+	<div class="container">
 		<div class="col-12">
 		<nav aria-label="Page navigation example">
 		  <ul class="pagination justify-content-center">
-			{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+			{% for page_num in posts.iter_pages(left_edge=2, right_edge=2, left_current=5, right_current=2) %}
 			   {% if posts.page == page_num %}
 			   <li class="page-item disabled">
 				 <a class="page-link" href="{{ url_for('listings.results', page=page_num) }}">{{ page_num }}</a></li>
@@ -325,7 +328,6 @@ Tour grid START -->
 			   {% endif %}
 		   {% endfor %}
 		 </nav>
-		</div>
 		</div>
 
 		<!-- Pagination 
@@ -344,6 +346,7 @@ Tour grid START -->
 			</div>
 		</div>
 	-->
+
 	</div>
 </section>
 <!-- =======================
