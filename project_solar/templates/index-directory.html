@@ -43,14 +43,11 @@ Main banner START -->
 								<input class="form-control form-control-lg me-1 ps-5" type="text" data-bs-toggle="dropdown" placeholder="What are you looking for..">
 								<!-- dropdown button -->
 								<ul class="dropdown-menu input-dropdown shadow rounded-0 rounded-bottom w-100">
-									<li><a class="dropdown-item" href="#"><i class="bi bi-building fa-fw text-primary me-2"></i>Hotels</a></li>
-									<li><a class="dropdown-item" href="#"><i class="bi bi-egg-fried fa-fw text-primary me-2"></i>Restaurants</a></li>
-									<li><a class="dropdown-item" href="#"><i class="bi bi-airplane fa-fw text-primary me-2"></i>Flights</a></li>
-									<li><a class="dropdown-item" href="#"><i class="bi bi-cup-straw fa-fw text-primary me-2"></i>Bars</a></li>
-									<li><a class="dropdown-item" href="#"><i class="bi bi-tv fa-fw text-primary me-2"></i>Arts & Entertainment</a></li>
-									<li><a class="dropdown-item" href="#"><i class="bi bi-car-front fa-fw text-primary me-2"></i>Automotive</a></li>
-									<li><a class="dropdown-item" href="#"><i class="bi bi-emoji-kiss fa-fw text-primary me-2"></i>Beauty & Spa</a></li>
-									<li><a class="dropdown-item" href="#"><i class="bi bi-fire fa-fw text-primary me-2"></i>Nightlife</a></li>
+									<li><a class="dropdown-item" href="#"><i class="bi bi-building fa-fw text-primary me-2"></i>HI Camp</a></li>
+									<li><a class="dropdown-item" href="#"><i class="bi bi-egg-fried fa-fw text-primary me-2"></i>HI Stay</a></li>
+									<li><a class="dropdown-item" href="#"><i class="bi bi-airplane fa-fw text-primary me-2"></i>farm it</a></li>
+									<li><a class="dropdown-item" href="#"><i class="bi bi-cup-straw fa-fw text-primary me-2"></i>eat it</a></li>
+									<li><a class="dropdown-item" href="#"><i class="bi bi-fire fa-fw text-primary me-2"></i>cabins</a></li>
 								</ul>
 								<!-- Icon -->
 								<span class="position-absolute top-50 start-0 translate-middle ps-5"><i class="bi bi-search fs-5"></i></span>
@@ -62,9 +59,9 @@ Main banner START -->
 							<div class="form-mix-icon-input form-size-lg">
 								<select class="form-select js-choice" data-search-enabled="true">
 									<option value="">Search</option>
-									<option>San Jacinto, USA</option>
-									<option>North Dakota, Canada</option>
-									<option>West Virginia, Paris</option>
+									<option>Hilo, HI</option>
+									<option>Captain Cook, HI</option>
+									<option>Mountain View, HI</option>
 								</select>
 								<!-- Icons -->
 								<span class="position-absolute top-50 start-0 translate-middle ps-5"><i class="bi bi-geo-alt fs-5"></i></span>
@@ -76,7 +73,7 @@ Main banner START -->
 
 						<div class="col-lg-2 d-grid">
 							<!-- Search -->
-							<a class="btn btn-lg btn-primary mb-0" href="#">Search</a>
+							<a class="btn btn-lg btn-primary mb-0" href="{{ url_for('listings.results') }}">Search</a>
 						</div>
 					</form>
 					<!-- Form END -->

@@ -33,7 +33,7 @@ def details(listing_id):
 @listings.route('/results_list')
 def results():
     page = request.args.get('page',1,type=int)
-    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=50)   
+    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=5)   
    # posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).join(ListingSecondPost,ListingPost.id==ListingSecondPost.id).join(ListingPictures,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=10)   
    # posts = ListingPost.query.order_by(ListingPost.date.desc()).paginate(page=page,per_page=5)
     return render_template('listings/tour-grid.html', posts=posts)
