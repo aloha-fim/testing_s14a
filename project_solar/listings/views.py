@@ -10,8 +10,47 @@ import os
 
 UPLOAD_FOLDER = 'static\listing_pics'
 
+
+
 listings = Blueprint('listings',__name__, template_folder="templates")
 current_app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# stripe live
+stripe_keys = {
+	'secret_key': 'pk_live_JtJxCVIshzT8LGrJOJFTAnPv007SAuwvja',
+	'publishable_key': 'sk_live_E3jNwV9dCmr9vUkzD69USGgV00FINYaBRs'
+}
+
+
+stripe.api_key = stripe_keys['secret_key']
+
+@listings.route('/booking_confirm')
+def booking_confirm():
+    return render_template('listings/booking-confirm.html')
+
+
+@listings.route("/booking_start/<int:listing_id>", methods=["GET","POST"])
+@login_required
+def booking_start(listing_id):
+    listingPosts = ListingSecondPost.query.filter_by(id=listing_id)
+
+    price = listingPosts.room_price
+    service_fee = listingPosts.room_price * 0.15
+    
+    total_price = price + service_fee
+    
+    if request.method == 'POST':
+        token = request.form['stripeToken']
+        charge = stripe.Charge.create(
+				amount = int(total_price * 100), # 100 = $1.00
+				currency = 'usd',
+				description = 'example charge',
+				source = token
+			)
+        
+        return render_template('listings/booking-confirm.html', listingPosts=listingPosts, price=price, service_fee=service_fee, total_price=total_price) 
+
+    return render_template('listings/tour-booking.html', listingPosts=listingPosts, service_fee=service_fee, total_price=total_price)
 
 
 @listings.route("/tour_detail/<int:listing_id>", methods=["GET","POST"])

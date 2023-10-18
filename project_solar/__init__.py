@@ -59,12 +59,14 @@ login_manager.init_app(app)
 login_manager.login_view = 'users.login'
 
 
-# register blueprints and import
+# register blueprints and 
+from project_solar.accounts.views import accounts
 from project_solar.core.views import core
 from project_solar.users.views import users
 from project_solar.listings.views import listings
 from project_solar.solar_posts.views import solar_posts
 from project_solar.error_pages.handlers import error_pages
+app.register_blueprint(accounts, url_prefix="/accounts")
 app.register_blueprint(core)
 app.register_blueprint(users)
 app.register_blueprint(listings, url_prefix="/listings")
