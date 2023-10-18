@@ -21,8 +21,7 @@ stripe_keys = {
 	'publishable_key': 'sk_live_E3jNwV9dCmr9vUkzD69USGgV00FINYaBRs'
 }
 
-
-stripe.api_key = stripe_keys['secret_key']
+#stripe.api_key = stripe_keys['secret_key']
 
 @listings.route('/booking_confirm')
 def booking_confirm():
@@ -32,21 +31,20 @@ def booking_confirm():
 @listings.route("/booking_start/<int:listing_id>", methods=["GET","POST"])
 @login_required
 def booking_start(listing_id):
-    listingPosts = ListingSecondPost.query.filter_by(id=listing_id)
+    listingPosts = ListingSecondPost.query.get(listing_id)
 
     price = listingPosts.room_price
-    service_fee = listingPosts.room_price * 0.15
+    service_fee = float(listingPosts.room_price) * 0.15
     
-    total_price = price + service_fee
+    total_price = float(price) + float(service_fee)
     
     if request.method == 'POST':
-        token = request.form['stripeToken']
-        charge = stripe.Charge.create(
-				amount = int(total_price * 100), # 100 = $1.00
-				currency = 'usd',
-				description = 'example charge',
-				source = token
-			)
+        #token = request.form['stripeToken']
+        #charge = stripe.Charge.create(
+        # amount = int(total_price * 100), # 100 = $1.00
+        # currency = 'usd',
+        # description = 'example charge',
+        # source = token)
         
         return render_template('listings/booking-confirm.html', listingPosts=listingPosts, price=price, service_fee=service_fee, total_price=total_price) 
 
