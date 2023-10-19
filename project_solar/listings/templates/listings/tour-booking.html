@@ -761,7 +761,7 @@ Steps START -->
 									<!-- Step 3 button -->
 									<div class="d-flex justify-content-between">
 										<button class="btn btn-secondary prev-btn mb-0">Previous</button>
-										<button class="btn btn-success next-btn mb-0">Pay now</button>
+										<button class="btn btn-success next-btn mb-0" id="submitBtn">Pay now</button>
 									</div>
 								</div>
 							</div>
@@ -895,6 +895,9 @@ Footer END -->
 <!-- ThemeFunctions -->
 <script src="{{url_for('static', filename="assets/js/functions.js")}}"></script>
 
+<!-- Stripe -->
+<script src="https://js.stripe.com/v3/"></script>  <!-- new -->	
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 
 </body>
 </html>
