@@ -19,6 +19,7 @@ current_app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 stripe_keys = {
     "secret_key": os.environ["STRIPE_SECRET_KEY"],
     "publishable_key": os.environ["STRIPE_PUBLISHABLE_KEY"],
+    "endpoint_secret": os.environ["STRIPE_WEBHOOK_SECRET"],
 }
 
 stripe.api_key = stripe_keys["secret_key"]
@@ -46,8 +47,8 @@ def create_checkout_session():
 
         # ?session_id={CHECKOUT_SESSION_ID} means the redirect will have the session ID set as a query param
         checkout_session = stripe.checkout.Session.create(
-            success_url=domain_url + "success?session_id={CHECKOUT_SESSION_ID}",
-            cancel_url=domain_url + "cancelled",
+            success_url=domain_url + "listings/success?session_id={CHECKOUT_SESSION_ID}",
+            cancel_url=domain_url + "listings/cancelled",
             payment_method_types=["card"],
             mode="payment",
             line_items=[
@@ -66,6 +67,56 @@ def create_checkout_session():
         return jsonify({"sessionId": checkout_session["id"]})
     except Exception as e:
         return jsonify(error=str(e)), 403
+
+
+@listings.route("/webhook", methods=['POST'])
+def stripe_webhook():
+    payload = request.get_data(as_text=True)
+    sig_header = request.headers.get('Stripe-Signature')
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, stripe_keys["endpoint_secret"]
+        )
+
+    except ValueError as e:
+        # Invalid payload
+        return 'Invalid payload', 400
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return 'Invalid signature', 400
+
+    # Handle the checkout.session.completed event
+    #if event['type'] == 'checkout.session.completed':
+    #    session = event['data']['object']
+
+        # Fulfill the purchase...
+        # handle_checkout_session(session)
+
+    if event['type'] == 'checkout.session.completed':
+      session = stripe.checkout.Session.retrieve(
+          event['data']['object'].id, expand=['line_items'])
+      print(f'Sale to {session.customer_details.email}:')
+      handle_checkout_session(session)
+    return 'Success', 200
+
+
+def handle_checkout_session(session):
+    print("Payment was successful.")
+    # TODO: run some custom code here
+    for item in session.line_items.data:
+        print(f'  - {item.quantity} '
+              f'${item.amount_total/100:.02f} {item.currency.upper()}')
+
+
+@listings.route("/success")
+def success():
+    return render_template("listings/success.html")
+
+
+@listings.route("/cancelled")
+def cancelled():
+    return render_template("listings/cancelled.html")
 
 
 @listings.route('/booking_confirm')
