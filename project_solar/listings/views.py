@@ -87,17 +87,18 @@ def stripe_webhook():
         return 'Invalid signature', 400
 
     # Handle the checkout.session.completed event
-    #if event['type'] == 'checkout.session.completed':
-    #    session = event['data']['object']
-
-        # Fulfill the purchase...
-        # handle_checkout_session(session)
-
     if event['type'] == 'checkout.session.completed':
-      session = stripe.checkout.Session.retrieve(
-          event['data']['object'].id, expand=['line_items'])
-      print(f'Sale to {session.customer_details.email}:')
-      handle_checkout_session(session)
+        session = event['data']['object']
+        #print(f'Sale to {session.customer_details.email}:')
+        print("Sale to stripe works")
+        # Fulfill the purchase...
+        handle_checkout_session(session)
+
+    #if event['type'] == 'checkout.session.completed':
+    #  session = stripe.checkout.Session.retrieve(
+    #      event['data']['object'].id, expand=['line_items'])
+    #  print(f'Sale to {session.customer_details.email}:')
+    #  handle_checkout_session(session)
     return 'Success', 200
 
 
@@ -105,8 +106,8 @@ def handle_checkout_session(session):
     print("Payment was successful.")
     # TODO: run some custom code here
     for item in session.line_items.data:
-        print(f'  - {item.quantity} '
-              f'${item.amount_total/100:.02f} {item.currency.upper()}')
+        print(f'  - {item.quantity} - {item.currency.upper()}')
+            #  f'${item.amount_total/100:.02f} {item.currency.upper()}')
 
 
 @listings.route("/success")
