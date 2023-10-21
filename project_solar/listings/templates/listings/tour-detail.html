@@ -214,18 +214,14 @@ Tabs-content START -->
 								<p class="mb-4">{{post.listing_name}}</p>
 
 								<!-- List -->
-								<h5>Tour Info</h5>
+								<h5>Details</h5>
 								<ul class="list-group list-group-borderless mb-4">
 									<li class="list-group-item">
-										<span class="h6 mb-0 me-1">Place Covered:</span>
+										<span class="h6 mb-0 me-1">Amenites:</span>
 										<span class="h6 fw-light mb-0">{{second.amenities}}</span>
 									</li>
 									<li class="list-group-item">
-										<span class="h6 mb-0 me-1">Duration:</span>
-										<span class="h6 fw-light mb-0">5 Days, 4 Nights</span>
-									</li>
-									<li class="list-group-item">
-										<span class="h6 mb-0 me-1">Total Room:</span>
+										<span class="h6 mb-0 me-1">Rooms:</span>
 										<span class="h6 fw-light mb-0">{{second.total_room}}</span>
 									</li>
 									<li class="list-group-item">
@@ -235,7 +231,7 @@ Tabs-content START -->
 								</ul>
 
 								<!-- List -->
-								<h5>Tour Highlights</h5>
+								<h5>Highlights</h5>
 								<ul class="list-group list-group-borderless mb-4">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
 										<i class="bi bi-arrow-right me-2"></i>{{second.listing_description}}
@@ -246,6 +242,7 @@ Tabs-content START -->
 								</ul>
 
 								<!-- List -->
+								<span class="h6 mb-0 me-1">Benefits:</span>
 								<h5>{{second.additional_info}}</h5>
 								<ul class="list-group list-group-borderless mb-0">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
@@ -276,7 +273,7 @@ Tabs-content START -->
 									<div class="accordion-item mb-3">
 										<h6 class="accordion-header font-base" id="heading-1">
 											<button class="accordion-button rounded d-inline-block collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-												<span class="lead me-1 fw-normal">Day 1:</span>Arrival in Kuta | Get ready for an ideal escape on this tropical island
+												<span class="lead me-1 fw-normal">1:</span>{{second.listing_description}}
 											</button>
 										</h6>
 										<!-- Body -->
@@ -288,11 +285,11 @@ Tabs-content START -->
 													<div class="card bg-transparent p-0">
 														<!-- Card header -->
 														<div class="card-header bg-transparent p-0">
-															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Flight details</span>
+															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>{{second.listing_description}}</span>
 															<div class="p-3 bg-light rounded-2 d-sm-flex justify-content-sm-between align-items-center mb-4 mt-2">
 																<!-- Airline Name -->
-																<h6 class="mb-0">New York - Malaysia</h6>
-																<h6 class="fw-normal mb-0"><span class="text-body">Date:</span> 4 July 2022</h6>
+																<h6 class="mb-0">{{second.listing_description}}</h6>
+																<h6 class="fw-normal mb-0"><span class="text-body">Goal:</span>{{second.listing_description}}</h6>
 															</div>
 														</div>
 
@@ -304,20 +301,20 @@ Tabs-content START -->
 																	<!-- Image -->
 																	<img src="{{url_for('static', filename='assets/images/element/09.svg')}}" class="w-80px mb-3" alt="">
 																	<!-- Title -->
-																	<h6 class="fw-normal small mb-0">Phillippines Airline</h6>
+																	<h6 class="fw-normal small mb-0">{{second.listing_description}}</h6>
 																</div>
 								
 																<!-- Airport detail -->
 																<div class="col-4 col-md-3">
 																	<!-- Title -->
-																	<h5>CDG</h5>
-																	<h6 class="mb-0">2:50 pm</h6>
+																	<h5>{{second.listing_description}}</h5>
+																	<h6 class="mb-0">{{second.discount}}</h6>
 																</div>
 								
 																<!-- Time -->
 																<div class="col-4 col-md-3 text-center">
 																	<!-- Time -->
-																	<h6>5hr 50min</h6>
+																	<h6>{{second.discount}}</h6>
 								
 																	<div class="position-relative my-4">
 																		<!-- Line -->
@@ -332,8 +329,8 @@ Tabs-content START -->
 																<!-- Airport detail -->
 																<div class="col-4 col-md-3 text-end">
 																	<!-- Title -->
-																	<h5>JFK</h5>
-																	<h6 class="mb-0">7:35 pm</h6>
+																	<h5>{{second.listing_description}}</h5>
+																	<h6 class="mb-0">{{second.discount}}/h6>
 																</div>
 								
 															</div>
@@ -344,52 +341,11 @@ Tabs-content START -->
 													
 													<hr class="my-0"> <!-- Divider -->
 
-													<!-- Cab list START -->
-													<div class="card bg-transparent p-0">
-														<!-- Card header -->
-														<div class="card-header bg-transparent p-0">
-															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Transfer from Airport to hotel</span>
-														</div>
-
-														<!-- Card body -->
-														<div class="card-body p-0 mt-2">
-															<div class="row g-2 g-sm-4 align-items-center">
-																<!-- Card image -->
-																<div class="col-sm-4 col-xl-3">
-																	<div class="bg-light rounded-3 px-4 py-5">
-																		<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
-																	</div>
-																</div>
-								
-																<!-- Card title and rating -->
-																<div class="col-sm-8 col-xl-9">
-																	<h5 class="card-title mb-2">Private Transfers</h5>
-																	<h6 class="mb-2">Camry, Accord</h6>
-																	<!-- Nav divider -->
-																	<ul class="nav nav-divider mb-2">
-																		<li class="nav-item">SEDAN</li>
-																		<li class="nav-item">AC</li>
-																		<li class="nav-item">4 Seats</li>
-																		<li class="nav-item">2 luggage</li>
-																		<li class="nav-item">First Aid</li>
-																	</ul>
-																	
-																	<!-- Buttons -->
-																	<a href="#" class="btn btn-sm btn-primary-soft mb-0">Change</a>
-																	<a href="#" class="btn btn-sm btn-danger-soft mb-0">Remove</a>
-																</div>
-															</div> <!-- Row END -->
-														</div>	
-													</div>
-													<!-- Cab list END -->
-
-													<hr class="my-0"> <!-- Divider -->
-
 													<!-- Hotel list START -->
 													<div class="card bg-transparent p-0">
 														<!-- Card header -->
 														<div class="card-header bg-transparent p-0">
-															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Check-In to hotel</span>
+															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>{{second.listing_description}}</span>
 														</div>
 
 														<!-- Card body -->
@@ -404,27 +360,26 @@ Tabs-content START -->
 																<div class="col-sm-8">
 																	<!-- Badge -->
 																	<div class="d-flex justify-content-between mb-2">
-																		<div class="badge bg-dark">Hotel</div>
-																		<a href="hotel-list.html" class="btn btn-sm btn-link p-0 mb-0 text-decoration-underline">Change</a>
+																		<div class="badge bg-dark">{{second.listing_description}}</div>
 																	</div>
 
 																	<!-- Title -->
-																	<h5 class="card-title mb-1"><a href="hotel-detail.html">Courtyard by Marriott New York </a></h5>
-																	<span>2.9km from the airport</span>
+																	<h5 class="card-title mb-1"><a href="#">{{second.listing_description}} </a></h5>
+																	<span>{{second.listing_description}}</span>
 																	
 																	<!-- List -->
 																	<ul class="list-group list-group-borderless mb-0 mt-2 small">
 																		<li class="list-group-item d-flex p-0">
-																			<i class="far fa-calendar-alt me-2"></i>Tue, 5 Jul 2022 - Sat 9 Jul 2022
+																			<i class="far fa-calendar-alt me-2"></i>{{second.listing_description}}
 																		</li>
 																		<li class="list-group-item d-flex text-success p-0">
-																			<i class="bi bi-patch-check-fill me-2"></i>Free Breakfast
+																			<i class="bi bi-patch-check-fill me-2"></i>{{second.listing_description}}
 																		</li>
 																	</ul>
 
 																	<h6 class="mb-0 fw-light small mt-2">
-																		Room type: Standard room - Holiday selection
-																		<a href="hotel-detail.html" class="btn btn-sm btn-link p-0 mb-0 text-decoration-underline ms-2">Change room</a>
+																		{{second.listing_description}}
+																		<a href="#" class="btn btn-sm btn-link p-0 mb-0 text-decoration-underline ms-2">Change room</a>
 																	</h6>
 
 																</div>
@@ -445,7 +400,7 @@ Tabs-content START -->
 									<div class="accordion-item mb-3">
 										<h6 class="accordion-header font-base" id="heading-2">
 											<button class="accordion-button rounded d-inline-block collapsed d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-												<span class="lead me-1 fw-normal">Day 2:</span>A day filled with adventure | Indulge in Water sports at Tanjung Benoa Nusa Dua
+												<span class="lead me-1 fw-normal">2:</span>{{second.listing_description}}
 											</button>
 										</h6>
 										<!-- Body -->
@@ -454,12 +409,9 @@ Tabs-content START -->
 												
 												<!-- List -->
 												<ul>
-													<li class="mb-2">Get up with a delicious lunch and a beautiful view from your room.</li>
-													<li class="mb-2">Son agreed to others Exeter period myself few yet nature. Mention Mr manners opinion if garrets enabled. To occasional dissimilar impossible sentiments.</li>
-													<li class="mb-2">Insipidity the sufficient discretion imprudence resolution sir him decisively. Proceed how any engaged visitor. Explained propriety off out perpetual his you. Feel sold off felt nay rose met you.</li>
-													<li class="mb-2">Affronting imprudence do he he everything. Sex lasted dinner wanted indeed wished outlaw. Far advanced settling say finished raillery.  </li>
-													<li class="mb-2">Offered chiefly farther of my no colonel shyness. Such on help ye some door if in. Laughter proposal laughing any son law consider. </li>
-													<li class="mb-2">Applauded no discovery in newspaper allowance am northward. September how men saw tolerably two behavior arranging. </li>
+													<li class="mb-2">{{second.listing_description}}</li>
+													<li class="mb-2">{{second.listing_description}}</li>
+													<li class="mb-2">{{second.listing_description}}</li>
 												</ul>
 		
 												<div class="row g-4">
@@ -482,14 +434,13 @@ Tabs-content START -->
 									<div class="accordion-item mb-3">
 										<h6 class="accordion-header font-base" id="heading-3">
 											<button class="accordion-button collapsed rounded d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-												<span class="lead me-1 fw-normal">Day 3:</span>Indulge in Water sports at Tanjung Benoa Nusa Dua
+												<span class="lead me-1 fw-normal">3:</span>{{second.listing_description}}
 											</button>
 										</h6>
 										<!-- Body -->
 										<div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionExample2">
 											<div class="accordion-body mt-3">
-												Post no so what deal evil rent by real in. But her ready least set lived spite solid. September how men saw tolerably two behavior arranging. She offices for highest and replied one venture pasture. Applauded no discovery in newspaper allowance am northward. Frequently partiality possession resolution at or appearance unaffected me. Engaged its was the evident pleased husband. Ye goodness felicity do disposal dwelling no. First am plate jokes to began to cause a scale. Subjects he prospect elegance followed no overcame possible it on. Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage Mr be. Hold do at tore in park feet near my case. Invitation at understood occasional sentiments insipidity inhabiting in. Off melancholy alteration principles old. Is do speedily kindness properly oh. Respect article painted cottage he is offices parlors.
-											</div>
+												{{second.listing_description}}
 										</div>
 									</div>
 								</div>
@@ -504,22 +455,19 @@ Tabs-content START -->
 						<div class="card bg-transparent p-0">
 							<!-- Card header -->
 							<div class="card-header bg-transparent border-bottom p-0 pb-3">
-								<h3 class="mb-0">Inclusions & Exclusions</h3>
+								<h3 class="mb-0">{{second.listing_description}}</h3>
 							</div>
 
 							<!-- Card body START -->
 							<div class="card-body p-0 pt-3">
 								<!-- List -->
-								<h5>Inclusion</h5>
+								<h5>{{second.listing_description}}</h5>
 								<ul class="list-group list-group-borderless mb-3">
 									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-check text-success me-2"></i>
-										<span class="h6 fw-normal">Comfortable stay for 4 nights in your preferred category Hotels</span>
+										<span class="h6 fw-normal">{{second.listing_description}}</span>
 									</li>
 									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-check text-success me-2"></i>
-										<span class="h6 fw-normal">Professional English speaking guide to help you explore the cities</span>
-									</li>
-									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-check text-success me-2"></i>
-										<span class="h6 fw-normal"> Breakfast is included as mentioned in Itinerary.</span>
+										<span class="h6 fw-normal">{{second.listing_description}}</span>
 									</li>
 								</ul>
 
@@ -527,13 +475,10 @@ Tabs-content START -->
 								<h5>Exclusion</h5>
 								<ul class="list-group list-group-borderless mb-3">
 									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-times text-danger me-2"></i>
-										<span class="h6 fw-normal">Lunch and dinner are not included in CP plans</span>
+										<span class="h6 fw-normal">{{second.listing_description}}</span>
 									</li>
 									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-times text-danger me-2"></i>
-										<span class="h6 fw-normal">Any other services not specifically mentioned in the inclusions</span>
-									</li>
-									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-times text-danger me-2"></i>
-										<span class="h6 fw-normal">Medical and Travel insurance</span>
+										<span class="h6 fw-normal">{{second.listing_description}}</span>
 									</li>
 								</ul>
 							</div>
@@ -547,38 +492,37 @@ Tabs-content START -->
 						<div class="card bg-transparent p-0">
 							<!-- Card header -->
 							<div class="card-header bg-transparent border-bottom p-0 pb-3">
-								<h3 class="mb-0">Tour Policy</h3>
+								<h3 class="mb-0">{{second.listing_description}}</h3>
 							</div>
 
 							<!-- Card body START -->
 							<div class="card-body p-0 pt-3">
-								<h5>Confirmation Policy:</h5>
-								<p class="mb-2">The customer receives a confirmation voucher via email within 24 hours of successful booking.</p>
-								<p class="mb-2">In case the preferred slots are unavailable, an alternate schedule of the customer’s preference will be arranged and a new confirmation voucher will be sent via email.</p>
-								<p class="mb-0">Alternatively, the customer may choose to cancel their booking before confirmation and a full refund will be processed.</p>
+								<h5>Confirmation:</h5>
+								<p class="mb-2">{{second.listing_description}}</p>
+								<p class="mb-2">{{second.listing_description}}</p>
 		
 								<!-- List -->
-								<h5 class="mt-4">Cancellation Policy:</h5>
+								<h5 class="mt-4">Farm:</h5>
 								<ul class="list-group list-group-borderless">
 									<li class="list-group-item">
-										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>10 days:</span>
-										<span>100%</span>
+										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>{{second.discount}}</span>
+										<span>{{second.listing_description}}</span>
 									</li>
 									<li class="list-group-item">
-										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>10 to 15 days:</span>
-										<span>75% + Non Refundable Component</span>
+										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>{{second.discount}}</span>
+										<span>{{second.listing_description}}</span>
 									</li>
 									<li class="list-group-item">
-										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>15 to 30 days:</span>
-										<span>30% + Non Refundable Component</span>
+										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>{{second.discount}}</span>
+										<span>{{second.listing_description}}</span>
 									</li>
 								</ul>
 		
-								<p class="mt-2">All Prices are in Indian Rupees and subject to change without prior notice.<br>In the case FIT flight inclusive package, the full amount of the flight will be payable at the time of booking.</p>
+								<p class="mt-2">{{second.listing_description}}.<br>{{second.listing_description}}</p>
 		
-								<h5 class="mt-4">Refund Policy:</h5>
-								<p class="mb-2">The applicable refund amount will be processed within 10 business days.</p>
-								<p class="mb-0">All applicable refunds will be done in the traveler's Thrillophilia wallet as Thrillcash.</p>
+								<h5 class="mt-4">{{second.listing_description}}</h5>
+								<p class="mb-2">{{second.listing_description}}.</p>
+								<p class="mb-0">{{second.listing_description}}.</p>
 							</div>
 							<!-- Card body END -->
 						</div>
@@ -599,7 +543,7 @@ Tabs-content START -->
 						<div class="card card-body border bg-transparent">
 							<!-- Title -->
 							<div class="hstack gap-2 mb-1">
-								<h3 class="card-title mb-0">$280</h3>
+								<h3 class="card-title mb-0">$ {{second.room_price}}</h3>
 								<span class="fs-5">/person</span>
 							</div>
 
@@ -613,7 +557,7 @@ Tabs-content START -->
 									<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
 									<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
 								</ul>
-								<a href="#" class="mb-0 m-0 text-reset text-primary-hover">(365 reviews)</a>
+								<a href="#" class="mb-0 m-0 text-reset text-primary-hover">({{second.room_price}} reviews)</a>
 							</div>
 
 							<!-- Button -->
