@@ -37,22 +37,18 @@
 	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
 
 </head>
+<!-- Header END -->
 
-<body>
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 <br>
 <br>
-<br>
-<br>
-<!-- =======================
-Main Banner START -->
-
 {% for post in listingPosts %}
 {% for second in listingSecondPosts %}
 {% for picture in listingPicturePosts %}
-
-
+        
+<!-- =======================
+Main Banner START -->
 <section class="pt-4 pt-lg-5">
 	<div class="container position-relative">
 
@@ -79,17 +75,17 @@ Main Banner START -->
 						</li>
 						<!-- Share icon -->
 						<li class="list-inline-item dropdown">
-							<!-- Share button 
+							<!-- Share button -->
 							<a href="#" class="btn btn-sm btn-light px-2" role="button" id="dropdownShare" data-bs-toggle="dropdown" aria-expanded="false">
 								<i class="fa-solid fa-fw fa-share-alt"></i>
-							</a>-->
-							<!-- dropdown button 
+							</a>
+							<!-- dropdown button -->
 							<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare">
 								<li><a class="dropdown-item" href="#"><i class="fab fa-twitter-square me-2"></i>Twitter</a></li>
 								<li><a class="dropdown-item" href="#"><i class="fab fa-facebook-square me-2"></i>Facebook</a></li>
 								<li><a class="dropdown-item" href="#"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></li>
 								<li><a class="dropdown-item" href="#"><i class="fa-solid fa-copy me-2"></i>Copy link</a></li>
-							</ul> -->
+							</ul>
 						</li>
 					</ul>
 				</div>
@@ -127,16 +123,16 @@ Main Banner START -->
 							</li>
 						</ul>
 					</div>
-				</div>
+				</div>				
 				<!-- Secondary image -->
 				<div class="splide splide-thumb" data-splide='{"rewind":true,"fixedWidth":200,"fixedHeight":120,"isNavigation":true,"gap":20,"focus":"center","pagination":false,"cover":true,"lazyLoad":"sequential","breakpoints":{"600":{"fixedWidth":150,"fixedHeight":80}}}'>
 					<div class="splide__track">
-						<ul class="splide__list">              
+						<ul class="splide__list">
 							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>
 							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>
 							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>
 							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>
-							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>
+							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>                            
 						</ul>
 					</div>
 					<!-- Arrows -->
@@ -170,15 +166,15 @@ Tabs START -->
 					</li>
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-2" data-bs-toggle="pill" data-bs-target="#tour-pills-tab2" type="button" role="tab" aria-controls="tour-pills-tab2" aria-selected="false">Start</button>
+						<button class="nav-link mb-0" id="tour-pills-tab-2" data-bs-toggle="pill" data-bs-target="#tour-pills-tab2" type="button" role="tab" aria-controls="tour-pills-tab2" aria-selected="false">Itinerary</button>
 					</li>
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-3" data-bs-toggle="pill" data-bs-target="#tour-pills-tab3" type="button" role="tab" aria-controls="tour-pills-tab3" aria-selected="false">Finish</button>
+						<button class="nav-link mb-0" id="tour-pills-tab-3" data-bs-toggle="pill" data-bs-target="#tour-pills-tab3" type="button" role="tab" aria-controls="tour-pills-tab3" aria-selected="false">Before</button>
 					</li>
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-4" data-bs-toggle="pill" data-bs-target="#tour-pills-tab4" type="button" role="tab" aria-controls="tour-pills-tab4" aria-selected="false">Harvest</button>
+						<button class="nav-link mb-0" id="tour-pills-tab-4" data-bs-toggle="pill" data-bs-target="#tour-pills-tab4" type="button" role="tab" aria-controls="tour-pills-tab4" aria-selected="false">After</button>
 					</li>
 				</ul> 
 				<!-- Outer tabs END -->
@@ -211,45 +207,48 @@ Tabs-content START -->
 
 							<!-- Card body START -->
 							<div class="card-body p-0 pt-3">
-								<p class="mb-4">{{post.listing_name}}</p>
+								<p class="mb-4">Bali{{post.amount_land}}tep.</p>
 
 								<!-- List -->
-								<h5>Details</h5>
+								<h5>Tour Info</h5>
 								<ul class="list-group list-group-borderless mb-4">
 									<li class="list-group-item">
-										<span class="h6 mb-0 me-1">Amenites:</span>
-										<span class="h6 fw-light mb-0">{{second.amenities}}</span>
+										<span class="h6 mb-0 me-1">Place Covered:</span>
+										<span class="h6 fw-light mb-0">Ba{{post.amount_land}}ud</span>
 									</li>
 									<li class="list-group-item">
-										<span class="h6 mb-0 me-1">Rooms:</span>
-										<span class="h6 fw-light mb-0">{{second.total_room}}</span>
+										<span class="h6 mb-0 me-1">Duration:</span>
+										<span class="h6 fw-light mb-0">5 D{{post.amount_land}}ts</span>
 									</li>
 									<li class="list-group-item">
-										<span class="h6 mb-0 me-1">Room Area:</span>
-										<span class="h6 fw-light mb-0">{{second.room_area}}</span>
+										<span class="h6 mb-0 me-1">Start Point:</span>
+										<span class="h6 fw-light mb-0">Ngura{{post.amount_land}}ort</span>
+									</li>
+									<li class="list-group-item">
+										<span class="h6 mb-0 me-1">End Point:</span>
+										<span class="h6 fw-light mb-0">Ngurah{{post.amount_land}}Airport</span>
 									</li>
 								</ul>
 
 								<!-- List -->
-								<h5>Highlights</h5>
+								<h5>Tour Highlights</h5>
 								<ul class="list-group list-group-borderless mb-4">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
-										<i class="bi bi-arrow-right me-2"></i>{{second.listing_description}}
+										<i class="bi bi-arrow-right me-2"></i>Experience {{post.amount_land}}ch more
 									</li>
 									<li class="list-group-item h6 fw-light d-flex mb-0">
-										<i class="bi bi-arrow-right me-2"></i>{{second.listing_description}}
+										<i class="bi bi-arrow-right me-2"></i>Depend{{post.amount_land}}estions.
 									</li>
 								</ul>
 
 								<!-- List -->
-								<span class="h6 mb-0 me-1">Benefits:</span>
-								<h5>{{second.additional_info}}</h5>
+								<h5>More About{{post.amount_land}}ia Tour</h5>
 								<ul class="list-group list-group-borderless mb-0">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i>{{second.listing_description}}
+										<i class="fa-solid fa-check-circle text-success me-2"></i>Guidel{{post.amount_land}}nded.
 									</li>
 									<li class="list-group-item h6 fw-light d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i>{{second.listing_description}}
+										<i class="fa-solid fa-check-circle text-success me-2"></i>No{{post.amount_land}}ng for and. 
 									</li>
 								</ul>
 							</div>
@@ -273,7 +272,7 @@ Tabs-content START -->
 									<div class="accordion-item mb-3">
 										<h6 class="accordion-header font-base" id="heading-1">
 											<button class="accordion-button rounded d-inline-block collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-												<span class="lead me-1 fw-normal">1:</span>{{second.listing_description}}
+												<span class="lead me-1 fw-normal">Day 1:</span>Arr{{post.amount_land}}ta | Get r{{post.amount_land}}land
 											</button>
 										</h6>
 										<!-- Body -->
@@ -285,11 +284,11 @@ Tabs-content START -->
 													<div class="card bg-transparent p-0">
 														<!-- Card header -->
 														<div class="card-header bg-transparent p-0">
-															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>{{second.listing_description}}</span>
+															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Flight details</span>
 															<div class="p-3 bg-light rounded-2 d-sm-flex justify-content-sm-between align-items-center mb-4 mt-2">
 																<!-- Airline Name -->
-																<h6 class="mb-0">{{second.listing_description}}</h6>
-																<h6 class="fw-normal mb-0"><span class="text-body">Goal:</span>{{second.listing_description}}</h6>
+																<h6 class="mb-0">New {{post.amount_land}}York - Malaysia</h6>
+																<h6 class="fw-normal mb-0"><span class="text-body">Date:</span> 4 July 2022</h6>
 															</div>
 														</div>
 
@@ -299,22 +298,22 @@ Tabs-content START -->
 																<!-- Air line name -->
 																<div class="col-md-3">
 																	<!-- Image -->
-																	<img src="{{url_for('static', filename='assets/images/element/09.svg')}}" class="w-80px mb-3" alt="">
+																	<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="w-80px mb-3" alt="">
 																	<!-- Title -->
-																	<h6 class="fw-normal small mb-0">{{second.listing_description}}</h6>
+																	<h6 class="fw-normal small mb-0">Phi{{post.amount_land}}ine</h6>
 																</div>
 								
 																<!-- Airport detail -->
 																<div class="col-4 col-md-3">
 																	<!-- Title -->
-																	<h5>{{second.listing_description}}</h5>
-																	<h6 class="mb-0">{{second.discount}}</h6>
+																	<h5>CDG</h5>
+																	<h6 class="mb-0">2:50 pm</h6>
 																</div>
 								
 																<!-- Time -->
 																<div class="col-4 col-md-3 text-center">
 																	<!-- Time -->
-																	<h6>{{second.discount}}</h6>
+																	<h6>5hr 50min</h6>
 								
 																	<div class="position-relative my-4">
 																		<!-- Line -->
@@ -329,8 +328,8 @@ Tabs-content START -->
 																<!-- Airport detail -->
 																<div class="col-4 col-md-3 text-end">
 																	<!-- Title -->
-																	<h5>{{second.listing_description}}</h5>
-																	<h6 class="mb-0">{{second.discount}}/h6>
+																	<h5>JFK</h5>
+																	<h6 class="mb-0">7:35 pm</h6>
 																</div>
 								
 															</div>
@@ -341,11 +340,52 @@ Tabs-content START -->
 													
 													<hr class="my-0"> <!-- Divider -->
 
+													<!-- Cab list START -->
+													<div class="card bg-transparent p-0">
+														<!-- Card header -->
+														<div class="card-header bg-transparent p-0">
+															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Transfer{{post.amount_land}} hotel</span>
+														</div>
+
+														<!-- Card body -->
+														<div class="card-body p-0 mt-2">
+															<div class="row g-2 g-sm-4 align-items-center">
+																<!-- Card image -->
+																<div class="col-sm-4 col-xl-3">
+																	<div class="bg-light rounded-3 px-4 py-5">
+																		<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
+																	</div>
+																</div>
+								
+																<!-- Card title and rating -->
+																<div class="col-sm-8 col-xl-9">
+																	<h5 class="card-title mb-2">Private Transfers</h5>
+																	<h6 class="mb-2">Camry, Accord</h6>
+																	<!-- Nav divider -->
+																	<ul class="nav nav-divider mb-2">
+																		<li class="nav-item">SEDAN</li>
+																		<li class="nav-item">AC</li>
+																		<li class="nav-item">4 Seats</li>
+																		<li class="nav-item">2 luggage</li>
+																		<li class="nav-item">First Aid</li>
+																	</ul>
+																	
+																	<!-- Buttons -->
+																	<a href="#" class="btn btn-sm btn-primary-soft mb-0">Change</a>
+																	<a href="#" class="btn btn-sm btn-danger-soft mb-0">Remove</a>
+																</div>
+															</div> <!-- Row END -->
+														</div>	
+													</div>
+													<!-- Cab list END -->
+
+													<hr class="my-0"> <!-- Divider -->
+
 													<!-- Hotel list START -->
 													<div class="card bg-transparent p-0">
 														<!-- Card header -->
 														<div class="card-header bg-transparent p-0">
-															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>{{second.listing_description}}</span>
+															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Check-In to hotel</span>
 														</div>
 
 														<!-- Card body -->
@@ -353,33 +393,34 @@ Tabs-content START -->
 															<div class="row g-2 g-sm-4">
 																<!-- Card image -->
 																<div class="col-sm-4">
-																	<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
+																	<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img" alt="Card image">
 																</div>
 								
 																<!-- Card title and rating -->
 																<div class="col-sm-8">
 																	<!-- Badge -->
 																	<div class="d-flex justify-content-between mb-2">
-																		<div class="badge bg-dark">{{second.listing_description}}</div>
+																		<div class="badge bg-dark">Hotel</div>
+																		<a href="hotel-list.html" class="btn btn-sm btn-link p-0 mb-0 text-decoration-underline">Change</a>
 																	</div>
 
 																	<!-- Title -->
-																	<h5 class="card-title mb-1"><a href="#">{{second.listing_description}} </a></h5>
-																	<span>{{second.listing_description}}</span>
+																	<h5 class="card-title mb-1"><a href="hotel-detail.html">Cour{{post.amount_land}}ew York </a></h5>
+																	<span>2.9km {{post.amount_land}}ort</span>
 																	
 																	<!-- List -->
 																	<ul class="list-group list-group-borderless mb-0 mt-2 small">
 																		<li class="list-group-item d-flex p-0">
-																			<i class="far fa-calendar-alt me-2"></i>{{second.listing_description}}
+																			<i class="far fa-calendar-alt me-2"></i>Tue,{{post.amount_land}}22
 																		</li>
 																		<li class="list-group-item d-flex text-success p-0">
-																			<i class="bi bi-patch-check-fill me-2"></i>{{second.listing_description}}
+																			<i class="bi bi-patch-check-fill me-2"></i>Free{{post.amount_land}}ast
 																		</li>
 																	</ul>
 
 																	<h6 class="mb-0 fw-light small mt-2">
-																		{{second.listing_description}}
-																		<a href="#" class="btn btn-sm btn-link p-0 mb-0 text-decoration-underline ms-2">Change room</a>
+																		Room t{{post.amount_land}}ction
+																		<a href="hotel-detail.html" class="btn btn-sm btn-link p-0 mb-0 text-decoration-underline ms-2">Change room</a>
 																	</h6>
 
 																</div>
@@ -388,9 +429,52 @@ Tabs-content START -->
 													</div>
 													<!-- Hotel list END -->
 	
+													<hr class="my-0"> <!-- Divider -->
 
+													<!-- Activity list START -->
+													<div class="card bg-transparent p-0">
+														<!-- Card header -->
+														<div class="card-header bg-transparent p-0">
+															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Today’s Activity</span>
+														</div>
 
-													
+														<!-- Card body -->
+														<div class="card-body p-0 mt-2">
+															<div class="row g-2 g-sm-4 align-items-center">
+																<!-- Card image -->
+																<div class="col-sm-4">
+																	<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img" alt="">
+																</div>
+								
+																<!-- Card title and rating -->
+																<div class="col-sm-8">
+																	<h5 class="card-title mb-0">Sig{{post.amount_land}}i</h5>
+																	<small class="mb-2"><i class="bi bi-geo-alt me-2"></i>Ba{{post.amount_land}}a</small>
+
+																	<!-- List -->
+																	<ul class="list-group list-group-borderless mb-0 mt-2">
+																		<li class="list-group-item d-flex p-0">
+																			<i class="bi bi-arrow-right text-primary me-2"></i>Tan{{post.amount_land}}our
+																		</li>
+																		<li class="list-group-item d-flex p-0">
+																			<i class="bi bi-arrow-right text-primary me-2"></i>Whit{{post.amount_land}}ng
+																		</li>
+																	</ul>
+
+																	<div class="hstack gap-3 flex-wrap mt-2">
+																		<p class="mb-0">Duration:<span class="h6 fw-light mb-0 ms-1">5 hrs</span></p>
+																		<p class="mb-0">Place Covered:<span class="h6 fw-light mb-0 ms-1">2</span></p>
+																	</div>
+
+																</div>
+															</div> <!-- Row END -->
+														</div>	
+													</div>
+													<!-- Activity list END -->
+
+													<!-- Button -->
+													<a href="#" class="btn btn-primary mb-0"><i class="fa-solid fa-person-skating me-2"></i>Add Activity</a>
+
 												</div>
 											</div>
 										</div>
@@ -400,7 +484,7 @@ Tabs-content START -->
 									<div class="accordion-item mb-3">
 										<h6 class="accordion-header font-base" id="heading-2">
 											<button class="accordion-button rounded d-inline-block collapsed d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-												<span class="lead me-1 fw-normal">2:</span>{{second.listing_description}}
+												<span class="lead me-1 fw-normal">Day 2:</span>A d{{post.amount_land}}re | Indul{{post.amount_land}} Dua
 											</button>
 										</h6>
 										<!-- Body -->
@@ -409,20 +493,20 @@ Tabs-content START -->
 												
 												<!-- List -->
 												<ul>
-													<li class="mb-2">{{second.listing_description}}</li>
-													<li class="mb-2">{{second.listing_description}}</li>
-													<li class="mb-2">{{second.listing_description}}</li>
+													<li class="mb-2">Get{{post.amount_land}}.</li>
+													<li class="mb-2">Son agreed to others Ex{{post.amount_land}}retss.</li>
+													<li class="mb-2">Insi{{post.amount_land}}.</li>
 												</ul>
 		
 												<div class="row g-4">
 													<div class="col-md-4">
-														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
+														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
 													</div>
 													<div class="col-md-4">
-														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
+														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
 													</div>
 													<div class="col-md-4">
-														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
+														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
 													</div>
 												</div>
 
@@ -434,13 +518,30 @@ Tabs-content START -->
 									<div class="accordion-item mb-3">
 										<h6 class="accordion-header font-base" id="heading-3">
 											<button class="accordion-button collapsed rounded d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-												<span class="lead me-1 fw-normal">3:</span>{{second.listing_description}}
+												<span class="lead me-1 fw-normal">Day 3:</span>Indul{{post.amount_land}}a Dua
 											</button>
 										</h6>
 										<!-- Body -->
 										<div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionExample2">
 											<div class="accordion-body mt-3">
-												{{second.listing_description}}
+												Post n{{post.amount_land}}lors.
+											</div>
+										</div>
+									</div>
+				
+									<!-- Item -->
+									<div class="accordion-item mb-3">
+										<h6 class="accordion-header font-base" id="heading-4">
+											<button class="accordion-button collapsed rounded d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+												<span class="lead me-1 fw-normal">Day 4:</span>Depar{{post.amount_land}}bye
+											</button>
+										</h6>
+										<!-- Body -->
+										<div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#accordionExample2">
+											<div class="accordion-body mt-3">
+												<p>What d{{post.amount_land}}my cottage Mr be.</p>
+												<p class="mb-0">At the{{post.amount_land}}essing.</p>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -455,19 +556,22 @@ Tabs-content START -->
 						<div class="card bg-transparent p-0">
 							<!-- Card header -->
 							<div class="card-header bg-transparent border-bottom p-0 pb-3">
-								<h3 class="mb-0">{{second.listing_description}}</h3>
+								<h3 class="mb-0">Inc{{post.amount_land}}ions</h3>
 							</div>
 
 							<!-- Card body START -->
 							<div class="card-body p-0 pt-3">
 								<!-- List -->
-								<h5>{{second.listing_description}}</h5>
+								<h5>Inclusion</h5>
 								<ul class="list-group list-group-borderless mb-3">
 									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-check text-success me-2"></i>
-										<span class="h6 fw-normal">{{second.listing_description}}</span>
+										<span class="h6 fw-normal">Comf{{post.amount_land}}ed category Hotels</span>
 									</li>
 									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-check text-success me-2"></i>
-										<span class="h6 fw-normal">{{second.listing_description}}</span>
+										<span class="h6 fw-normal">Profes{{post.amount_land}}you explore the cities</span>
+									</li>
+									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-check text-success me-2"></i>
+										<span class="h6 fw-normal"> Breakf{{post.amount_land}}tinerary.</span>
 									</li>
 								</ul>
 
@@ -475,10 +579,13 @@ Tabs-content START -->
 								<h5>Exclusion</h5>
 								<ul class="list-group list-group-borderless mb-3">
 									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-times text-danger me-2"></i>
-										<span class="h6 fw-normal">{{second.listing_description}}</span>
+										<span class="h6 fw-normal">Lunch a{{post.amount_land}}in CP plans</span>
 									</li>
 									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-times text-danger me-2"></i>
-										<span class="h6 fw-normal">{{second.listing_description}}</span>
+										<span class="h6 fw-normal">Any{{post.amount_land}}nclusions</span>
+									</li>
+									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-times text-danger me-2"></i>
+										<span class="h6 fw-normal">Medic{{post.amount_land}}ance</span>
 									</li>
 								</ul>
 							</div>
@@ -492,37 +599,37 @@ Tabs-content START -->
 						<div class="card bg-transparent p-0">
 							<!-- Card header -->
 							<div class="card-header bg-transparent border-bottom p-0 pb-3">
-								<h3 class="mb-0">{{second.listing_description}}</h3>
+								<h3 class="mb-0">Tour Policy</h3>
 							</div>
 
 							<!-- Card body START -->
 							<div class="card-body p-0 pt-3">
-								<h5>Confirmation:</h5>
-								<p class="mb-2">{{second.listing_description}}</p>
-								<p class="mb-2">{{second.listing_description}}</p>
+								<h5>Confirmation Policy:</h5>
+								<p class="mb-2">The customer receil wi{{post.amount_land}}oking.</p>
+								<p class="mb-0">Alter{{post.amount_land}}.</p>
 		
 								<!-- List -->
-								<h5 class="mt-4">Farm:</h5>
+								<h5 class="mt-4">Cancellation Policy:</h5>
 								<ul class="list-group list-group-borderless">
 									<li class="list-group-item">
-										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>{{second.discount}}</span>
-										<span>{{second.listing_description}}</span>
+										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>10 days:</span>
+										<span>100%</span>
 									</li>
 									<li class="list-group-item">
-										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>{{second.discount}}</span>
-										<span>{{second.listing_description}}</span>
+										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>10 to 15 days:</span>
+										<span>75% + Non Refundable Component</span>
 									</li>
 									<li class="list-group-item">
-										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>{{second.discount}}</span>
-										<span>{{second.listing_description}}</span>
+										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>15 to 30 days:</span>
+										<span>30% + Non Refundable Component</span>
 									</li>
 								</ul>
 		
-								<p class="mt-2">{{second.listing_description}}.<br>{{second.listing_description}}</p>
+								<p class="mt-2">{{post.amount_land}}<br>{{post.amount_land}}</p>
 		
-								<h5 class="mt-4">{{second.listing_description}}</h5>
-								<p class="mb-2">{{second.listing_description}}.</p>
-								<p class="mb-0">{{second.listing_description}}.</p>
+								<h5 class="mt-4">Refund Policy:</h5>
+								<p class="mb-2">{{post.amount_land}}</p>
+								<p class="mb-0">{{post.amount_land}}</p>
 							</div>
 							<!-- Card body END -->
 						</div>
@@ -533,8 +640,6 @@ Tabs-content START -->
 			</div>
 			<!-- Tabs Content END -->
 
-
-
 			<!-- Right side content START -->
 			<aside class="col-xl-4">
 				<div class="row g-4">
@@ -543,7 +648,7 @@ Tabs-content START -->
 						<div class="card card-body border bg-transparent">
 							<!-- Title -->
 							<div class="hstack gap-2 mb-1">
-								<h3 class="card-title mb-0">$ {{second.room_price}}</h3>
+								<h3 class="card-title mb-0">{{post.amount_land}}</h3>
 								<span class="fs-5">/person</span>
 							</div>
 
@@ -557,12 +662,15 @@ Tabs-content START -->
 									<li class="list-inline-item me-0 small"><i class="fa-solid fa-star text-warning"></i></li>
 									<li class="list-inline-item me-0 small"><i class="fa-solid fa-star-half-alt text-warning"></i></li>
 								</ul>
-								<a href="#" class="mb-0 m-0 text-reset text-primary-hover">({{second.room_price}} reviews)</a>
+								<a href="#" class="mb-0 m-0 text-reset text-primary-hover">(365 reviews)</a>
 							</div>
 
 							<!-- Button -->
 							<div class="d-grid gap-2">
 								<a href="{{url_for('listings.booking_start', listing_id=post.id)}}" class="btn btn-primary">Book Now</a>
+								<button class="btn btn-outline-primary mb-0" type="button" data-bs-toggle="modal" data-bs-target="#inquiryForm">
+									<i class="bi bi-eye fa-fw me-2"></i>Send Inquiry
+								</button>
 							</div>
 
 						</div>
@@ -573,18 +681,23 @@ Tabs-content START -->
 					<div class="col-md-6 col-xl-12">
 						<div class="card card-body bg-light p-4">
 							<!-- Title -->
-							<h4 class="card-title">Plants Planted</h4>
+							<h4 class="card-title">Need Help?</h4>
 
 							<!-- List -->
 							<ul class="list-group list-group-borderless">
-
+								<li class="list-group-item py-3">
+									<a href="#" class="h6 mb-0">
+										<i class="bi fa-fw bi-telephone-forward text-primary fs-5 me-2"></i>
+										<span class="fw-light me-1">Call us on:</span>{{post.amount_land}}
+									</a>
+								</li>
 
 								<li class="list-group-item py-0"><hr class="my-0"></li><!-- Divider -->
 
 								<li class="list-group-item py-3">
 									<h6 class="mb-0">
 										<i class="bi fa-fw bi-alarm text-primary fs-5 me-2"></i>
-										<span class="h6 fw-light me-1 mb-0">Seeds:</span>100K
+										<span class="h6 fw-light me-1 mb-0">Timing:</span>{{post.amount_land}}
 									</h6>
 								</li>
 
@@ -592,15 +705,15 @@ Tabs-content START -->
 
 								<li class="list-group-item py-3">
 									<a href="#" class="h6 mb-0">
-										<i class="bi fa-fw bi-headset text-primary fs-5 me-2"></i>In growth 4,000
+										<i class="bi fa-fw bi-headset text-primary fs-5 me-2"></i>{{post.amount_land}}
 									</a>
 								</li>
 
 								<li class="list-group-item py-0"><hr class="my-0"></li><!-- Divider -->
 
 								<li class="list-group-item pt-3 pb-0">
-									<a href="#" class="h6 mb-0">
-										<i class="bi fa-fw bi-calendar-check text-primary fs-5 me-2"></i>Planted 500
+									<a href="contact.html" class="h6 mb-0">
+										<i class="bi fa-fw bi-calendar-check text-primary fs-5 me-2"></i>{{post.amount_land}}
 									</a>
 								</li>
 							</ul>
@@ -626,45 +739,27 @@ Tabs-content END -->
 Footer START -->
 <footer class="bg-dark pt-5">
 	<div class="container">
-		<!-- Row START -->
-		<div class="row g-4">
-
-		</div><!-- Row END -->
-
 		
-		<!-- Divider -->
-		<hr class="mt-4 mb-0">
-
-		<!-- Bottom footer -->
-		<div class="row">
-			<div class="container">
-				<div class="d-lg-flex justify-content-between align-items-center py-3 text-center text-lg-start">
-					<!-- copyright text -->
-					<div class="text-muted text-primary-hover"> OttoHI <a href="#" class="text-muted">OttoHI</a>. </div>
-				</div>
-			</div>
-		</div>
 	</div>
 </footer>
 <!-- =======================
 Footer END -->
 
 
+
 <!-- Back to top -->
 <div class="back-top"></div>
 
+
 <!-- Bootstrap JS -->
-<!-- <script src="static/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
 <script src="{{url_for('static', filename="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js")}}"></script>
 
 <!-- Vendors -->
-<!-- <script src="static/assets/vendor/splide-master/dist/js/splide.min.js"></script> -->
 <script src="{{url_for('static', filename="assets/vendor/splide-master/dist/js/splide.min.js")}}"></script>
-<!-- <script src="static/assets/vendor/glightbox/js/glightbox.js"></script> -->
 <script src="{{url_for('static', filename="assets/vendor/glightbox/js/glightbox.js")}}"></script>
 <!-- ThemeFunctions -->
-<!-- <script src="static/assets/js/functions.js"></script> -->
 <script src="{{url_for('static', filename="assets/js/functions.js")}}"></script>
+
 
 </body>
 </html>
