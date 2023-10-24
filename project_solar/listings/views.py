@@ -62,7 +62,11 @@ def create_checkout_session():
                         },
                     },
                 }
-            ]
+            ],
+            metadata = {
+                "user_id": current_user.id
+            } 
+            
         )
         return jsonify({"sessionId": checkout_session["id"]})
     except Exception as e:
@@ -89,7 +93,7 @@ def stripe_webhook():
     # Handle the checkout.session.completed event
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
-        #print(f'Sale to {session.customer_details.email}:')
+        print(f'Sale to {session.customer_details.email}:')
         print("Sale to stripe works")
         # Fulfill the purchase...
         handle_checkout_session(session)
@@ -105,14 +109,18 @@ def stripe_webhook():
 def handle_checkout_session(session):
     print("Payment was successful.")
     # TODO: run some custom code here
+
     for item in session.line_items.data:
-        print(f'  - {item.quantity} - {item.currency.upper()}')
+        print(f'Item quantity: {item.quantity} - {item.currency.upper()}')
             #  f'${item.amount_total/100:.02f} {item.currency.upper()}')
 
 
 @listings.route("/success")
 def success():
-    return render_template("listings/success.html")
+    sessions = stripe.checkout.Session.list()
+    print(sessions.data[00]) # tree view
+    data = {'username': sessions.data[00].metadata.user_id}
+    return render_template("listings/success.html", data=data)
 
 
 @listings.route("/cancelled")

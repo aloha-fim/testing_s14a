@@ -73,20 +73,7 @@ Main Banner START -->
 						<li class="list-inline-item">
 							<a href="#" class="btn btn-sm btn-light px-2"><i class="fa-solid fa-fw fa-heart"></i></a>
 						</li>
-						<!-- Share icon -->
-						<li class="list-inline-item dropdown">
-							<!-- Share button -->
-							<a href="#" class="btn btn-sm btn-light px-2" role="button" id="dropdownShare" data-bs-toggle="dropdown" aria-expanded="false">
-								<i class="fa-solid fa-fw fa-share-alt"></i>
-							</a>
-							<!-- dropdown button -->
-							<ul class="dropdown-menu dropdown-menu-end min-w-auto shadow rounded" aria-labelledby="dropdownShare">
-								<li><a class="dropdown-item" href="#"><i class="fab fa-twitter-square me-2"></i>Twitter</a></li>
-								<li><a class="dropdown-item" href="#"><i class="fab fa-facebook-square me-2"></i>Facebook</a></li>
-								<li><a class="dropdown-item" href="#"><i class="fab fa-linkedin me-2"></i>LinkedIn</a></li>
-								<li><a class="dropdown-item" href="#"><i class="fa-solid fa-copy me-2"></i>Copy link</a></li>
-							</ul>
-						</li>
+						
 					</ul>
 				</div>
 
@@ -162,19 +149,19 @@ Tabs START -->
 				<ul class="nav nav-pills nav-justified nav-responsive bg-primary bg-opacity-10 rounded p-2" id="tour-pills-tab" role="tablist">
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link active mb-0" id="tour-pills-tab-1" data-bs-toggle="pill" data-bs-target="#tour-pills-tab1" type="button" role="tab" aria-controls="tour-pills-tab1" aria-selected="true">Overview</button>
+						<button class="nav-link active mb-0" id="tour-pills-tab-1" data-bs-toggle="pill" data-bs-target="#tour-pills-tab1" type="button" role="tab" aria-controls="tour-pills-tab1" aria-selected="true">Think It</button>
 					</li>
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-2" data-bs-toggle="pill" data-bs-target="#tour-pills-tab2" type="button" role="tab" aria-controls="tour-pills-tab2" aria-selected="false">Itinerary</button>
+						<button class="nav-link mb-0" id="tour-pills-tab-2" data-bs-toggle="pill" data-bs-target="#tour-pills-tab2" type="button" role="tab" aria-controls="tour-pills-tab2" aria-selected="false">Now Do It</button>
 					</li>
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-3" data-bs-toggle="pill" data-bs-target="#tour-pills-tab3" type="button" role="tab" aria-controls="tour-pills-tab3" aria-selected="false">Before</button>
+						<button class="nav-link mb-0" id="tour-pills-tab-3" data-bs-toggle="pill" data-bs-target="#tour-pills-tab3" type="button" role="tab" aria-controls="tour-pills-tab3" aria-selected="false">the past</button>
 					</li>
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-4" data-bs-toggle="pill" data-bs-target="#tour-pills-tab4" type="button" role="tab" aria-controls="tour-pills-tab4" aria-selected="false">After</button>
+						<button class="nav-link mb-0" id="tour-pills-tab-4" data-bs-toggle="pill" data-bs-target="#tour-pills-tab4" type="button" role="tab" aria-controls="tour-pills-tab4" aria-selected="false">the present</button>
 					</li>
 				</ul> 
 				<!-- Outer tabs END -->
@@ -210,7 +197,7 @@ Tabs-content START -->
 								<p class="mb-4">Bali{{post.amount_land}}tep.</p>
 
 								<!-- List -->
-								<h5>Tour Info</h5>
+								<h5>Your Beginning</h5>
 								<ul class="list-group list-group-borderless mb-4">
 									<li class="list-group-item">
 										<span class="h6 mb-0 me-1">Place Covered:</span>
@@ -231,7 +218,7 @@ Tabs-content START -->
 								</ul>
 
 								<!-- List -->
-								<h5>Tour Highlights</h5>
+								<h5>Your Skills</h5>
 								<ul class="list-group list-group-borderless mb-4">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
 										<i class="bi bi-arrow-right me-2"></i>Experience {{post.amount_land}}ch more
@@ -242,7 +229,7 @@ Tabs-content START -->
 								</ul>
 
 								<!-- List -->
-								<h5>More About{{post.amount_land}}ia Tour</h5>
+								<h5>Your Contribution</h5>
 								<ul class="list-group list-group-borderless mb-0">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
 										<i class="fa-solid fa-check-circle text-success me-2"></i>Guidel{{post.amount_land}}nded.
@@ -272,7 +259,7 @@ Tabs-content START -->
 									<div class="accordion-item mb-3">
 										<h6 class="accordion-header font-base" id="heading-1">
 											<button class="accordion-button rounded d-inline-block collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-												<span class="lead me-1 fw-normal">Day 1:</span>Arr{{post.amount_land}}ta | Get r{{post.amount_land}}land
+												<span class="lead me-1 fw-normal">Day 1:</span>Make it Easy | Keep it Simple
 											</button>
 										</h6>
 										<!-- Body -->
@@ -280,112 +267,12 @@ Tabs-content START -->
 											<div class="accordion-body mt-3">
 												<div class="vstack gap-4">
 
-													<!-- Flight list START -->
-													<div class="card bg-transparent p-0">
-														<!-- Card header -->
-														<div class="card-header bg-transparent p-0">
-															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Flight details</span>
-															<div class="p-3 bg-light rounded-2 d-sm-flex justify-content-sm-between align-items-center mb-4 mt-2">
-																<!-- Airline Name -->
-																<h6 class="mb-0">New {{post.amount_land}}York - Malaysia</h6>
-																<h6 class="fw-normal mb-0"><span class="text-body">Date:</span> 4 July 2022</h6>
-															</div>
-														</div>
-
-														<!-- Card body START -->
-														<div class="card-body p-0">
-															<div class="row g-4">
-																<!-- Air line name -->
-																<div class="col-md-3">
-																	<!-- Image -->
-																	<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="w-80px mb-3" alt="">
-																	<!-- Title -->
-																	<h6 class="fw-normal small mb-0">Phi{{post.amount_land}}ine</h6>
-																</div>
-								
-																<!-- Airport detail -->
-																<div class="col-4 col-md-3">
-																	<!-- Title -->
-																	<h5>CDG</h5>
-																	<h6 class="mb-0">2:50 pm</h6>
-																</div>
-								
-																<!-- Time -->
-																<div class="col-4 col-md-3 text-center">
-																	<!-- Time -->
-																	<h6>5hr 50min</h6>
-								
-																	<div class="position-relative my-4">
-																		<!-- Line -->
-																		<hr class="bg-primary opacity-5 position-relative">
-																		<!-- Icon -->
-																		<div class="icon-md bg-primary text-white rounded-circle position-absolute top-50 start-50 translate-middle">
-																			<i class="fa-solid fa-fw fa-plane"></i>
-																		</div>
-																	</div>
-																</div>
-								
-																<!-- Airport detail -->
-																<div class="col-4 col-md-3 text-end">
-																	<!-- Title -->
-																	<h5>JFK</h5>
-																	<h6 class="mb-0">7:35 pm</h6>
-																</div>
-								
-															</div>
-														</div>
-														<!-- Card body END -->
-													</div>
-													<!-- Flight list END -->
 													
-													<hr class="my-0"> <!-- Divider -->
-
-													<!-- Cab list START -->
-													<div class="card bg-transparent p-0">
-														<!-- Card header -->
-														<div class="card-header bg-transparent p-0">
-															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Transfer{{post.amount_land}} hotel</span>
-														</div>
-
-														<!-- Card body -->
-														<div class="card-body p-0 mt-2">
-															<div class="row g-2 g-sm-4 align-items-center">
-																<!-- Card image -->
-																<div class="col-sm-4 col-xl-3">
-																	<div class="bg-light rounded-3 px-4 py-5">
-																		<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt="">
-																	</div>
-																</div>
-								
-																<!-- Card title and rating -->
-																<div class="col-sm-8 col-xl-9">
-																	<h5 class="card-title mb-2">Private Transfers</h5>
-																	<h6 class="mb-2">Camry, Accord</h6>
-																	<!-- Nav divider -->
-																	<ul class="nav nav-divider mb-2">
-																		<li class="nav-item">SEDAN</li>
-																		<li class="nav-item">AC</li>
-																		<li class="nav-item">4 Seats</li>
-																		<li class="nav-item">2 luggage</li>
-																		<li class="nav-item">First Aid</li>
-																	</ul>
-																	
-																	<!-- Buttons -->
-																	<a href="#" class="btn btn-sm btn-primary-soft mb-0">Change</a>
-																	<a href="#" class="btn btn-sm btn-danger-soft mb-0">Remove</a>
-																</div>
-															</div> <!-- Row END -->
-														</div>	
-													</div>
-													<!-- Cab list END -->
-
-													<hr class="my-0"> <!-- Divider -->
-
 													<!-- Hotel list START -->
 													<div class="card bg-transparent p-0">
 														<!-- Card header -->
 														<div class="card-header bg-transparent p-0">
-															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Check-In to hotel</span>
+															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Check-In</span>
 														</div>
 
 														<!-- Card body -->
@@ -407,6 +294,7 @@ Tabs-content START -->
 																	<!-- Title -->
 																	<h5 class="card-title mb-1"><a href="hotel-detail.html">Cour{{post.amount_land}}ew York </a></h5>
 																	<span>2.9km {{post.amount_land}}ort</span>
+																	<small class="mb-2"><i class="bi bi-geo-alt me-2"></i>Ba{{post.amount_land}}a</small>
 																	
 																	<!-- List -->
 																	<ul class="list-group list-group-borderless mb-0 mt-2 small">
@@ -416,11 +304,19 @@ Tabs-content START -->
 																		<li class="list-group-item d-flex text-success p-0">
 																			<i class="bi bi-patch-check-fill me-2"></i>Free{{post.amount_land}}ast
 																		</li>
+																		<li class="list-group-item d-flex p-0">
+																			<i class="bi bi-arrow-right text-primary me-2"></i>Tan{{post.amount_land}}our
+																		</li>														
 																	</ul>
+
+																	<div class="hstack gap-3 flex-wrap mt-2">
+																		<p class="mb-0">Duration:<span class="h6 fw-light mb-0 ms-1">5 hrs</span></p>
+																		<p class="mb-0">Place Covered:<span class="h6 fw-light mb-0 ms-1">2</span></p>
+																	</div>
 
 																	<h6 class="mb-0 fw-light small mt-2">
 																		Room t{{post.amount_land}}ction
-																		<a href="hotel-detail.html" class="btn btn-sm btn-link p-0 mb-0 text-decoration-underline ms-2">Change room</a>
+																
 																	</h6>
 
 																</div>
@@ -431,50 +327,6 @@ Tabs-content START -->
 	
 													<hr class="my-0"> <!-- Divider -->
 
-													<!-- Activity list START -->
-													<div class="card bg-transparent p-0">
-														<!-- Card header -->
-														<div class="card-header bg-transparent p-0">
-															<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Today’s Activity</span>
-														</div>
-
-														<!-- Card body -->
-														<div class="card-body p-0 mt-2">
-															<div class="row g-2 g-sm-4 align-items-center">
-																<!-- Card image -->
-																<div class="col-sm-4">
-																	<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img" alt="">
-																</div>
-								
-																<!-- Card title and rating -->
-																<div class="col-sm-8">
-																	<h5 class="card-title mb-0">Sig{{post.amount_land}}i</h5>
-																	<small class="mb-2"><i class="bi bi-geo-alt me-2"></i>Ba{{post.amount_land}}a</small>
-
-																	<!-- List -->
-																	<ul class="list-group list-group-borderless mb-0 mt-2">
-																		<li class="list-group-item d-flex p-0">
-																			<i class="bi bi-arrow-right text-primary me-2"></i>Tan{{post.amount_land}}our
-																		</li>
-																		<li class="list-group-item d-flex p-0">
-																			<i class="bi bi-arrow-right text-primary me-2"></i>Whit{{post.amount_land}}ng
-																		</li>
-																	</ul>
-
-																	<div class="hstack gap-3 flex-wrap mt-2">
-																		<p class="mb-0">Duration:<span class="h6 fw-light mb-0 ms-1">5 hrs</span></p>
-																		<p class="mb-0">Place Covered:<span class="h6 fw-light mb-0 ms-1">2</span></p>
-																	</div>
-
-																</div>
-															</div> <!-- Row END -->
-														</div>	
-													</div>
-													<!-- Activity list END -->
-
-													<!-- Button -->
-													<a href="#" class="btn btn-primary mb-0"><i class="fa-solid fa-person-skating me-2"></i>Add Activity</a>
-
 												</div>
 											</div>
 										</div>
@@ -484,7 +336,7 @@ Tabs-content START -->
 									<div class="accordion-item mb-3">
 										<h6 class="accordion-header font-base" id="heading-2">
 											<button class="accordion-button rounded d-inline-block collapsed d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
-												<span class="lead me-1 fw-normal">Day 2:</span>A d{{post.amount_land}}re | Indul{{post.amount_land}} Dua
+												<span class="lead me-1 fw-normal">Day 2:</span>Build | Keep at It
 											</button>
 										</h6>
 										<!-- Body -->
@@ -518,7 +370,7 @@ Tabs-content START -->
 									<div class="accordion-item mb-3">
 										<h6 class="accordion-header font-base" id="heading-3">
 											<button class="accordion-button collapsed rounded d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
-												<span class="lead me-1 fw-normal">Day 3:</span>Indul{{post.amount_land}}a Dua
+												<span class="lead me-1 fw-normal">Day +3:</span>Momentum | Enjoy
 											</button>
 										</h6>
 										<!-- Body -->
@@ -526,24 +378,69 @@ Tabs-content START -->
 											<div class="accordion-body mt-3">
 												Post n{{post.amount_land}}lors.
 											</div>
+										
+										<!-- Flight list START -->
+										
+											<!-- Card header -->
+											<div class="card-header bg-transparent p-0">
+												<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Flight details</span>
+												<div class="p-3 bg-light rounded-2 d-sm-flex justify-content-sm-between align-items-center mb-4 mt-2">
+													<!-- Airline Name -->
+													<h6 class="mb-0">New {{post.amount_land}}York - Malaysia</h6>
+													<h6 class="fw-normal mb-0"><span class="text-body">Date:</span> 4 July 2022</h6>
+												</div>
+											</div>
+
+											
+											<!-- Card body START -->
+											<div class="card-body p-0">
+												<div class="row g-4">
+													<!-- Air line name -->
+													<div class="col-md-3">
+														<!-- Image -->
+														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="w-80px mb-3" alt="">
+														<!-- Title -->
+														<h6 class="fw-normal small mb-0">Phi{{post.amount_land}}ine</h6>
+													</div>
+					
+													<!-- Airport detail -->
+													<div class="col-4 col-md-3">
+														<!-- Title -->
+														<h5>CDG</h5>
+														<h6 class="mb-0">2:50 pm</h6>
+													</div>
+					
+													<!-- Time -->
+													<div class="col-4 col-md-3 text-center">
+														<!-- Time -->
+														<h6>5hr 50min</h6>
+					
+														<div class="position-relative my-4">
+															<!-- Line -->
+															<hr class="bg-primary opacity-5 position-relative">
+															<!-- Icon -->
+															<div class="icon-md bg-primary text-white rounded-circle position-absolute top-50 start-50 translate-middle">
+																<i class="fa-solid fa-fw fa-plane"></i>
+															</div>
+														</div>
+													</div>
+					
+													<!-- Airport detail -->
+													<div class="col-4 col-md-3 text-end">
+														<!-- Title -->
+														<h5>JFK</h5>
+														<h6 class="mb-0">7:35 pm</h6>
+													</div>
+					
+												</div>
+											</div>
+											<!-- Card body END -->
 										</div>
+										<!-- Flight list END -->
+										
+										
 									</div>
 				
-									<!-- Item -->
-									<div class="accordion-item mb-3">
-										<h6 class="accordion-header font-base" id="heading-4">
-											<button class="accordion-button collapsed rounded d-block pe-5" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
-												<span class="lead me-1 fw-normal">Day 4:</span>Depar{{post.amount_land}}bye
-											</button>
-										</h6>
-										<!-- Body -->
-										<div id="collapse-4" class="accordion-collapse collapse" aria-labelledby="heading-4" data-bs-parent="#accordionExample2">
-											<div class="accordion-body mt-3">
-												<p>What d{{post.amount_land}}my cottage Mr be.</p>
-												<p class="mb-0">At the{{post.amount_land}}essing.</p>
-											</div>
-										</div>
-									</div>
 								</div>
 							</div>
 							<!-- Card body END -->
@@ -667,10 +564,7 @@ Tabs-content START -->
 
 							<!-- Button -->
 							<div class="d-grid gap-2">
-								<a href="{{url_for('listings.booking_start', listing_id=post.id)}}" class="btn btn-primary">Book Now</a>
-								<button class="btn btn-outline-primary mb-0" type="button" data-bs-toggle="modal" data-bs-target="#inquiryForm">
-									<i class="bi bi-eye fa-fw me-2"></i>Send Inquiry
-								</button>
+								<button class="btn btn-primary next-btn mb-0" id="submitBtn">Book Now</button>
 							</div>
 
 						</div>
@@ -759,6 +653,10 @@ Footer END -->
 <script src="{{url_for('static', filename="assets/vendor/glightbox/js/glightbox.js")}}"></script>
 <!-- ThemeFunctions -->
 <script src="{{url_for('static', filename="assets/js/functions.js")}}"></script>
+
+<!-- Stripe -->
+<script src="https://js.stripe.com/v3/"></script>  <!-- new -->	
+<script src="{{ url_for('static', filename='main.js') }}"></script>
 
 
 </body>
