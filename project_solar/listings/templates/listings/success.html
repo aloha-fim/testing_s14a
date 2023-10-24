@@ -1,11 +1,18 @@
-<script src="{{ url_for('static', filename='main.js') }}"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Stripe -->
+	<script src="https://js.stripe.com/v3/"></script>  <!-- new -->	
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</head>
+
 
 
 {% block content %}
   <section class="section">
     <div class="container">
       <p>Your payment succeeded.</p>
-      <p>{{data}}</p>
+      <p>Username ID: {{data}}</p>
     </div>
   </section>
 {% endblock %}
