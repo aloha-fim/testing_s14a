@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<!-- Stripe -->
-	<script src="https://js.stripe.com/v3/"></script>  <!-- new -->	
-  <script src="{{ url_for('static', filename='main.js') }}"></script>
-</head>
 
+</head>
+<body>
 
 
 {% block content %}
@@ -16,4 +14,10 @@
       <p>Listing ID: {{data.listingid}}</p>
     </div>
   </section>
+
+	<!-- Stripe 
+	<script src="https://js.stripe.com/v3/"></script>  
+  <script src="{{ url_for('static', filename='main.js') }}"></script>-->
 {% endblock %}
+</body>
+</html>

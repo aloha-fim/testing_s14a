@@ -11,8 +11,11 @@ fetch("/listings/config")
   
   // new
   // Event handler
-  document.querySelector("#submitBtn").addEventListener("click", () => {
-    // Get Checkout Session ID  
+ document.querySelector("#submitBtn").addEventListener("click", () => {
+    // Get Checkout Session ID 
+    //if (el) {
+    //  el.addEventListener('click', swapper, false);
+    //} 
     const listing_id = document.getElementById("submitBtn").value;
     fetch(`/listings/create-checkout-session/${listing_id}`)
     .then((result) => { return result.json(); })
