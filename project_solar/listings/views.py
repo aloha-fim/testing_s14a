@@ -31,8 +31,8 @@ def get_publishable_key():
     return jsonify(stripe_config)
 
 
-@listings.route("/create-checkout-session")
-def create_checkout_session():
+@listings.route("/create-checkout-session/<int:listing_id>", methods=["GET","POST"])
+def create_checkout_session(listing_id):
     domain_url = "http://127.0.0.1:5000/"
     stripe.api_key = stripe_keys["secret_key"]
 
@@ -64,7 +64,9 @@ def create_checkout_session():
                 }
             ],
             metadata = {
-                "user_id": current_user.id
+                "user_id": current_user.id,
+                #"listing_id": request.args.get('listing_id')
+                "listing_id": listing_id
             } 
             
         )
@@ -119,7 +121,8 @@ def handle_checkout_session(session):
 def success():
     sessions = stripe.checkout.Session.list()
     print(sessions.data[00]) # tree view
-    data = {'username': sessions.data[00].metadata.user_id}
+    data = {'username': sessions.data[00].metadata.user_id,
+            'listingid': sessions.data[00].metadata.listing_id}
     return render_template("listings/success.html", data=data)
 
 

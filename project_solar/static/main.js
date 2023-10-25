@@ -8,12 +8,13 @@ fetch("/listings/config")
 .then((data) => {
   // Initialize Stripe.js
   const stripe = Stripe(data.publicKey);
-
+  
   // new
   // Event handler
   document.querySelector("#submitBtn").addEventListener("click", () => {
-    // Get Checkout Session ID
-    fetch("/listings/create-checkout-session")
+    // Get Checkout Session ID  
+    const listing_id = document.getElementById("submitBtn").value;
+    fetch(`/listings/create-checkout-session/${listing_id}`)
     .then((result) => { return result.json(); })
     .then((data) => {
       console.log(data);
