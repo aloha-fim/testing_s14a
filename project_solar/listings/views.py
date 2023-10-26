@@ -2,7 +2,7 @@ from flask import render_template, url_for, flash, abort, request, redirect, Blu
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 from project_solar import db
-from project_solar.models import ListingPost, ListingSecondPost, ListingPictures
+from project_solar.models import ListingPost, ListingSecondPost, ListingPictures, StripeCustomer
 from project_solar.listings.forms import ListingPostForm, ListingSecondPostForm, ListingPictureForm
 from project_solar.listings.picture_handler import add_listing_pic
 from project_solar.listings.picture_format import allowed_file
@@ -70,7 +70,17 @@ def create_checkout_session(listing_id):
             } 
             
         )
+
+        if request.method == 'POST':
+            userid = current_user.id
+            listingid = listing_id
+            customer = StripeCustomer(listing_id=listingid,
+                                      user_id=userid)
+            db.session.add(customer)
+            db.session.commit()
+
         return jsonify({"sessionId": checkout_session["id"]})
+
     except Exception as e:
         return jsonify(error=str(e)), 403
 

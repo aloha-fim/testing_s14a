@@ -157,12 +157,9 @@ Tabs START -->
 					</li>
 					<!-- Tab item -->
 					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-3" data-bs-toggle="pill" data-bs-target="#tour-pills-tab3" type="button" role="tab" aria-controls="tour-pills-tab3" aria-selected="false">the past</button>
+						<button class="nav-link mb-0" id="tour-pills-tab-3" data-bs-toggle="pill" data-bs-target="#tour-pills-tab3" type="button" role="tab" aria-controls="tour-pills-tab3" aria-selected="false">See It</button>
 					</li>
-					<!-- Tab item -->
-					<li class="nav-item" role="presentation">
-						<button class="nav-link mb-0" id="tour-pills-tab-4" data-bs-toggle="pill" data-bs-target="#tour-pills-tab4" type="button" role="tab" aria-controls="tour-pills-tab4" aria-selected="false">the present</button>
-					</li>
+			
 				</ul> 
 				<!-- Outer tabs END -->
 			</div>
@@ -189,51 +186,53 @@ Tabs-content START -->
 						<div class="card bg-transparent p-0">
 							<!-- Card header -->
 							<div class="card-header bg-transparent border-bottom p-0 pb-3">
-								<h3 class="mb-0">Overview</h3>
+								<h3 class="mb-0">{{post.amount_land}}</h3>
 							</div>
 
 							<!-- Card body START -->
 							<div class="card-body p-0 pt-3">
-								<p class="mb-4">Bali{{post.amount_land}}tep.</p>
+								
 
 								<!-- List -->
-								<h5>Your Beginning</h5>
-								<ul class="list-group list-group-borderless mb-4">
-									<li class="list-group-item">
-										<span class="h6 mb-0 me-1">The Plan:</span>
-										<span class="h6 fw-light mb-0">Ba{{post.amount_land}}ud</span>
-									</li>
-									<li class="list-group-item">
-										<span class="h6 mb-0 me-1">The Environment:</span>
-										<span class="h6 fw-light mb-0">5 D{{post.amount_land}}ts</span>
-									</li>
-									<li class="list-group-item">
-										<span class="h6 mb-0 me-1">The Difficulty:</span>
-										<span class="h6 fw-light mb-0">Ngura{{post.amount_land}}ort</span>
-									</li>
-								</ul>
-
-								<!-- List -->
-								<h5>Your Skills</h5>
+								<h5>From This:</h5>
 								<ul class="list-group list-group-borderless mb-4">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
 										<i class="bi bi-arrow-right me-2"></i>Team Selection: {{post.amount_land}}
 									</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0">
-										<i class="bi bi-arrow-right me-2"></i>Your Skill:{{post.amount_land}}
-									</li>
+					
 								</ul>
-
+								<div class="row g-4">
+									<div class="col-md-4">
+										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
+									</div>
+									<div class="col-md-4">
+										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
+									</div>
+									<div class="col-md-4">
+										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
+									</div>
+								</div>
+								<br>
 								<!-- List -->
-								<h5>Your Contribution</h5>
+								<h5>To That:</h5>
+
 								<ul class="list-group list-group-borderless mb-0">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
 										<i class="fa-solid fa-check-circle text-success me-2"></i>Guidel{{post.amount_land}}nded.
 									</li>
-									<li class="list-group-item h6 fw-light d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i>No{{post.amount_land}}ng for and. 
-									</li>
+									
 								</ul>
+								<div class="row g-4">
+									<div class="col-md-4">
+										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
+									</div>
+									<div class="col-md-4">
+										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
+									</div>
+									<div class="col-md-4">
+										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
+									</div>
+								</div>
 							</div>
 							<!-- Card body END -->
 						</div>
@@ -277,6 +276,15 @@ Tabs-content START -->
 																<!-- Card image -->
 																<div class="col-sm-4">
 																	<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img" alt="Card image">
+																	<div class="hstack gap-3 flex-wrap mt-2">
+																		<p class="mb-0">Duration:<span class="h6 fw-light mb-0 ms-1">5 hrs</span></p>
+			
+																	</div>
+
+																	<h6 class="mb-0 fw-light small mt-2">
+																		Room t{{post.amount_land}}ction
+																
+																	</h6>
 																</div>
 								
 																<!-- Card title and rating -->
@@ -284,7 +292,7 @@ Tabs-content START -->
 																	<!-- Badge -->
 																	<div class="d-flex justify-content-between mb-2">
 																		<div class="badge bg-dark">Hotel</div>
-																		<a href="hotel-list.html" class="btn btn-sm btn-link p-0 mb-0 text-decoration-underline">Change</a>
+			
 																	</div>
 
 																	<!-- Title -->
@@ -305,15 +313,7 @@ Tabs-content START -->
 																		</li>														
 																	</ul>
 
-																	<div class="hstack gap-3 flex-wrap mt-2">
-																		<p class="mb-0">Duration:<span class="h6 fw-light mb-0 ms-1">5 hrs</span></p>
-																		<p class="mb-0">Place Covered:<span class="h6 fw-light mb-0 ms-1">2</span></p>
-																	</div>
-
-																	<h6 class="mb-0 fw-light small mt-2">
-																		Room t{{post.amount_land}}ction
-																
-																	</h6>
+	
 
 																</div>
 															</div> <!-- Row END -->
@@ -379,11 +379,11 @@ Tabs-content START -->
 										
 											<!-- Card header -->
 											<div class="card-header bg-transparent p-0">
-												<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Flight details</span>
+												<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Fl{{post.amount_land}}s</span>
 												<div class="p-3 bg-light rounded-2 d-sm-flex justify-content-sm-between align-items-center mb-4 mt-2">
 													<!-- Airline Name -->
-													<h6 class="mb-0">New {{post.amount_land}}York - Malaysia</h6>
-													<h6 class="fw-normal mb-0"><span class="text-body">Date:</span> 4 July 2022</h6>
+													<h6 class="mb-0">New {{post.amount_land}}Yora</h6>
+													<h6 class="fw-normal mb-0"><span class="text-body">Your Mark:</span> ds{{post.amount_land}}</h6>
 												</div>
 											</div>
 
@@ -402,21 +402,21 @@ Tabs-content START -->
 													<!-- Airport detail -->
 													<div class="col-4 col-md-3">
 														<!-- Title -->
-														<h5>CDG</h5>
-														<h6 class="mb-0">2:50 pm</h6>
+														<h5>C{{post.amount_land}}G</h5>
+														<h6 class="mb-0">2{{post.amount_land}}pm</h6>
 													</div>
 					
 													<!-- Time -->
 													<div class="col-4 col-md-3 text-center">
 														<!-- Time -->
-														<h6>5hr 50min</h6>
+														<h6>5hr{{post.amount_land}}n</h6>
 					
 														<div class="position-relative my-4">
 															<!-- Line -->
 															<hr class="bg-primary opacity-5 position-relative">
 															<!-- Icon -->
 															<div class="icon-md bg-primary text-white rounded-circle position-absolute top-50 start-50 translate-middle">
-																<i class="fa-solid fa-fw fa-plane"></i>
+																<i class="fa-solid fa-fw fa-house"></i>
 															</div>
 														</div>
 													</div>
@@ -424,8 +424,8 @@ Tabs-content START -->
 													<!-- Airport detail -->
 													<div class="col-4 col-md-3 text-end">
 														<!-- Title -->
-														<h5>JFK</h5>
-														<h6 class="mb-0">7:35 pm</h6>
+														<h5>J{{post.amount_land}}</h5>
+														<h6 class="mb-0">7:{{post.amount_land}}m</h6>
 													</div>
 					
 												</div>
@@ -460,12 +460,7 @@ Tabs-content START -->
 									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-check text-success me-2"></i>
 										<span class="h6 fw-normal">Comf{{post.amount_land}}ed category Hotels</span>
 									</li>
-									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-check text-success me-2"></i>
-										<span class="h6 fw-normal">Profes{{post.amount_land}}you explore the cities</span>
-									</li>
-									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-check text-success me-2"></i>
-										<span class="h6 fw-normal"> Breakf{{post.amount_land}}tinerary.</span>
-									</li>
+									
 								</ul>
 
 								<!-- List -->
@@ -474,55 +469,8 @@ Tabs-content START -->
 									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-times text-danger me-2"></i>
 										<span class="h6 fw-normal">Lunch a{{post.amount_land}}in CP plans</span>
 									</li>
-									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-times text-danger me-2"></i>
-										<span class="h6 fw-normal">Any{{post.amount_land}}nclusions</span>
-									</li>
-									<li class="list-group-item d-flex mb-0"><i class="fa-solid fa-times text-danger me-2"></i>
-										<span class="h6 fw-normal">Medic{{post.amount_land}}ance</span>
-									</li>
+								
 								</ul>
-							</div>
-							<!-- Card body END -->
-						</div>
-					</div>	
-					<!-- Content item END -->
-
-					<!-- Content item START -->
-					<div class="tab-pane fade" id="tour-pills-tab4" role="tabpanel" aria-labelledby="tour-pills-tab-4">
-						<div class="card bg-transparent p-0">
-							<!-- Card header -->
-							<div class="card-header bg-transparent border-bottom p-0 pb-3">
-								<h3 class="mb-0">Tour Policy</h3>
-							</div>
-
-							<!-- Card body START -->
-							<div class="card-body p-0 pt-3">
-								<h5>Your Leadership:</h5>
-								<p class="mb-2">The customer receil wi{{post.amount_land}}oking.</p>
-								<p class="mb-0">Alter{{post.amount_land}}.</p>
-		
-								<!-- List -->
-								<h5 class="mt-4">Your Communication:</h5>
-								<ul class="list-group list-group-borderless">
-									<li class="list-group-item">
-										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>10 days:</span>
-										<span>100%</span>
-									</li>
-									<li class="list-group-item">
-										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>10 to 15 days:</span>
-										<span>75% + Non Refundable Component</span>
-									</li>
-									<li class="list-group-item">
-										<span class="h6 fw-normal me-1 mb-0"><i class="bi bi-dot"></i>15 to 30 days:</span>
-										<span>30% + Non Refundable Component</span>
-									</li>
-								</ul>
-		
-								<p class="mt-2">{{post.amount_land}}<br>{{post.amount_land}}</p>
-		
-								<h5 class="mt-4">Your Stash:</h5>
-								<p class="mb-2">{{post.amount_land}}</p>
-								<p class="mb-0">{{post.amount_land}}</p>
 							</div>
 							<!-- Card body END -->
 						</div>
@@ -571,23 +519,16 @@ Tabs-content START -->
 					<div class="col-md-6 col-xl-12">
 						<div class="card card-body bg-light p-4">
 							<!-- Title -->
-							<h4 class="card-title">Need Help?</h4>
+							<h4 class="card-title">OTTO HI's</h4>
 
 							<!-- List -->
 							<ul class="list-group list-group-borderless">
-								<li class="list-group-item py-3">
-									<a href="#" class="h6 mb-0">
-										<i class="bi fa-fw bi-telephone-forward text-primary fs-5 me-2"></i>
-										<span class="fw-light me-1">Call us on:</span>{{post.amount_land}}
-									</a>
-								</li>
-
-								<li class="list-group-item py-0"><hr class="my-0"></li><!-- Divider -->
+								
 
 								<li class="list-group-item py-3">
 									<h6 class="mb-0">
 										<i class="bi fa-fw bi-alarm text-primary fs-5 me-2"></i>
-										<span class="h6 fw-light me-1 mb-0">Timing:</span>{{post.amount_land}}
+										<span class="h6 fw-light me-1 mb-0">Otto HI'ers:</span>{{post.amount_land}}
 									</h6>
 								</li>
 
@@ -595,7 +536,7 @@ Tabs-content START -->
 
 								<li class="list-group-item py-3">
 									<a href="#" class="h6 mb-0">
-										<i class="bi fa-fw bi-headset text-primary fs-5 me-2"></i>{{post.amount_land}}
+										<i class="bi fa-fw bi-headset text-primary fs-5 me-2"></i>Invested: {{post.amount_land}} Hours
 									</a>
 								</li>
 
@@ -603,7 +544,7 @@ Tabs-content START -->
 
 								<li class="list-group-item pt-3 pb-0">
 									<a href="contact.html" class="h6 mb-0">
-										<i class="bi fa-fw bi-calendar-check text-primary fs-5 me-2"></i>{{post.amount_land}}
+										<i class="bi fa-fw bi-calendar-check text-primary fs-5 me-2"></i>Growth: {{post.amount_land}} Coffee Trees
 									</a>
 								</li>
 							</ul>

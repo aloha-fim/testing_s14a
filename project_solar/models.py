@@ -34,6 +34,24 @@ class User(db.Model,UserMixin):
         return f"Username {self.username}"
 
 
+class StripeCustomer(db.Model):
+    
+    users = db.relationship(User)
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
+
+    date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
+    listing_id = db.Column(db.Integer,nullable=False)
+
+    def __init__(self,listing_id,user_id):
+        self.listing_id = listing_id
+        self.user_id = user_id
+
+    def __repr__(self):
+        return f"Post ID: {self.id} -- Date: {self.date} -- {self.listing_id}"
+    
+
 class SolarPost(db.Model):
     
     users = db.relationship(User)
