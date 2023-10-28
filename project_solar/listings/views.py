@@ -15,6 +15,7 @@ UPLOAD_FOLDER = 'static\listing_pics'
 
 listings = Blueprint('listings',__name__, template_folder="templates")
 current_app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+current_app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 stripe_keys = {
     "secret_key": os.environ["STRIPE_SECRET_KEY"],
@@ -278,6 +279,21 @@ def upload():
             file.save(os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('uploaded_file',filename=filename))
 
+        if 'gallery_images' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        
+        files = request.files.getlist('gallery_images')
+        file_names = []
+        for file in files:
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file_names.append(filename)
+                file.save(os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'], filename))
+		#else:
+		#	flash('Allowed image types are -> png, jpg, jpeg, gif')
+		#	return redirect(request.url)
+
 
     #if request.method == 'POST':
 
@@ -303,9 +319,10 @@ def upload():
     if form.validate_on_submit():
         #filename = secure_filename(form.thumbnail_image.data.filename)
         listing_pictures = ListingPictures(user_id=current_user.id,
-                    thumbnail_image = filename)
+                    thumbnail_image = filename,
+                    gallery_images = file_names)
                     #thumbnail_image = form.thumbnail_image.data)
-                    #gallery_image = form.gallery_image.data)
+                    #gallery_images = file_names)
 
         db.session.add(listing_pictures)
         db.session.commit()

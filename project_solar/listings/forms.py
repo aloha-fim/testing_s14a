@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, FileField, RadioField, TextAreaField, MultipleFileField
 from wtforms.validators import DataRequired
-from flask_wtf.file import FileAllowed
+from flask_wtf.file import FileAllowed, FileRequired
 
 class ListingPostForm(FlaskForm):
     listing_type = StringField('Listing Type')
@@ -31,6 +31,7 @@ class ListingSecondPostForm(FlaskForm):
 
 class ListingPictureForm(FlaskForm):
     thumbnail_image =  FileField('Thumbnail Image', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
+    gallery_images =  FileField(validators=[FileRequired()])
     submit = SubmitField("POST")
 
 #gallery_image =  MultipleFileField('Gallery Image')

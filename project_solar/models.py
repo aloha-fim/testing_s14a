@@ -156,12 +156,12 @@ class ListingPictures(db.Model):
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
 
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
-    thumbnail_image = db.Column(db.String(140))
-    gallery_image = db.Column(db.String(140))
+    thumbnail_image = db.Column(db.String(1024))
+    gallery_images = db.Column(db.String(1024))
 
-    def __init__(self,thumbnail_image,user_id):
+    def __init__(self,thumbnail_image, gallery_images, user_id):
         self.thumbnail_image = thumbnail_image
-        #self.gallery_image = gallery_image
+        self.gallery_images = gallery_images
         self.user_id = user_id
 
     def __repr__(self):

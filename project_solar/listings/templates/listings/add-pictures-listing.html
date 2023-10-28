@@ -1,3 +1,5 @@
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,8 +68,12 @@
 
 			}
 		})
+
+
 		
 	</script>
+
+
 
 	<!-- Favicon -->
 	<!-- <link rel="shortcut icon" href="static/assets/images/favicon.ico"> -->
@@ -97,6 +103,25 @@
 	<!-- Theme CSS -->
 	<!-- <link rel="stylesheet" type="text/css" href="static/assets/css/style.css"> -->
 	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
+
+
+	<script src="{{url_for('static', filename='assets/vendor/dropzone/js/dropzone.js')}}"></script>
+		
+	{% block javascript %}
+	<script>
+	
+	Dropzone.options.gallery_images = {
+	  init: function() {
+		this.on("processing", function(file) {
+			this.options.url = "{{ url_for('listings.upload') }}";
+		});
+	  }
+	};
+	</script>
+	{% endblock %}
+	
+	
+
 
 </head>
 
@@ -147,7 +172,7 @@ Steps START -->
 
 					<!-- Main content START -->
 					<div class="col-12">
-						<form action="{{ url_for('listings.upload') }}" method="post" enctype=multipart/form-data>
+						<form action="{{ url_for('listings.upload') }}" method="POST" enctype=multipart/form-data>
 							{{form.hidden_tag()}}
 							<!-- Step 1 content START -->
 							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
@@ -175,9 +200,9 @@ Steps START -->
 												</div>
 												
 												<!-- Image Gallery -->
-												<!--<div class="col-12">
+												<div class="col-12">
 													<label class="form-label">Upload image gallery *</label>
-													<div class="dropzone dropzone-custom" type="files" name="gallery_image" multiple id="gallery_image" data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}' >
+													<div class="dropzone dropzone-custom" type="file" name="gallery_images" id="gallery_images" multiple="true" action="{{ url_for('listings.upload') }}" data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}' >
 														<div class="dz-message needsclick">
 															<i class="bi bi-upload display-3"></i>    
 															<p>Drop files here or click to upload.</p>
@@ -203,7 +228,7 @@ Steps START -->
 														</div>
 													</div> 
 													<p class="small mb-0 mt-2"><b>Note:</b> Only JPG, JPEG, and PNG. Large images will be cropped to 4:3 to fit our thumbnails/previews.</p>
-												</div> -->
+												</div> 
 											</div>
 										</div>
 										<!-- Card body END -->
@@ -239,7 +264,7 @@ Footer START -->
 			<!-- Widget -->
 			<div class="col-md-4">
 				<div class="text-center text-md-start mb-3 mb-md-0">
-					<a href="{{ url_for('core.start') }}"> <img class="h-30px" src="static/assets/images/about/otto.png" alt="logo"> </a>
+					<a href="{{ url_for('core.start') }}"> <img class="h-30px" src="{{url_for('static', filename='assets/images/about/otto.png')}}" alt="logo"> </a>
 				</div> 
 			</div>
 			
@@ -278,12 +303,16 @@ Footer END -->
 <script src="{{url_for('static', filename='assets/vendor/stepper/js/bs-stepper.min.js')}}"></script>
 <!-- <script src="static/assets/vendor/quill/js/quill.min.js"></script> -->
 <script src="{{url_for('static', filename='assets/vendor/quill/js/quill.min.js')}}"></script>
-<!-- <script src="static/assets/vendor/dropzone/js/dropzone.js"></script> -->
-<script src="{{url_for('static', filename='assets/vendor/dropzone/js/dropzone.js')}}"></script>
+
 
 <!-- ThemeFunctions -->
 <!-- <script src="static/assets/js/functions.js"></script> -->
 <script src="{{url_for('static', filename='assets/js/functions.js')}}"></script>
 
+
+
 </body>
 </html>
+
+
+{% endblock %}
