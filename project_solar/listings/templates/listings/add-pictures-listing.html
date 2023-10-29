@@ -101,7 +101,6 @@
 	<link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
 
 
-
 </head>
 
 <body>
@@ -151,7 +150,7 @@ Steps START -->
 
 					<!-- Main content START -->
 					<div class="col-12">
-						<form action="{{ url_for('listings.upload') }}" method="POST" id="myawesomedropzone" enctype=multipart/form-data>
+						<form action="{{ url_for('listings.upload') }}" method="POST" enctype=multipart/form-data>
 							{{form.hidden_tag()}}
 							<!-- Step 1 content START -->
 							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
@@ -181,7 +180,7 @@ Steps START -->
 												<!-- Image Gallery -->
 												<div class="col-12">
 													<label class="form-label">Upload image gallery *</label>
-													<div class="dropzone dropzone-custom" type="file" action="{{ url_for('listings.upload') }}" name="gallery_images" multiple="true" data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}' >
+													<div class="dropzone dropzone-custom" type="file" name="gallery_images" id="dropper" multiple="true" data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}'>
 														<div class="dz-message needsclick">
 															<i class="bi bi-upload display-3"></i>    
 															<p>Drop files here or click to upload.</p>
@@ -222,7 +221,7 @@ Steps START -->
 						</form>
 						<script src="{{url_for('static', filename='assets/vendor/dropzone/js/dropzone.js')}}"></script>	
 
-						{% block javascript %}
+						<!--
 						<script>
 						
 							Dropzone.options.myawesomedropzone = {
@@ -233,8 +232,21 @@ Steps START -->
 								  }
 							};
 						</script>
-						{% endblock %}
+						-->
 	
+						{% block javascript %}
+						<script>
+							Dropzone.options.dropper = {
+								paramName: "file",
+								chunking: true,
+								forceChunking: true,
+								url: "/listings/upload",
+								maxFilesize: 1025, // megabytes
+								chunkSize: 1000000 // bytes
+							}
+						</script>
+						{% endblock %}
+						
 					<!-- Main content END -->	
 					</div>
 					<!-- Main content END -->
@@ -303,8 +315,6 @@ Footer END -->
 <!-- ThemeFunctions -->
 <!-- <script src="static/assets/js/functions.js"></script> -->
 <script src="{{url_for('static', filename='assets/js/functions.js')}}"></script>
-
-
 
 
 

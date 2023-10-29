@@ -755,7 +755,7 @@ var e = {
                 addRemoveLinks: true,
                 previewsContainer: d.querySelector(".dz-preview"),
                 previewTemplate: d.querySelector(".dz-preview").innerHTML,
-                url: '/upload', // Change this URL to your actual image upload code
+                url: '/listings/upload', // Change this URL to your actual image upload code
                 // Now fake the file upload, since GitHub does not handle file uploads
                 // and returns a 404
                 // https://docs.dropzone.dev/getting-started/setup/server-side-implementation
