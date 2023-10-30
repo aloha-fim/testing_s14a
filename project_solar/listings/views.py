@@ -281,21 +281,28 @@ def upload():
             file.save(os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('uploaded_file',filename=filename))
 
-        if 'gallery_images' not in request.files:
-            flash('No file part')
-            return redirect(request.url)
+        #if 'gallery_images' not in request.files:
+        #    flash('No file part')
+        #    return redirect(request.url)
         
-        files = request.files.getlist('gallery_images')
-        file_names = []
-        for file in files:
-            if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
-                file_names.append(filename)
-                file.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], filename))
-		#else:
-		#	flash('Allowed image types are -> png, jpg, jpeg, gif')
-		#	return redirect(request.url)
 
+        files = request.files['gallery_images']
+        filename = secure_filename(files.filename)
+        files.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], filename))
+        #files = request.files.getlist("gallery_images")
+
+        #if not files or not any(f for f in files):
+        #    flash('No file in dropzone')
+        #    return redirect(request.url)
+
+ 
+        #file_names = []
+        #for file in files:
+        #    if file and allowed_file(file.filename):
+        #        filename = secure_filename(file.filename)
+        #        file_names.append(filename)
+        #        file.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], filename))
+	
 
     #if request.method == 'POST':
 

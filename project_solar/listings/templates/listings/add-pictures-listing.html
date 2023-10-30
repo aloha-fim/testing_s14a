@@ -107,8 +107,7 @@
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 {% block content %}		
-<!-- =======================
-Page Banner START -->
+
 <section class="pb-0">
 	<div class="container">
 		<div class="row">
@@ -148,7 +147,7 @@ Steps START -->
 
 					<!-- Main content START -->
 					<div class="col-12">
-						<form action="{{ url_for('listings.upload') }}" method="POST" enctype=multipart/form-data>
+						<form action="{{ url_for('listings.upload') }}" method="POST" id="dropper" class="dropzone" enctype=multipart/form-data>
 							{{form.hidden_tag()}}
 							<!-- Step 1 content START -->
 							<div id="step-1" role="tabpanel" class="content fade" aria-labelledby="steppertrigger1">
@@ -178,7 +177,7 @@ Steps START -->
 												<!-- Image Gallery -->
 												<div class="col-12">
 													<label class="form-label">Upload image gallery *</label>
-													<div class="dropzone dropzone-custom" type="file" name="gallery_images" id="dropper" multiple="true" data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}'>
+													<div class="dropzone dropzone-custom" type="file" name="gallery_images" multiple="true" data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}'>
 														<div class="dz-message needsclick">
 															<i class="bi bi-upload display-3"></i>    
 															<p>Drop files here or click to upload.</p>
@@ -254,14 +253,10 @@ Steps START -->
 		</div>
 	</div>
 </section>
-<!-- =======================
-Steps END -->
+
 {% endblock %}
 </main>
-<!-- **************** MAIN CONTENT END **************** -->
 
-<!-- =======================
-Footer START -->
 <footer class="bg-dark p-3">
 	<div class="container">
 		<div class="row align-items-center">
