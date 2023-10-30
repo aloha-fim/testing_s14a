@@ -116,11 +116,25 @@ FROM products;
 
 -- 1. Write a conditional that will categorize each order as
 --    'West Coast' (if it was shipped to CA, OR, or WA) or 'Other'
-
+SELECT *,
+   CASE 
+      WHEN (product = 'CA') THEN 'West Coast'
+      WHEN (product = 'OR') THEN 'West Coast'
+      WHEN (product = 'WA') THEN 'West Coast'
+   ELSE "Other"
+   END;
+FROM products
 
 -- 2. Modify the last query with a GROUP BY statement, to find
 --    the number of orders shipped to West Coast states vs Others.
-
+SELECT SUM(quantity),
+   CASE  
+      WHEN (state = 'CA') THEN 'West Coast'
+      WHEN (state = 'OR') THEN 'West Coast'
+      WHEN (state = 'WA') THEN 'West Coast'
+   END as state_area;
+FROM products
+GROUP BY state_area
 
 -- 3. Write a conditional to divide users into 3 groups, based on their created_at: 
 --    early for accounts created in 2019 (the entire year) or prior
@@ -128,7 +142,13 @@ FROM products;
 --    late for accounts created in 2021 or later
 --    Reminder: If you do not specify hours for a datetime column, the hours default to 00:00:00
 --    So be sure to cast the datetime as a date to go all the way through the end of the day.
-
+SELECT *,
+   CASE 
+      WHEN (created_at <= 2019) THEN 'early'
+      WHEN (created_at == 2020) THEN 'moderate'
+      WHEN (created_at => 2021) THEN 'late'
+   END;
+FROM products
 
 -- 4. We want to count the number of orders made by each group in the query above.
 --    The users table doesn't have order info, so the first step is to 
@@ -137,11 +157,27 @@ FROM products;
 --    but you'll need it the step below when we group the data.
 --    NOTE: Because created_at exists in both tables, you'll need to
 --    prefix the table name or alias (example: users.created_at)
+SELECT
+   CASE 
+      WHEN (created_at <= 2019) THEN 'early'
+      WHEN (created_at == 2020) THEN 'moderate'
+      WHEN (created_at => 2021) THEN 'late'
+   END AS u.created_at;
+FROM users u
+JOIN orders o ON p.id = o.id
 
 
 -- 5. Modify the query above, adding a GROUP BY to find which 
 --    group of users made more orders: early, middle, or late.
-
+SELECT
+   CASE 
+      WHEN (created_at <= 2019) THEN 'early'
+      WHEN (created_at == 2020) THEN 'moderate'
+      WHEN (created_at => 2021) THEN 'late'
+   END AS u.created_at;
+FROM users u
+JOIN orders o ON p.id = o.id
+GROUP BY u.created_at
 
 ----------------------------------------
 -- EXTRA CREDIT: If you finish early.

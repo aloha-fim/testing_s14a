@@ -10,11 +10,13 @@ import os
 import stripe
 
 UPLOAD_FOLDER = 'static\listing_pics'
+DROPZONE_FOLDER = 'static\dropzone_pics'
 
 
 
 listings = Blueprint('listings',__name__, template_folder="templates")
 current_app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+current_app.config['DROPZONE_FOLDER'] = DROPZONE_FOLDER
 current_app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 stripe_keys = {
@@ -289,7 +291,7 @@ def upload():
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
                 file_names.append(filename)
-                file.save(os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'], filename))
+                file.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], filename))
 		#else:
 		#	flash('Allowed image types are -> png, jpg, jpeg, gif')
 		#	return redirect(request.url)

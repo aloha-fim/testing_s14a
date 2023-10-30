@@ -1,5 +1,3 @@
-{% block content %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,7 +106,7 @@
 
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
-	
+{% block content %}		
 <!-- =======================
 Page Banner START -->
 <section class="pb-0">
@@ -240,7 +238,7 @@ Steps START -->
 								paramName: "file",
 								chunking: true,
 								forceChunking: true,
-								url: "/listings/upload",
+								url: {{ url_for('listings.upload') }},
 								maxFilesize: 1025, // megabytes
 								chunkSize: 1000000 // bytes
 							}
@@ -258,7 +256,7 @@ Steps START -->
 </section>
 <!-- =======================
 Steps END -->
-
+{% endblock %}
 </main>
 <!-- **************** MAIN CONTENT END **************** -->
 
@@ -322,4 +320,3 @@ Footer END -->
 </html>
 
 
-{% endblock %}

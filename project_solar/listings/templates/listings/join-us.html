@@ -36,7 +36,7 @@ Main Banner START -->
 			</div>
 			<!-- Image -->
 			<div class="col-lg-5 text-center">
-				<img src="static/assets/images/element/join-us.svg" alt="">
+				<img src="{{url_for('static', filename="assets/images/element/join-us.svg")}}" alt="">
 			</div>
 		</div>
 	</div>
@@ -106,7 +106,7 @@ Benefits START -->
 						<!-- Card START -->
 						<div class="col-md-6">
 							<div class="card card-body p-4">
-							 <div><img src="static/assets/images/element/18.svg" class="h-70px mb-3" alt=""></div> 
+							 <div><img src="{{url_for('static', filename="assets/images/element/18.svg")}}" class="h-70px mb-3" alt=""></div> 
 								<h5>Self Selficiency</h5>
 								<p class="mb-0">Food Security is Survival.</p>
 							</div>
@@ -116,7 +116,7 @@ Benefits START -->
 						<!-- Card START -->
 						<div class="col-md-6">
 							<div class="card card-body p-4">
-								<div><img src="static/assets/images/element/21.svg" class="h-70px mb-3" alt=""></div>
+								<div><img src="{{url_for('static', filename="assets/images/element/21.svg")}}" class="h-70px mb-3" alt=""></div>
 								<h5>Less Waste</h5>
 								<p class="mb-0">When you own grow it, you value it.</p>
 							</div>
@@ -126,7 +126,7 @@ Benefits START -->
 						<!-- Card START -->
 						<div class="col-md-6">
 							<div class="card card-body p-4">
-								<div><img src="static/assets/images/element/19.svg" class="h-70px mb-3" alt=""></div>
+								<div><img src="{{url_for('static', filename="assets/images/element/19.svg")}}" class="h-70px mb-3" alt=""></div>
 								<h5>Parity</h5>
 								<p class="mb-0">Food inflation where millions go to Ag CEO's or ...</p>
 							</div>
@@ -136,7 +136,7 @@ Benefits START -->
 						<!-- Card START -->
 						<div class="col-md-6">
 							<div class="card card-body p-4">
-								<div><img src="static/assets/images/element/20.svg" class="h-70px mb-3" alt=""></div>
+								<div><img src="{{url_for('static', filename="assets/images/element/20.svg")}}" class="h-70px mb-3" alt=""></div>
 								<h5>Creation</h5>
 								<p class="mb-0">Fulfills the Soul</p>
 							</div>
@@ -179,7 +179,7 @@ Testimonials START -->
 							<div class="row g-4">
 								<!-- Image -->
 								<div class="col-md-4">
-									<img src="static/assets/images/team/09.jpg" class="rounded" alt="">
+									<img src="{{url_for('static', filename="assets/images/team/09.jpg")}}" class="rounded" alt="">
 								</div>
 								<!-- Content -->
 								<div class="col-md-8">
@@ -205,7 +205,7 @@ Testimonials START -->
 							<div class="row g-4">
 								<!-- Image -->
 								<div class="col-md-4">
-									<img src="static/assets/images/team/06.jpg" class="rounded" alt="">
+									<img src="{{url_for('static', filename="assets/images/team/06.jpg")}}" class="rounded" alt="">
 								</div>
 								<!-- Content -->
 								<div class="col-md-8">
@@ -248,7 +248,7 @@ Action box START -->
 					<div class="row g-4 justify-content-between align-items-center">
 						<!-- Image -->
 						<div class="col-sm-3 col-lg-2">
-							<img src="static/assets/images/element/22.svg" alt="">
+							<img src="{{url_for('static', filename="assets/images/element/22.svg")}}" alt="">
 						</div>
 
 						<!-- Title and content -->
@@ -301,14 +301,14 @@ Footer START -->
 <div class="back-top"></div>
 
 <!-- Bootstrap JS -->
-<script src="static/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{url_for('static', filename="assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js")}}"></script>
 
 <!-- Vendors -->
-<script src="static/assets/vendor/tiny-slider/tiny-slider.js"></script>
-<script src="static/assets/vendor/purecounterjs/dist/purecounter_vanilla.js"></script>
+<script src="{{url_for('static', filename="assets/vendor/tiny-slider/tiny-slider.js")}}"></script>
+<script src="{{url_for('static', filename="assets/vendor/purecounterjs/dist/purecounter_vanilla.js")}}"></script>
 
 <!-- ThemeFunctions -->
-<script src="static/assets/js/functions.js"></script>
+<script src="{{url_for('static', filename="assets/js/functions.js")}}"></script>
 
 </body>
 </html>
