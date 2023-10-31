@@ -285,39 +285,27 @@ def upload():
         #    flash('No file part')
         #    return redirect(request.url)
         
-
-        files = request.files['gallery_images']
-        filename = secure_filename(files.filename)
-        files.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], filename))
-        #files = request.files.getlist("gallery_images")
+        
+        #files = request.files['gallery_images']
+        #file_name = secure_filename(files.filename)
+        #files.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], file_name))
+        #dropfiles = request.files.getlist('gallery_images')
 
         #if not files or not any(f for f in files):
         #    flash('No file in dropzone')
         #    return redirect(request.url)
 
- 
-        #file_names = []
-        #for file in files:
-        #    if file and allowed_file(file.filename):
-        #        filename = secure_filename(file.filename)
-        #        file_names.append(filename)
-        #        file.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], filename))
+        dropfiles = request.files.getlist('gallery_images')
+        print(dropfiles)
+        file_names = []
+        for file in dropfiles or []:
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], filename))
+                file_names.append(file.filename)
 	
 
     #if request.method == 'POST':
-
-       
-        #for f in request.files.getlist('file'):
-        #for file in request.files.getlist('file'):
-            #filename = secure_filename(f.filename)
-            #f.save(os.path.join(os.path.join(listings.root_path, 'static'), f.filename))
-            #file.save(os.path.join(os.path.join(listings.root_path, 'static'), file.filename))
-            #file.save(os.path.join(current_app.config['GALLERY_FOLDER'], file.filename))
-            #f.save(os.path.join(listings.root_path, 'static\listing_pics', f.filename))
-            #f.save(os.path.join(current_app.root_path, 'static\listing_pics',f.filename))
-            #f.save(os.path.join(os.path.join(listings.root_path, 'upload'), f.filename))
-            #f.save(os.path.join(current_app.root_path + '/'+ 'static/listing_pics/'),f.filename)
-            #f.save(os.path.join(os.path.join(listings.root_path, 'static'), f.filename))
 
         #files_filenames = []
         #for file in request.files.getlist('files'):
@@ -329,7 +317,7 @@ def upload():
         #filename = secure_filename(form.thumbnail_image.data.filename)
         listing_pictures = ListingPictures(user_id=current_user.id,
                     thumbnail_image = filename,
-                    gallery_images = file_names)
+                    gallery_images = file.filename)
                     #thumbnail_image = form.thumbnail_image.data)
                     #gallery_images = file_names)
 
