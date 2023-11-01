@@ -74,13 +74,12 @@ def create_checkout_session(listing_id):
             
         )
 
-        if request.method == 'POST':
-            userid = current_user.id
-            listingid = listing_id
-            customer = StripeCustomer(listing_id=listingid,
-                                      user_id=userid)
-            db.session.add(customer)
-            db.session.commit()
+        userid = current_user.id
+        listingid = listing_id
+        customer = StripeCustomer(listing_id=listingid,
+                                  user_id=userid)
+        db.session.add(customer)
+        db.session.commit()
 
         return jsonify({"sessionId": checkout_session["id"]})
 
@@ -124,10 +123,13 @@ def stripe_webhook():
 def handle_checkout_session(session):
     print("Payment was successful.")
     # TODO: run some custom code here
-
     for item in session.line_items.data:
         print(f'Item quantity: {item.quantity} - {item.currency.upper()}')
             #  f'${item.amount_total/100:.02f} {item.currency.upper()}')
+
+
+
+        
 
 
 @listings.route("/success")

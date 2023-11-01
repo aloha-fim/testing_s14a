@@ -202,15 +202,17 @@ Tabs-content START -->
 					
 								</ul>
 								<div class="row g-4">
+									{% for gallery in gallery_images %}
 									<div class="col-md-4">
-										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
+										<img src="{{url_for('static',filename='dropzone_pics/')}}{{picture.gallery[0]}}" class="rounded-3" alt="">
 									</div>
 									<div class="col-md-4">
-										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
+										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.gallery[1]}}" class="rounded-3" alt="">
 									</div>
 									<div class="col-md-4">
-										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
+										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.gallery[2]}}" class="rounded-3" alt="">
 									</div>
+									{% endfor %}
 								</div>
 								<br>
 								<!-- List -->
