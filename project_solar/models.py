@@ -2,6 +2,7 @@ from project_solar import db,login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
+from sqlalchemy.dialects.postgresql import ARRAY
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -157,8 +158,8 @@ class ListingPictures(db.Model):
 
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     thumbnail_image = db.Column(db.String(1024))
-    gallery_images = db.Column(db.String(1024))
-
+    gallery_images = db.Column(ARRAY(db.String(1024)))
+    
     def __init__(self,thumbnail_image, gallery_images, user_id):
         self.thumbnail_image = thumbnail_image
         self.gallery_images = gallery_images

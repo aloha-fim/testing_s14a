@@ -188,7 +188,7 @@ def details(listing_id):
     listingPosts = ListingPost.query.filter_by(id=listing_id)
     listingSecondPosts = ListingSecondPost.query.filter_by(id=listing_id)
     listingPicturePosts = ListingPictures.query.filter_by(id=listing_id)
-    
+
     return render_template('listings/tour-detail.html', listingPosts=listingPosts, listingSecondPosts=listingSecondPosts, listingPicturePosts=listingPicturePosts)
 
 @listings.route('/results_list')
@@ -313,7 +313,9 @@ def upload():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], filename))
                 file_names.append(file.filename)
-	
+                
+                #resultList = list(file_names.values())
+
 
     #if request.method == 'POST':
 
@@ -327,7 +329,7 @@ def upload():
         #filename = secure_filename(form.thumbnail_image.data.filename)
         listing_pictures = ListingPictures(user_id=current_user.id,
                     thumbnail_image = filename,
-                    gallery_images = file.filename)
+                    gallery_images = file_names)
                     #thumbnail_image = form.thumbnail_image.data)
                     #gallery_images = file_names)
 
