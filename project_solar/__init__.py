@@ -50,6 +50,15 @@ app.app_context().push()
 # 4) python3 app.py
 ############################################################
 
+############################################################
+#stripe..x8>stripe login
+#stripe listen --forward-to localhost:4242/webhook
+#stripe trigger payment_intent.succeeded
+#stripe listen --forward-connect-to localhost:5000/listings/webhook
+#stripe trigger payment_intent.succeeded
+############################################################
+
+
 
 #################
 # LOGIN CONFIGS

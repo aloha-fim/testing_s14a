@@ -176,8 +176,8 @@ Steps START -->
 												<!-- Image Gallery -->
 												<div class="col-12">
 													<label class="form-label">Upload image gallery *</label>
-													<div class="dropzone dropzone-custom" data-dropzone='{"maxFiles": 5, "addRemoveLinks": false}' action="{{ url_for('listings.upload') }}" id="dropper" >
-														<input multiple type="file" name="gallery_images"/> 
+													<div class="dropzone dropzone-custom" action="{{ url_for('listings.upload') }}" id="dropper" >
+														<input type="file" name="gallery_images" multiple="true"/> 
 														<div class="dz-message needsclick">
 															<i class="bi bi-upload display-3"></i>    
 															<p>Drop files here or click to upload.</p>
@@ -241,7 +241,7 @@ Steps START -->
 								forceChunking: true,
 								url: {{ url_for('listings.upload') }},
 								method: "post",
-								maxFilesize: 1025, // megabytes
+								maxFilesize: 4025, // megabytes
 								chunkSize: 1000000, // bytes
 								addRemoveLinks: true,
 								autoDiscover: false,
@@ -250,7 +250,17 @@ Steps START -->
 								maxFiles: 5,
 								acceptedFiles: ".jpeg,.jpg,.png",
 								autoProcessQueue: false,
-								uploadMultiple: true
+								init: function() {
+									var myDropzone = this;
+								
+									// First change the button to actually tell Dropzone to process the queue.
+									this.element.querySelector("button[type=submit]").addEventListener("click", function(e) {
+									  // Make sure that the form isn't actually being sent.
+									  e.preventDefault();
+									  e.stopPropagation();
+									  myDropzone.processQueue();
+									});
+								}
 							}
 						</script>
 						{% endblock %}

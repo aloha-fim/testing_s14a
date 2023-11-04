@@ -134,14 +134,14 @@ Tour grid START -->
 		<div class="row g-4">
 			{% for post, second, picture in posts %}
 			<!-- Card item START -->
-			<div class="col-md-6 col-xl-4">
+			<div class="col-sm-6 col-lg-4 col-xl-3">
 				<div class="card card-hover-shadow pb-0 h-100">
 					<!-- Overlay item -->
 					<div class="position-relative">
 						<!-- Image -->
-						<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img-top" alt="Card image" width="100" height="100">
+						<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img-top" alt="Card image">
 						<!-- Overlay -->
-						<div class="card-img-overlay d-flex flex-column p-4 z-index-1">
+						<div class="card-img-overlay d-flex flex-column p-1 z-index-1">
 							<!-- Card overlay top -->
 							<div> <span class="badge text-bg-dark">{{post.listing_name}}</span> </div>
 							<!-- Card overlay bottom -->
@@ -155,7 +155,7 @@ Tour grid START -->
 					<!-- Card body START -->
 					<div class="card-body px-3">
 						<!-- Title -->
-						<h5 class="card-title mb-0"><a href="{{url_for('listings.details', listing_id=post.id)}}" class="stretched-link">{{post.short_description}}</a></h5>
+						<h6 class="card-title mb-0"><a href="{{url_for('listings.details', listing_id=post.id)}}" class="stretched-link">{{post.short_description}}</a></h6>
 						<span class="small"><i class="far fa-calendar-alt me-2"></i>{{post.amount_land}}</span>
 
 						<!-- List -->
@@ -163,7 +163,7 @@ Tour grid START -->
 							<li class="nav-item h6 fw-normal mb-0">
 								<i class="fa-solid fa-hotel text-info me-2"></i>{{post.city}}
 							</li>
-							<li class="nav-item h6 fw-normal mb-0">
+							<li class="nav-item h7 fw-normal mb-0">
 								<i class="fa-solid fa-person-skating text-danger me-2"></i>{{second.amenities}}
 							</li>
 						</ul>

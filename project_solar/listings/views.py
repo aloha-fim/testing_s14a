@@ -285,7 +285,7 @@ def upload():
             #file.save(os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('uploaded_file',filename=filename))
 
-            output_size = (200,200)
+            output_size = (200,300)
 
             pic = Image.open(file)
             pic.thumbnail(output_size)
