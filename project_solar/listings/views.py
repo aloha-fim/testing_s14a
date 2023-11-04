@@ -1,6 +1,7 @@
 from flask import render_template, url_for, flash, abort, request, redirect, Blueprint, current_app, jsonify
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
+from PIL import Image
 from project_solar import db
 from project_solar.models import ListingPost, ListingSecondPost, ListingPictures, StripeCustomer
 from project_solar.listings.forms import ListingPostForm, ListingSecondPostForm, ListingPictureForm
@@ -280,8 +281,15 @@ def upload():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'], filename))
+            filepath = os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'], filename)
+            #file.save(os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('uploaded_file',filename=filename))
+
+            output_size = (200,200)
+
+            pic = Image.open(file)
+            pic.thumbnail(output_size)
+            pic.save(filepath)
 
         #if 'gallery_images' not in request.files:
         #    flash('No file part')
