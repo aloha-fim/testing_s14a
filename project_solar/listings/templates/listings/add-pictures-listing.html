@@ -176,8 +176,8 @@ Steps START -->
 												<!-- Image Gallery -->
 												<div class="col-12">
 													<label class="form-label">Upload image gallery *</label>
-													<div class="dropzone dropzone-custom" action="{{ url_for('listings.upload') }}" id="dropper" >
-														<input type="file" name="gallery_images" multiple="true"/> 
+													<div class="dropzone dropzone-custom" name="gallery_images" action="{{ url_for('listings.upload') }}" id="dropper" >
+														<!-- <input name="gallery_images" multiple="true"/> --> 
 														<div class="dz-message needsclick">
 															<i class="bi bi-upload display-3"></i>    
 															<p>Drop files here or click to upload.</p>
