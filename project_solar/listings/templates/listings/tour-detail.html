@@ -212,7 +212,7 @@ Tabs-content START -->
 										
 										<!-- {% endfor %}-->
 									{% endfor %}
-									
+						
 								</div>
 								<br>
 								<!-- List -->
@@ -220,7 +220,7 @@ Tabs-content START -->
 
 								<ul class="list-group list-group-borderless mb-0">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
-										<i class="fa-solid fa-check-circle text-success me-2"></i>Guidel{{post.amount_land}}nded.
+										<i class="fa-solid fa-check-circle text-success me-2"></i>LISTING TYPE {{post.listing_type}}
 									</li>
 									
 								</ul>
@@ -289,7 +289,7 @@ Tabs-content START -->
 																	</div>
 
 																	<h6 class="mb-0 fw-light small mt-2">
-																		Room t{{post.amount_land}}ction
+																		LISTING NAME {{post.amount_land}}
 																
 																	</h6>
 																</div>
@@ -303,20 +303,20 @@ Tabs-content START -->
 																	</div>
 
 																	<!-- Title -->
-																	<h5 class="card-title mb-1"><a href="hotel-detail.html">Cour{{post.amount_land}}ew York </a></h5>
-																	<span>2.9km {{post.amount_land}}ort</span>
-																	<small class="mb-2"><i class="bi bi-geo-alt me-2"></i>Ba{{post.amount_land}}a</small>
+																	<h5 class="card-title mb-1"><a href="hotel-detail.html">SHORT DESCRIPTION {{post.short_description}}</a></h5>
+																	<span>COUNTRY {{post.country}}</span>
+																	<small class="mb-2"><i class="bi bi-geo-alt me-2"></i>STATE {{post.state}}</small>
 																	
 																	<!-- List -->
 																	<ul class="list-group list-group-borderless mb-0 mt-2 small">
 																		<li class="list-group-item d-flex p-0">
-																			<i class="far fa-calendar-alt me-2"></i>Tue,{{post.amount_land}}22
+																			<i class="far fa-calendar-alt me-2"></i>CITY {{post.city}}
 																		</li>
 																		<li class="list-group-item d-flex text-success p-0">
-																			<i class="bi bi-patch-check-fill me-2"></i>Free{{post.amount_land}}ast
+																			<i class="bi bi-patch-check-fill me-2"></i>POSTAL CODE {{post.postal_code}}
 																		</li>
 																		<li class="list-group-item d-flex p-0">
-																			<i class="bi bi-arrow-right text-primary me-2"></i>Tan{{post.amount_land}}our
+																			<i class="bi bi-arrow-right text-primary me-2"></i>STREET {{post.street}}
 																		</li>														
 																	</ul>
 
@@ -348,9 +348,9 @@ Tabs-content START -->
 												
 												<!-- List -->
 												<ul>
-													<li class="mb-2">Get{{post.amount_land}}.</li>
-													<li class="mb-2">Son agreed to others Ex{{post.amount_land}}retss.</li>
-													<li class="mb-2">Insi{{post.amount_land}}.</li>
+													<li class="mb-2">LONGITUDE {{post.longitude}}.</li>
+													<li class="mb-2">LATITUDE {{post.latitude}}</li>
+													<li class="mb-2">AMENIITES {{second.amenities}}.</li>
 												</ul>
 		
 												<div class="row g-4">
@@ -379,18 +379,18 @@ Tabs-content START -->
 										<!-- Body -->
 										<div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionExample2">
 											<div class="accordion-body mt-3">
-												Post n{{post.amount_land}}lors.
+												DESCRIPTION {{second.listing_description}}
 											</div>
 										
 										<!-- Flight list START -->
 										
 											<!-- Card header -->
 											<div class="card-header bg-transparent p-0">
-												<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>Fl{{post.amount_land}}s</span>
+												<span class="text-body"><i class="fa-solid fa-check-circle me-2"></i>TOTAL ROOM {{second.total_room}}</span>
 												<div class="p-3 bg-light rounded-2 d-sm-flex justify-content-sm-between align-items-center mb-4 mt-2">
 													<!-- Airline Name -->
-													<h6 class="mb-0">New {{post.amount_land}}Yora</h6>
-													<h6 class="fw-normal mb-0"><span class="text-body">Your Mark:</span> ds{{post.amount_land}}</h6>
+													<h6 class="mb-0">TOTAL FLOOR {{second.total_floor}}</h6>
+													<h6 class="fw-normal mb-0"><span class="text-body">Your Mark:</span>ROOM AREA {{second.room_area}}</h6>
 												</div>
 											</div>
 
@@ -403,20 +403,20 @@ Tabs-content START -->
 														<!-- Image -->
 														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="w-80px mb-3" alt="">
 														<!-- Title -->
-														<h6 class="fw-normal small mb-0">Phi{{post.amount_land}}ine</h6>
+														<h6 class="fw-normal small mb-0">ROOM NAME {{second.room_name}}</h6>
 													</div>
 					
 													<!-- Airport detail -->
 													<div class="col-4 col-md-3">
 														<!-- Title -->
-														<h5>C{{post.amount_land}}G</h5>
-														<h6 class="mb-0">2{{post.amount_land}}pm</h6>
+														<h5>ROOM PRICE {{second.room_price}}</h5>
+														<h6 class="mb-0">DISCOUNT {{second.discount}}</h6>
 													</div>
 					
 													<!-- Time -->
 													<div class="col-4 col-md-3 text-center">
 														<!-- Time -->
-														<h6>5hr{{post.amount_land}}n</h6>
+														<h6>ADDITIONAL INFO {{second.additional_info}}</h6>
 					
 														<div class="position-relative my-4">
 															<!-- Line -->
@@ -432,7 +432,7 @@ Tabs-content START -->
 													<div class="col-4 col-md-3 text-end">
 														<!-- Title -->
 														<h5>J{{post.amount_land}}</h5>
-														<h6 class="mb-0">7:{{post.amount_land}}m</h6>
+														<h6 class="mb-0">AMOUNT LAND {{post.amount_land}}</h6>
 													</div>
 					
 												</div>
