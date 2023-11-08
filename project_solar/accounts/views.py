@@ -13,7 +13,7 @@ accounts = Blueprint('accounts',__name__, template_folder="templates")
 @login_required
 def account_bookings():
     stripeCustomer = StripeCustomer.query.filter_by(user_id=current_user.id)
-    paidPosts = ListingPost.query.filter_by(id=stripeCustomer.listing_id)
+    paidPosts = ListingPost.query.filter(ListingPost.user_id == current_user.id, ListingPost.id == StripeCustomer.listing_id).all()
 
     # page = request.args.get('page',1,type=int)
     # posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=9)  
