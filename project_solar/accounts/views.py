@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, abort, request, redirect, Blueprint, current_app
 from flask_login import current_user, login_required, login_user, logout_user
 from project_solar import db
-from project_solar.models import ListingPost, ListingSecondPost, ListingPictures, User
+from project_solar.models import ListingPost, ListingSecondPost, ListingPictures, User, StripeCustomer
 from project_solar.listings.forms import ListingPostForm, ListingSecondPostForm, ListingPictureForm
 from project_solar.users.forms import RegistrationForm, LoginForm, UpdateUserForm 
 from project_solar.users.picture_handler import add_profile_pic
@@ -12,6 +12,9 @@ accounts = Blueprint('accounts',__name__, template_folder="templates")
 @accounts.route('/account_bookings',methods=['GET','POST'])
 @login_required
 def account_bookings():
+    stripeCustomer = StripeCustomer.query.filter_by(user_id=current_user.id)
+    paidPosts = ListingPost.query.filter_by(id=stripeCustomer.listing_id)
+
     # page = request.args.get('page',1,type=int)
     # posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=9)  
     form = UpdateUserForm()
@@ -33,4 +36,4 @@ def account_bookings():
         form.email.data = current_user.email
 
     profile_image = url_for('static', filename='profile_pics/'+current_user.profile_image) 
-    return render_template('accounts/account-bookings.html',profile_image=profile_image,form=form)
+    return render_template('accounts/account-bookings.html',profile_image=profile_image,form=form,paidPosts=paidPosts)

@@ -359,7 +359,7 @@ Tabs-content START -->
 												<div class="p-3 bg-light rounded-2 d-sm-flex justify-content-sm-between align-items-center mb-4 mt-2">
 													<!-- Airline Name -->
 													<h6 class="mb-0">{{second.listing_description}}</h6>
-													<h6 class="fw-normal mb-0"><span class="text-body">Your Goal:</span>{{second.room_area}}</h6>
+													<h6 class="fw-normal mb-0"><span class="text-body">Your Contribution: </span>{{second.room_area}}</h6>
 												</div>
 											</div>
 
@@ -388,6 +388,14 @@ Tabs-content START -->
 																
 															</div>
 														</div>
+													</div>
+
+													<!-- Air line name -->
+													<div class="col-md-3">
+														<!-- Image -->
+														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="w-80px mb-3" alt="">
+														<!-- Title -->
+														<h6 class="fw-normal small mb-0">{{second.room_name}}</h6>
 													</div>
 					
 													
