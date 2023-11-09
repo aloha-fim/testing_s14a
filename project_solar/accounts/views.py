@@ -9,6 +9,12 @@ import os
 
 accounts = Blueprint('accounts',__name__, template_folder="templates")
 
+@accounts.route('/agent_dashboard')
+def agent_dashboard():
+    return render_template('accounts/agent-dashboard.html')
+
+
+
 @accounts.route('/account_bookings',methods=['GET','POST'])
 @login_required
 def account_bookings():
