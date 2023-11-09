@@ -13,7 +13,9 @@ accounts = Blueprint('accounts',__name__, template_folder="templates")
 def agent_dashboard():
     return render_template('accounts/agent-dashboard.html')
 
-
+@accounts.route('/agent_activities')
+def agent_activities():
+    return render_template('accounts/agent-activities.html')
 
 @accounts.route('/account_bookings',methods=['GET','POST'])
 @login_required
