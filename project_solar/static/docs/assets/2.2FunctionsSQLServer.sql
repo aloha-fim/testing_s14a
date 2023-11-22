@@ -44,6 +44,19 @@ SELECT li.id, user_id, room_price, quantity, discount
 FROM listing_post li
 JOIN listing_second_post ls ON li.id = ls.id;
 
+-- FI
+CREATE VIEW all_users_and_room_price_view AS
+SELECT user_id, room_price,
+   CASE
+      WHEN (room_price < 100) THEn 'cheap'
+      WHEN (room_price > 100) THEN 'expensive'
+      ELSE 'just right'
+   END AS room_price_type
+FROM listing_post li
+JOIN listing_second_post ls on li.id = ls.id
+
+SELECT * from all_users_and_room_price_view;
+
 -- 7. See what's in the view
 SELECT * FROM all_orders_view;
 
@@ -53,7 +66,7 @@ FROM all_orders_view
 WHERE user_id = 99
 AND status != 'returned';
 
-SELECT * 
+SELECT *
 FROM all_orders_view
 WHERE user_id = 99
 AND discount != 5;
@@ -169,6 +182,22 @@ RETURN (
    WHERE user_id = @the_user
    AND status != 'returned'
 );
+
+CREATE FUNCTION fn_get_user_total_spent_and_total_quantity( @the_user INT )
+RETURNS TABLE
+AS
+RETURN (
+   SELECT
+      SUM(quantity) AS total_quantity,
+      SUM(price * quantity) AS total_spent
+   FROM line_items li
+   JOIN orders o ON o.order_id = li.order_id
+   WHERE user_id = @the_user
+   AND status != 'returned'
+);
+
+SELECT fn_get_user_total_spent_and_total_quantity(44);
+
 -- This can be found in noble_desktop > Programmability > Functions > Table-valued Functions
 -- (you may need to refresh the list by Right-clicking on that folder and choosing Refresh)
 CREATE FUNCTION fn_get_user_total_spent_and_total_quantity (@the_user INT)

@@ -37,7 +37,7 @@ def get_publishable_key():
 
 @listings.route("/create-checkout-session/<int:listing_id>", methods=["GET","POST"])
 def create_checkout_session(listing_id):
-    domain_url = "http://127.0.0.1:5000/"
+    domain_url = "http://127.0.0.1:8001/"
     stripe.api_key = stripe_keys["secret_key"]
 
     try:
@@ -71,8 +71,8 @@ def create_checkout_session(listing_id):
                 "user_id": current_user.id,
                 #"listing_id": request.args.get('listing_id')
                 "listing_id": listing_id
-            } 
-            
+            }
+
         )
 
         userid = current_user.id
@@ -130,7 +130,7 @@ def handle_checkout_session(session):
 
 
 
-        
+
 
 
 @listings.route("/success")
@@ -159,9 +159,9 @@ def booking_start(listing_id):
 
     price = listingPosts.room_price
     service_fee = float(listingPosts.room_price) * 0.15
-    
+
     total_price = float(price) + float(service_fee)
-    
+
     if request.method == 'POST':
         #token = request.form['stripeToken']
         #charge = stripe.Charge.create(
@@ -169,21 +169,21 @@ def booking_start(listing_id):
         # currency = 'usd',
         # description = 'example charge',
         # source = token)
-        
-        return render_template('listings/booking-confirm.html', listingPosts=listingPosts, price=price, service_fee=service_fee, total_price=total_price) 
+
+        return render_template('listings/booking-confirm.html', listingPosts=listingPosts, price=price, service_fee=service_fee, total_price=total_price)
 
     return render_template('listings/tour-booking.html', listingPosts=listingPosts, service_fee=service_fee, total_price=total_price)
 
 
 @listings.route("/tour_detail/<int:listing_id>", methods=["GET","POST"])
 def details(listing_id):
-     
+
     # if no listing_id provided, redirect to prior page
 	#if listing_id == None:
 	#	return redirect(url_for("listings.results"))
-      
+
     # get user or 404
-    #listingdetails = ListingPost.query.join(ListingSecondPost, ListingPost.id==ListingSecondPost.id).join(ListingPictures, ListingPost.id==ListingPictures.id).filter_by(id=listing_id).first_or_404()    
+    #listingdetails = ListingPost.query.join(ListingSecondPost, ListingPost.id==ListingSecondPost.id).join(ListingPictures, ListingPost.id==ListingPictures.id).filter_by(id=listing_id).first_or_404()
     #listingdetails = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).first_or_404()
     listingPosts = ListingPost.query.filter_by(id=listing_id)
     listingSecondPosts = ListingSecondPost.query.filter_by(id=listing_id)
@@ -194,9 +194,9 @@ def details(listing_id):
 @listings.route('/results_list')
 def results():
     page = request.args.get('page',1,type=int)
-    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=9)   
+    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=9)
     count = ListingPost.query.count()
-   # posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).join(ListingSecondPost,ListingPost.id==ListingSecondPost.id).join(ListingPictures,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=10)   
+   # posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).join(ListingSecondPost,ListingPost.id==ListingSecondPost.id).join(ListingPictures,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=10)
    # posts = ListingPost.query.order_by(ListingPost.date.desc()).paginate(page=page,per_page=5)
     return render_template('listings/tour-grid.html', posts=posts, count=count)
 
@@ -228,12 +228,12 @@ def add_listing():
                     street = form.street.data,
                     longitude = form.longitude.data,
                     latitude = form.latitude.data)
-        
+
         db.session.add(listing)
         db.session.commit()
         flash('Thanks for Listing!')
         return redirect(url_for('listings.second_listing'))
-    
+
     return render_template('listings/add-listing.html',form=form)
 
 
@@ -251,15 +251,15 @@ def second_listing():
                     total_room = form.total_room.data,
                     room_area = form.room_area.data,
                     room_name = form.room_name.data,
-                    room_price = form.room_price.data,   
-                    discount = form.discount.data,                                                                                                                   
+                    room_price = form.room_price.data,
+                    discount = form.discount.data,
                     additional_info=form.additional_info.data)
-        
+
         db.session.add(listing)
         db.session.commit()
         flash('Thanks for Listing!')
         return redirect(url_for('listings.upload'))
-    
+
     return render_template('listings/add-second-listing.html',form=form)
 
 @listings.route('/upload', methods=['POST', 'GET'])
@@ -294,8 +294,8 @@ def upload():
         #if 'gallery_images' not in request.files:
         #    flash('No file part')
         #    return redirect(request.url)
-        
-        
+
+
         #files = request.files['gallery_images']
         #file_name = secure_filename(files.filename)
         #files.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], file_name))
@@ -313,7 +313,7 @@ def upload():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(current_app.root_path, current_app.config['DROPZONE_FOLDER'], filename))
                 file_names.append(file.filename)
-                
+
                 #resultList = list(file_names.values())
 
 
@@ -338,5 +338,5 @@ def upload():
 
         flash('Thanks for Listing!')
         return redirect(url_for('listings.listing_confirm'))
-    
+
     return render_template('listings/add-pictures-listing.html',form=form)
