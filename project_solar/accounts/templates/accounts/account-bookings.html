@@ -33,7 +33,7 @@
 <!-- **************** MAIN CONTENT START **************** -->
 <main>
 <br>
-<br>	
+<br>
 <br>
 <br>
 <!-- =======================
@@ -77,19 +77,19 @@ Content START -->
 
 								<!-- Sidebar menu item START -->
 								<ul class="nav nav-pills-primary-soft flex-column">
-								
+
 									<li class="nav-item">
 										<a class="nav-link" href="account-travelers.html"><i class="bi bi-people fa-fw me-2"></i>Travelers</a>
 									</li>
-									
+
 								</ul>
 								<!-- Sidebar menu item END -->
 							</div>
 							<!-- Card body END -->
 						</div>
 					</div>
-				</div>	
-				<!-- Responsive offcanvas body END -->	
+				</div>
+				<!-- Responsive offcanvas body END -->
 			</div>
 			<!-- Sidebar END -->
 
@@ -114,15 +114,15 @@ Content START -->
 
 						<!-- Tabs -->
 						<ul class="nav nav-tabs nav-bottom-line nav-responsive nav-justified">
-							<li class="nav-item"> 
-								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>Upcoming Booking</a> 
+							<li class="nav-item">
+								<a class="nav-link mb-0 active" data-bs-toggle="tab" href="#tab-1"><i class="bi bi-briefcase-fill fa-fw me-1"></i>Upcoming Booking</a>
 							</li>
-							
-							<li class="nav-item"> 
-								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab-3"><i class="bi bi-patch-check fa-fw me-1"></i>Completed Booking</a> 
+
+							<li class="nav-item">
+								<a class="nav-link mb-0" data-bs-toggle="tab" href="#tab-3"><i class="bi bi-patch-check fa-fw me-1"></i>Completed Booking</a>
 							</li>
 						</ul>
-						{% for post in paidPosts %}
+						{% for stripe, post in paidPosts %}
 						<!-- Tabs content START -->
 						<div class="tab-content p-2 p-sm-4" id="nav-tabContent">
 
@@ -135,7 +135,7 @@ Content START -->
 									<div class="card-header border-bottom d-md-flex justify-content-md-between align-items-center">
 										<!-- Icon and Title -->
 										<div class="d-flex align-items-center">
-											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-plane"></i></div>	
+											<div class="icon-lg bg-light rounded-circle flex-shrink-0"><i class="fa-solid fa-plane"></i></div>
 											<!-- Title -->
 											<div class="ms-2">
 												<h6 class="card-title mb-0">{{post.listing_type}}</h6>
@@ -145,13 +145,13 @@ Content START -->
 												</ul>
 											</div>
 										</div>
-	
+
 										<!-- Button -->
 										<div class="mt-2 mt-md-0">
 											<a href="#" class="btn btn-primary-soft mb-0">Manage Booking</a>
 										</div>
 									</div>
-	
+
 									<!-- Card body -->
 									<div class="card-body">
 										<div class="row g-3">
@@ -159,12 +159,12 @@ Content START -->
 												<span>Departure time</span>
 												<h6 class="mb-0">{{post.country}}</h6>
 											</div>
-	
+
 											<div class="col-sm-6 col-md-4">
 												<span>Arrival time</span>
 												<h6 class="mb-0">{{post.state}}</h6>
 											</div>
-	
+
 											<div class="col-md-4">
 												<span>Booked by</span>
 												<h6 class="mb-0">{{post.short_description}}</h6>
@@ -173,11 +173,11 @@ Content START -->
 									</div>
 								</div>
 								<!-- Card item END -->
-																
+
 							</div>
 							<!-- Tabs content item END -->
 
-							
+
 						{% endfor %}
 							<!-- Tab content item START -->
 							<div class="tab-pane fade" id="tab-3">
@@ -195,7 +195,7 @@ Content START -->
 										</div>
 									</div>
 								</div>
-								
+
 							</div>
 							<!-- Tabs content item END -->
 						</div>

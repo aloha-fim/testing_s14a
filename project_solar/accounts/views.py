@@ -20,9 +20,36 @@ def agent_activities():
 @accounts.route('/account_bookings',methods=['GET','POST'])
 @login_required
 def account_bookings():
-    stripeCustomer = StripeCustomer.query.filter(user_id=current_user.id)
-    paidPosts = ListingPost.query.filter_by(id = StripeCustomer.listing_id).all()
+    # stripeCustomer = StripeCustomer.query.filter(user_id=current_user.id)
+    # paidPosts = ListingPost.query.filter_by(id = StripeCustomer.listing_id).all()
 
+    #paidPosts = User.query.\
+    #filter_by(id=current_user.id).\
+    #join(StripeCustomer).\
+    #join(ListingPost, ListingPost.id == StripeCustomer.listing_id).\
+    #filter_by(id=StripeCustomer.listing_id).\
+    #all()
+
+    #paidPosts = ListingPost.query.\
+    #join(StripeCustomer, StripeCustomer.listing_id == ListingPost.id).\
+    #join(User, User.id == current_user.id).\
+    #all()
+
+    #paidPosts = ListingPost.query.\
+    #filter(StripeCustomer.listing_id == ListingPost.id, StripeCustomer.id == current_user.id).\
+    #all()
+
+    #paidPosts = StripeCustomer.query.\
+    #filter_by(user_id=current_user.id).\
+    #join(ListingPost, ListingPost.id == StripeCustomer.listing_id).\
+    #filter_by(id=StripeCustomer.listing_id).\
+    #all()
+
+    #paidPosts = StripeCustomer.query.\
+    #filter_by(user_id=current_user.id, listing_id=ListingPost.id).\
+    #all()
+
+    paidPosts = (db.session.query(StripeCustomer, ListingPost).filter(StripeCustomer.user_id == current_user.id, StripeCustomer.listing_id == ListingPost.id))
 
     # page = request.args.get('page',1,type=int)
     # posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=9)
