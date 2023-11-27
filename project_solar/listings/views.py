@@ -14,7 +14,6 @@ UPLOAD_FOLDER = 'static\listing_pics'
 DROPZONE_FOLDER = 'static\dropzone_pics'
 
 
-
 listings = Blueprint('listings',__name__, template_folder="templates")
 current_app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 current_app.config['DROPZONE_FOLDER'] = DROPZONE_FOLDER
@@ -36,6 +35,7 @@ def get_publishable_key():
 
 
 @listings.route("/create-checkout-session/<int:listing_id>", methods=["GET","POST"])
+@login_required
 def create_checkout_session(listing_id):
     domain_url = "http://127.0.0.1:8001/"
     stripe.api_key = stripe_keys["secret_key"]
@@ -129,17 +129,15 @@ def handle_checkout_session(session):
             #  f'${item.amount_total/100:.02f} {item.currency.upper()}')
 
 
-
-
-
-
 @listings.route("/success")
+@login_required
 def success():
     sessions = stripe.checkout.Session.list()
     print(sessions.data[00]) # tree view
     data = {'username': sessions.data[00].metadata.user_id,
             'listingid': sessions.data[00].metadata.listing_id}
-    return render_template("listings/success.html", data=data)
+    # return render_template("listings/success.html", data=data)
+    return redirect(url_for('accounts.account_bookings'))
 
 
 @listings.route("/cancelled")
@@ -191,6 +189,7 @@ def details(listing_id):
 
     return render_template('listings/tour-detail.html', listingPosts=listingPosts, listingSecondPosts=listingSecondPosts, listingPicturePosts=listingPicturePosts)
 
+
 @listings.route('/results_list')
 def results():
     page = request.args.get('page',1,type=int)
@@ -205,9 +204,11 @@ def results():
 def listing_confirm():
     return render_template('listings/listing-added.html')
 
+
 @listings.route('/create_creation')
 def create_listing():
     return render_template('listings/join-us.html')
+
 
 @listings.route('/add_listing',methods=['POST', 'GET'])
 @login_required
@@ -261,6 +262,7 @@ def second_listing():
         return redirect(url_for('listings.upload'))
 
     return render_template('listings/add-second-listing.html',form=form)
+
 
 @listings.route('/upload', methods=['POST', 'GET'])
 @login_required
