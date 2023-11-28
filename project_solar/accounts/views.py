@@ -72,3 +72,8 @@ def account_bookings():
 
     profile_image = url_for('static', filename='profile_pics/'+current_user.profile_image)
     return render_template('accounts/account-bookings.html',profile_image=profile_image,form=form,paidPosts=paidPosts)
+
+
+@accounts.route('/agent_bookings')
+def agent_bookings():
+    return render_template('accounts/agent-bookings.html')
