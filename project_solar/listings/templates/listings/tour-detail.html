@@ -46,7 +46,7 @@
 {% for post in listingPosts %}
 {% for second in listingSecondPosts %}
 {% for picture in listingPicturePosts %}
-        
+
 <!-- =======================
 Main Banner START -->
 <section class="pt-4 pt-lg-5">
@@ -73,7 +73,7 @@ Main Banner START -->
 						<li class="list-inline-item">
 							<a href="#" class="btn btn-sm btn-light px-2"><i class="fa-solid fa-fw fa-heart"></i></a>
 						</li>
-						
+
 					</ul>
 				</div>
 
@@ -110,7 +110,7 @@ Main Banner START -->
 							</li>
 						</ul>
 					</div>
-				</div>				
+				</div>
 				<!-- Secondary image -->
 				<div class="splide splide-thumb" data-splide='{"rewind":true,"fixedWidth":200,"fixedHeight":120,"isNavigation":true,"gap":20,"focus":"center","pagination":false,"cover":true,"lazyLoad":"sequential","breakpoints":{"600":{"fixedWidth":150,"fixedHeight":80}}}'>
 					<div class="splide__track">
@@ -119,7 +119,7 @@ Main Banner START -->
 							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>
 							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>
 							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>
-							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>                            
+							<li class="splide__slide"><img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" alt=""></li>
 						</ul>
 					</div>
 					<!-- Arrows -->
@@ -141,7 +141,7 @@ Main Banner END -->
 Tabs START -->
 <section class="py-0">
 	<div class="container">
-		
+
 		<!-- Tabs START -->
 		<div class="row">
 			<div class="col-12">
@@ -155,9 +155,9 @@ Tabs START -->
 					<li class="nav-item" role="presentation">
 						<button class="nav-link mb-0" id="tour-pills-tab-2" data-bs-toggle="pill" data-bs-target="#tour-pills-tab2" type="button" role="tab" aria-controls="tour-pills-tab2" aria-selected="false">Now Do It</button>
 					</li>
-					
-			
-				</ul> 
+
+
+				</ul>
 				<!-- Outer tabs END -->
 			</div>
 		</div>
@@ -188,44 +188,44 @@ Tabs-content START -->
 
 							<!-- Card body START -->
 							<div class="card-body p-0 pt-3">
-								
+
 
 								<!-- List -->
-								
+
 								<ul class="list-group list-group-borderless mb-4">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
 										<h6>start with this </h6><h6> </h6>   <i class="bi bi-arrow-right me-2"></i>  {{post.amount_land}} acres to plant
 									</li>
-					
+
 								</ul>
 								<div class="row g-4">
-								
+
 									{% for gallery in picture.gallery_images %}
 									{% set gall = gallery %}
-									
-									
+
+
 										<div class="col-md-4">
 											<img src="{{url_for('static',filename='dropzone_pics/')}}{{gall}}" class="rounded-3" alt="">
 
 										</div>
-										
-										
-									
+
+
+
 									{% endfor%}
-						
+
 								</div>
 								<br>
 								<!-- List -->
-								
+
 
 								<ul class="list-group list-group-borderless mb-0">
 									<li class="list-group-item h6 fw-light d-flex mb-0">
 										 now {{post.short_description}} <i class="fa-solid fa-check-circle text-success me-2"></i>
 									</li>
-									
+
 								</ul>
 								<div class="row g-4">
-									
+
 									<div class="col-md-4">
 										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
 									</div>
@@ -235,7 +235,7 @@ Tabs-content START -->
 									<div class="col-md-4">
 										<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="rounded-3" alt="">
 									</div>
-									
+
 									<!-- {% for file in filenames %}
     									<img src = "{{url_for('static', filename='listing_pics/file')}}">
 									{% endfor %} -->
@@ -243,7 +243,7 @@ Tabs-content START -->
 							</div>
 							<!-- Card body END -->
 						</div>
-					</div>		
+					</div>
 					<!-- Content item END -->
 
 					<!-- Content item START -->
@@ -269,7 +269,7 @@ Tabs-content START -->
 											<div class="accordion-body mt-3">
 												<div class="vstack gap-4">
 
-													
+
 													<!-- Hotel list START -->
 													<div class="card bg-transparent p-0">
 														<!-- Card header -->
@@ -284,28 +284,28 @@ Tabs-content START -->
 																<div class="col-sm-4">
 																	<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img" alt="Card image">
 																	<div class="hstack gap-3 flex-wrap mt-2">
-																
-			
+
+
 																	</div>
-	
+
 																</div>
-								
+
 																<!-- Card title and rating -->
 																<div class="col-sm-8">
 																	<!-- Badge -->
 																	<div class="d-flex justify-content-between mb-2">
 																		<div class="badge bg-dark">{{post.listing_type}}</div>
-			
+
 																	</div>
 
 																	<!-- Title -->
-																	
+
 																	<span>{{post.city}}</span>
 																	<small class="mb-2"><i class="bi bi-geo-alt me-2"></i>{{post.state}}</small>
-																	
+
 																	<!-- List -->
 																	<ul class="list-group list-group-borderless mb-0 mt-2 small">
-																		
+
 																		<li class="list-group-item d-flex text-success p-0">
 																			<i class="bi bi-patch-check-fill me-2"></i> {{post.amount_land}} acres
 																		</li>
@@ -315,31 +315,31 @@ Tabs-content START -->
 																		<li class="list-group-item d-flex p-0">
 																			<i class="bi bi-arrow-right text-primary me-2"></i>{{second.amenities}}
 																		</li>
-																		<li class="list-group-item d-flex p-0">	
+																		<li class="list-group-item d-flex p-0">
 																			<i class="bi bi-arrow-right text-primary me-2"></i>{{second.total_floor}}
-																		</li>	
+																		</li>
 																		<li class="list-group-item d-flex p-0">
 																			<i class="bi bi-arrow-right text-primary me-2"></i>{{second.total_room}}
-																		</li>														
+																		</li>
 																	</ul>
 
-	
+
 
 																</div>
 															</div> <!-- Row END -->
-														</div>	
+														</div>
 													</div>
 													<!-- Hotel list END -->
-	
+
 													<hr class="my-0"> <!-- Divider -->
 
 												</div>
 											</div>
 										</div>
 									</div>
-				
-									
-				
+
+
+
 									<!-- Item -->
 									<div class="accordion-item mb-3">
 										<h6 class="accordion-header font-base" id="heading-3">
@@ -349,13 +349,13 @@ Tabs-content START -->
 										</h6>
 										<!-- Body -->
 										<div id="collapse-3" class="accordion-collapse collapse" aria-labelledby="heading-3" data-bs-parent="#accordionExample2">
-											
-										
+
+
 										<!-- Flight list START -->
-										
+
 											<!-- Card header -->
 											<div class="card-header bg-transparent p-0">
-											
+
 												<div class="p-3 bg-light rounded-2 d-sm-flex justify-content-sm-between align-items-center mb-4 mt-2">
 													<!-- Airline Name -->
 													<h6 class="mb-0">{{second.listing_description}}</h6>
@@ -363,7 +363,7 @@ Tabs-content START -->
 												</div>
 											</div>
 
-											
+
 											<!-- Card body START -->
 											<div class="card-body p-0">
 												<div class="row g-4">
@@ -374,18 +374,18 @@ Tabs-content START -->
 														<!-- Title -->
 														<h6 class="fw-normal small mb-0">{{second.room_name}}</h6>
 													</div>
-					
+
 													<!-- Time -->
 													<div class="col-4 col-md-3 text-center">
 														<!-- Time -->
 														<h6>{{second.additional_info}}</h6>
-					
+
 														<div class="position-relative my-4">
 															<!-- Line -->
 															<hr class="bg-primary opacity-5 position-relative">
 															<!-- Icon -->
 															<div class="icon-md bg-primary text-white rounded-circle position-absolute top-50 start-50 translate-middle">
-																
+
 															</div>
 														</div>
 													</div>
@@ -397,28 +397,28 @@ Tabs-content START -->
 														<!-- Title -->
 														<h6 class="fw-normal small mb-0">{{second.room_name}}</h6>
 													</div>
-					
-													
-					
+
+
+
 												</div>
 											</div>
 											<!-- Card body END -->
 										</div>
 										<!-- Flight list END -->
-										
-										
+
+
 									</div>
-				
+
 								</div>
 							</div>
 							<!-- Card body END -->
 						</div>
-					</div>	
+					</div>
 					<!-- Content item END -->
 
-					
 
-				</div>	
+
+				</div>
 			</div>
 			<!-- Tabs Content END -->
 
@@ -448,10 +448,15 @@ Tabs-content START -->
 							</div>
 
 							<!-- Button -->
+							{% if current_user.is_authenticated %}
 							<div class="d-grid gap-2">
 								<button class="btn btn-primary next-btn mb-0" value={{post.id|tojson|safe}} id="submitBtn">Book Now</button>
 							</div>
-
+          					{% else %}
+							<div class="d-grid gap-2">
+								<a class="btn btn-outline-primary mb-4" href="{{url_for('users.register')}}" role="button">Join Now</a>
+							</div>
+							{% endif %}
 						</div>
 					</div>
 					<!-- Book now item END -->
@@ -464,7 +469,7 @@ Tabs-content START -->
 
 							<!-- List -->
 							<ul class="list-group list-group-borderless">
-								
+
 								<li class="list-group-item py-0"><hr class="my-0"></li><!-- Divider -->
 
 								<li class="list-group-item py-3">
@@ -503,7 +508,7 @@ Tabs-content END -->
 Footer START -->
 <footer class="bg-dark pt-5">
 	<div class="container">
-		
+
 	</div>
 </footer>
 <!-- =======================
@@ -525,7 +530,7 @@ Footer END -->
 <script src="{{url_for('static', filename="assets/js/functions.js")}}"></script>
 
 <!-- Stripe -->
-<script src="https://js.stripe.com/v3/"></script>  <!-- new -->	
+<script src="https://js.stripe.com/v3/"></script>  <!-- new -->
 <script src="{{ url_for('static', filename='main.js') }}"></script>
 
 
