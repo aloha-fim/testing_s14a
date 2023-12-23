@@ -15,34 +15,34 @@ Main Banner START -->
 		<!-- Background image -->
 		<div class="p-3 p-sm-5 rounded-3" style="background-image: url(/static/assets/images/01.jpg); background-position: center center; background-repeat: no-repeat; background-size: cover;">
 			<!-- Banner title -->
-			<div class="row"> 
-				<div class="col-md-8 mx-auto my-5"> 
+			<div class="row">
+				<div class="col-md-8 mx-auto my-5">
 					<h1 class="text-center text-light">HAWAII</h1>
 					<ul class="nav nav-divider h6 text-light mb-0 justify-content-center">
 						<li class="nav-item">Let's Build</li>
-						
+
 					</ul>
 				</div>
 			</div>
 		</div>
- 
-		<!-- 
+
+		<!--
 		<div class="row mt-n4 mt-sm-n7">
 			<div class="col-11 mx-auto">
-				
-				
+
+
 				<div class="bg-mode shadow p-4 rounded-3">
 
-					
+
 					<form class="form-control-bg-transparent bg-mode rounded-3">
 						<div class="row g-4 align-items-center">
 
 							<div class="col-xl-10">
 								<div class="row g-4">
-									
+
 									<div class="col-md-6 col-lg-4">
 										<label class="h6 fw-normal mb-0"><i class="bi bi-geo-alt text-primary me-1"></i>Location</label>
-										
+
 										<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 											<select class="form-select js-choice" data-search-enabled="true">
 												<option value="">Select location</option>
@@ -52,20 +52,20 @@ Main Banner START -->
 											</select>
 										</div>
 									</div>
-	
-									
+
+
 									<div class="col-md-6 col-lg-4">
 										<label class="h6 fw-normal mb-0"><i class="bi bi-calendar text-primary me-1"></i>Date</label>
-										
+
 										<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 											<input type="text" class="form-control flatpickr" value="20 Nov 2022" placeholder="Choose a date" data-date-format="d M Y">
 										</div>
 									</div>
-	
-									
+
+
 									<div class="col-md-6 col-lg-4">
 										<label class="h6 fw-normal mb-0"><i class="fa-solid fa-person-skating text-primary me-1"></i>OttoHI</label>
-										
+
 										<div class="form-border-bottom form-control-transparent form-fs-lg mt-2">
 											<select class="form-select js-choice" data-search-enabled="true">
 												<option value="">Select type</option>
@@ -78,8 +78,8 @@ Main Banner START -->
 									</div>
 								</div>
 							</div>
-	
-							
+
+
 							<div class="col-xl-2">
 								<div class="d-grid">
 									<a href="#" class="btn btn-lg btn-dark mb-0">Enter</a>
@@ -87,16 +87,16 @@ Main Banner START -->
 							</div>
 						</div>
 					</form>
-				
 
-					
+
+
 
 				</div>
-				
+
 			</div>
 		</div>
 		-->
-	
+
 
 
 	</div>
@@ -129,8 +129,8 @@ Tour grid START -->
 			</div>
 		</div>
 		<!-- Filter and content END -->
-		
-		
+
+
 		<div class="row g-4">
 			{% for post, second, picture in posts %}
 			<!-- Card item START -->
@@ -139,7 +139,7 @@ Tour grid START -->
 					<!-- Overlay item -->
 					<div class="position-relative">
 						<!-- Image -->
-						<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img-top" alt="Card image">
+						<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="card-img-top img-fluid" style="height: 200px" alt="Card image">
 						<!-- Overlay -->
 						<div class="card-img-overlay d-flex flex-column p-1 z-index-1">
 							<!-- Card overlay top -->
@@ -158,7 +158,7 @@ Tour grid START -->
 						<h6 class="card-title mb-0"><a href="{{url_for('listings.details', listing_id=post.id)}}" class="stretched-link">{{post.short_description}}</a></h6>
 						<span class="small"><i class="far fa-calendar-alt me-2"></i>{{post.state}}</span>
 
-						<!-- List -->
+						<!-- List
 						<ul class="nav nav-divider mt-3 mb-0">
 							<li class="nav-item h6 fw-normal mb-0">
 								<i class="fa-solid fa-hotel text-info me-2"></i>{{post.city}}
@@ -166,7 +166,7 @@ Tour grid START -->
 							<li class="nav-item h7 fw-normal mb-0">
 								<i class="fa-solid fa-person-skating text-danger me-2"></i>{{second.amenities}}
 							</li>
-						</ul>
+						</ul>-->
 					</div>
 					<!-- Card body END -->
 					<!-- Card footer START-->
@@ -176,11 +176,11 @@ Tour grid START -->
 							<!-- Price -->
 							<div class="hstack gap-2">
 								<h5 class="fw-normal text-success mb-0">$ {{second.discount}}</h5>
-								
+
 							</div>
 							<!-- Button -->
 							<div class="mt-2 mt-sm-0">
-								<a href="{{url_for('listings.details', listing_id=post.id)}}" class="btn btn-sm btn-primary mb-0">View Details</a>    
+								<a href="{{url_for('listings.details', listing_id=post.id)}}" class="btn btn-sm btn-primary mb-0">View Details</a>
 							</div>
 						</div>
 					</div>
@@ -190,7 +190,7 @@ Tour grid START -->
 			{% endfor %}
 		</div> <!-- Row END -->
 		<br>
-		
+
 		<br>
 	</div>
 </section>
@@ -212,7 +212,7 @@ Tour grid START -->
 		 </nav>
 		</div>
 
-		<!-- Pagination 
+		<!-- Pagination
 		<div class="row">
 			<div class="col-12">
 				<nav class="mt-4 d-flex justify-content-center" aria-label="navigation">
@@ -240,7 +240,7 @@ Tour grid END -->
 <!-- =======================
 Footer START -->
 <footer class="bg-dark pt-5">
-	<div class="container">		
+	<div class="container">
 		<!-- Bottom footer -->
 		<div class="row">
 			<div class="container">
