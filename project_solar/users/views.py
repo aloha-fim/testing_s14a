@@ -2,7 +2,7 @@ from flask import render_template,url_for,flash,redirect,request,Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from project_solar import db
 from project_solar.models import User, SolarPost
-from project_solar.users.forms import RegistrationForm, LoginForm, UpdateUserForm 
+from project_solar.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 from project_solar.users.picture_handler import add_profile_pic
 
 users = Blueprint('users',__name__)
@@ -17,12 +17,12 @@ def register():
         user = User(email=form.email.data,
                     username = form.username.data,
                     password=form.password.data)
-        
+
         db.session.add(user)
         db.session.commit()
         flash('Thanks for registration!')
         return redirect(url_for('users.login'))
-    
+
     return render_template('register.html',form=form)
 
 @users.route("/logout")
@@ -46,11 +46,13 @@ def login():
 
             next = request.args.get('next')
 
-            if next ==None or not next[0]=='/':
+            if next == None or not next[0] == '/':
                 next = url_for('core.start')
 
             return redirect(next)
-        
+
+    else: return redirect(url_for('core.start'))
+
     return render_template('login.html',form=form)
 
 # account
@@ -60,7 +62,7 @@ def account():
 
     form = UpdateUserForm()
     if form.validate_on_submit():
-    
+
         if form.picture.data:
             username = current_user.username
             pic = add_profile_pic(form.picture.data,username)
@@ -71,7 +73,7 @@ def account():
         db.session.commit()
         flash('User Account Updated!')
         return redirect(url_for('users.account'))
-    
+
     elif request.method == "GET":
         form.username.data = current_user.username
         form.email.data = current_user.email

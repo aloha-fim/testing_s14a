@@ -4,10 +4,15 @@
 -- WARMUPS & REFERENCE
 -------------------------------------------------------------------
 
--- 1. Grouping by one column: 
---    SELECT ship_state, COUNT(*) 
+-- 1. Grouping by one column:
+--    SELECT ship_state, COUNT(*)
 --    FROM orders
 --    GROUP BY ship_state;
+
+-- FI
+    SELECT listing_type, COUNT(*)
+    FROM listing_post
+    GROUP BY listing_type;
 
 
 -- 2. Grouping by multiple columns:
@@ -15,6 +20,10 @@
 --    FROM orders
 --    GROUP BY ship_state, ship_zipcode
 --    ORDER BY ship_state;
+    SELECT amount_land, listing_type, COUNT(*)
+    FROM listing_post
+    GROUP BY amount_land, listing_type
+    ORDER BY amount_land;
 
 
 -- 3. Grouping by multiple columns, ignoring the last 4 digits in zipcode:
