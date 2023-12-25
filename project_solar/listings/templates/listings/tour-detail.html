@@ -310,16 +310,10 @@ Tabs-content START -->
 																			<i class="bi bi-patch-check-fill me-2"></i> {{post.amount_land}} acres
 																		</li>
 																		<li class="list-group-item d-flex p-0">
-																			<i class="bi bi-arrow-right text-primary me-2"></i>{{post.street}}
-																		</li>
-																		<li class="list-group-item d-flex p-0">
 																			<i class="bi bi-arrow-right text-primary me-2"></i>{{second.amenities}}
 																		</li>
 																		<li class="list-group-item d-flex p-0">
 																			<i class="bi bi-arrow-right text-primary me-2"></i>{{second.total_floor}}
-																		</li>
-																		<li class="list-group-item d-flex p-0">
-																			<i class="bi bi-arrow-right text-primary me-2"></i>{{second.total_room}}
 																		</li>
 																	</ul>
 
@@ -380,14 +374,7 @@ Tabs-content START -->
 														<!-- Time -->
 														<h6>{{second.additional_info}}</h6>
 
-														<div class="position-relative my-4">
-															<!-- Line -->
-															<hr class="bg-primary opacity-5 position-relative">
-															<!-- Icon -->
-															<div class="icon-md bg-primary text-white rounded-circle position-absolute top-50 start-50 translate-middle">
 
-															</div>
-														</div>
 													</div>
 
 													<!-- Air line name -->
@@ -399,6 +386,13 @@ Tabs-content START -->
 													</div>
 
 
+													<!-- Air line name -->
+													<div class="col-md-3">
+														<!-- Image -->
+														<img src="{{url_for('static',filename='listing_pics/')}}{{picture.thumbnail_image}}" class="w-80px mb-3" alt="">
+														<!-- Title -->
+														<h6 class="fw-normal small mb-0">{{second.room_name}}</h6>
+													</div>
 
 												</div>
 											</div>

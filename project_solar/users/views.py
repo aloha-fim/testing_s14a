@@ -51,7 +51,7 @@ def login():
 
             return redirect(next)
 
-    else: return redirect(url_for('core.start'))
+    # else: return redirect(url_for('users.register'))
 
     return render_template('login.html',form=form)
 
