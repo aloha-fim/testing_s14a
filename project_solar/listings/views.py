@@ -60,7 +60,7 @@ def create_checkout_session(listing_id):
                     "quantity": 1,
                     "price_data": {
                         "currency": "usd",
-                        "unit_amount": 2000,
+                        "unit_amount": 1000,
                         "product_data": {
                             "name": "T-shirt"
                         },

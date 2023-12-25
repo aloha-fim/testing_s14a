@@ -18,6 +18,7 @@ def agent_activities():
     return render_template('accounts/agent-activities.html')
 
 @accounts.route('/account_bookings',methods=['GET','POST'])
+@login_required
 def account_bookings():
     # stripeCustomer = StripeCustomer.query.filter(user_id=current_user.id)
     # paidPosts = ListingPost.query.filter_by(id = StripeCustomer.listing_id).all()
