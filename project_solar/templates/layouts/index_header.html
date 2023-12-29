@@ -4,24 +4,24 @@
     <html lang="en">
     <head>
         <title>HI Camp</title>
-    
+
         <!-- Meta Tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="author" content="Forvava">
         <meta name="description" content="Forvava">
-    
+
         <!-- Dark mode -->
         <script>
             const storedTheme = localStorage.getItem('theme')
-     
+
             const getPreferredTheme = () => {
                 if (storedTheme) {
                     return storedTheme
                 }
                 return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
             }
-    
+
             const setTheme = function (theme) {
                 if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                     document.documentElement.setAttribute('data-bs-theme', 'dark')
@@ -29,9 +29,9 @@
                     document.documentElement.setAttribute('data-bs-theme', theme)
                 }
             }
-    
+
             setTheme(getPreferredTheme())
-    
+
             window.addEventListener('DOMContentLoaded', () => {
                 var el = document.querySelector('.theme-icon-active');
                 if(el != 'undefined' && el != null) {
@@ -39,23 +39,23 @@
                     const activeThemeIcon = document.querySelector('.theme-icon-active use')
                     const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
                     const svgOfActiveBtn = btnToActive.querySelector('.mode-switch use').getAttribute('href')
-    
+
                     document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
                         element.classList.remove('active')
                     })
-    
+
                     btnToActive.classList.add('active')
                     activeThemeIcon.setAttribute('href', svgOfActiveBtn)
                 }
-    
+
                 window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
                     if (storedTheme !== 'light' || storedTheme !== 'dark') {
                         setTheme(getPreferredTheme())
                     }
                 })
-    
+
                 showActiveTheme(getPreferredTheme())
-    
+
                 document.querySelectorAll('[data-bs-theme-value]')
                     .forEach(toggle => {
                         toggle.addEventListener('click', () => {
@@ -65,21 +65,21 @@
                             showActiveTheme(theme)
                         })
                     })
-    
+
                 }
             })
-            
+
         </script>
-    
+
         <!-- Favicon -->
         <!-- <link rel="shortcut icon" href="static/assets/images/about/otto.png"> -->
         <link rel="stylesheet" href="{{url_for('static', filename='assets/images/about/otto.png')}}">
-    
+
         <!-- Google Font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap">
-    
+
         <!-- Plugins CSS -->
         <!-- <link rel="stylesheet" type="text/css" href="static/assets/vendor/font-awesome/css/all.min.css"> -->
         <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/font-awesome/css/all.min.css')}}">
@@ -93,12 +93,12 @@
         <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/flatpickr/css/flatpickr.min.css')}}">
         <!-- <link rel="stylesheet" type="text/css" href="static/assets/vendor/glightbox/css/glightbox.css"> -->
         <link rel="stylesheet" href="{{url_for('static', filename='assets/vendor/glightbox/css/glightbox.css')}}">
-    
+
         <!-- Theme CSS -->
         <!-- <link rel="stylesheet" type="text/css" href="static/assets/css/style.css"> -->
         <link rel="stylesheet" href="{{url_for('static', filename='assets/css/style.css')}}">
-    
-    </head>    
+
+    </head>
 
     <body>
     <!-- Header START -->
@@ -112,12 +112,12 @@
                     <img class="navbar-brand-item" src="{{url_for('static', filename='assets/images/about/otto.png')}}" alt="logo">
                 </a>
                 <!-- Logo END -->
- 
+
                 <!-- Main navbar END -->
-    
+
                 <!-- Profile and Notification START -->
                 <ul class="nav flex-row align-items-center list-unstyled ms-xl-auto">
-    
+
                     <!-- Dark mode options START -->
                     <li class="nav-item dropdown ms-3">
                         <button class="nav-notification btn btn-light lh-0 p-0 mb-0" id="bd-theme"
@@ -130,7 +130,7 @@
                                 <use href="#"></use>
                             </svg>
                         </button>
-    
+
                         <ul class="dropdown-menu min-w-auto dropdown-menu-end" aria-labelledby="bd-theme">
                             <li class="mb-1">
                                 <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
@@ -160,7 +160,7 @@
                         </ul>
                     </li>
                     <!-- Dark mode options END -->
-    
+
                     <!-- Profile dropdown START -->
                     {% if current_user.is_authenticated %}
                     <li class="nav-item ms-3 dropdown">
@@ -169,7 +169,7 @@
                             <img class="avatar-img rounded-2" src="{{url_for('static',filename='profile_pics/'+current_user.profile_image)}}" alt="avatar">
                         </a>
 
-    
+
                         <ul class="dropdown-menu dropdown-animation dropdown-menu-end shadow pt-3" aria-labelledby="profileDropdown">
                             <!-- Profile info -->
                             <li class="px-3 mb-3">
@@ -184,11 +184,11 @@
                                     </div>
                                 </div>
                             </li>
-    
+
                             <!-- Links -->
                             <li> <hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ url_for('accounts.account_bookings') }}"><i class="bi bi-bookmark-check fa-fw me-2"></i>My Bookings</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="bi bi-heart fa-fw me-2"></i>My Wishlist</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('accounts.agent_bookings') }}"><i class="bi bi-heart fa-fw me-2"></i>Host Account</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('users.account') }}"><i class="bi bi-gear fa-fw me-2"></i>Settings</a></li>
                             <li><a class="dropdown-item bg-danger-soft-hover" href="{{ url_for('users.logout') }}"><i class="bi bi-power fa-fw me-2"></i>Sign Out</a></li>
                         </ul>
@@ -200,7 +200,7 @@
                     <!-- Profile dropdown END -->
                 </ul>
                 <!-- Profile and Notification START -->
-    
+
             </div>
         </nav>
         <!-- Logo Nav END -->
