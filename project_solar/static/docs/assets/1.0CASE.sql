@@ -195,6 +195,16 @@ FROM users u
 JOIN orders o ON p.id = o.id
 GROUP BY u.created_at
 
+SELECT
+   CASE
+      WHEN (id < 1000) THEN 'founders'
+      WHEN (id == 1000) THEN 'millenial winner'
+      WHEN (id > 1000) THEN 'loyals'
+   END AS u.id_group;
+FROM users u
+JOIN order o ON p.id = p.id
+GROUP BY u.id_group
+
 ----------------------------------------
 -- EXTRA CREDIT: If you finish early.
 ----------------------------------------
