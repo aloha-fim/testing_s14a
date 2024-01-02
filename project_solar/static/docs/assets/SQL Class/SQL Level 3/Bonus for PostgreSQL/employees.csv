@@ -1,0 +1,7 @@
+﻿emp_name,emp_email,dept_id,manager_id
+Amy Schumm,amy@company.com,1,5
+Riley Heaney,riley@company.com,3,5
+Tyler Monahan,tyler@company.com,2,6
+Chad Schmidt,chad@company.com,,1
+Elma Stanton,elma@company.com,1,6
+Bruce Rice,bruse@company.com,,
