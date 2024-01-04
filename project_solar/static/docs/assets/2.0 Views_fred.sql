@@ -14,34 +14,50 @@
 --    SELECT * FROM users
 --    WHERE email like '%@gmail.com';
 
---    NOTE: You must refresh the views list after creating 
+CREATE VIEW gmail_view AS
+SELECT * from users
+WHERE email like '%@gmail.com';
+
+--    NOTE: You must refresh the views list after creating
 --    (Right-click on Views and choose Refresh)
 DROP VIEW gmail_view
 CREATE view gmail_view AS SELECT * FROM users WHERE email like '%@gmail.com';
 
+DROP VIEW gmail_view
+CREATE VIEW gmail_view AS
+SELECT * FROM users
+WHERE email like '%@gamil.com';
 
 -- 2. Query a View:
 --    SELECT * FROM gmail_view;
 
-select * from gmail_view;
+SELECT * FROM gmail_view;
 
 --    NOTE: See how if you didn't have 'view' in the name of the view
 --    it would be unclear whether you're querying a table or a view?
 
-
-
 -- 3. Filter the results from a View:
 --    SELECT * FROM gmail_view
 --    WHERE user_state = 'ID';
+
+SELECT * FROM gmail_view
+WHERE user_state = 'ID';
 
 --    In PostgreSQL:
 --    SELECT * FROM gmail_view
 --    ORDER BY created_at DESC
 --    LIMIT 5;
 
+SELECT * FROM gmail_view
+ORDER BY created_at DESC
+LIMIT 5;
+
 --    In SQL Server:
 --    SELECT TOP(5) * FROM gmail_view
 --    ORDER BY created_at DESC;
+
+SELECT TOP(5) * FROM gmail_view
+ORDER BY created_at DESC;
 
 select top(5) * from gmail_view order by created_at DESC;
 
@@ -70,7 +86,7 @@ select top(5) * from gmail_view order by created_at DESC;
 --    NOTE: You must refresh the views list after deleting
 --    (Right-click on Views and choose Refresh)
 
-
+DROP VIEW gmail_view;
 
 
 -- 5. PostgreSQL Only: Materialized Views:
@@ -80,14 +96,24 @@ select top(5) * from gmail_view order by created_at DESC;
 --    SELECT * FROM users
 --    WHERE email like '%@gmail.com';
 
+CREATE MATERIALIZED VIEW gmail_mview AS
+SELECT * FROM users
+WHERE email like '%@gmail.com';
+
 --    4B: Query a Materialized View
 --    SELECT * FROM gmail_mview;
+
+SELECT * FROM gmail_mview;
 
 --    4C: Refresh the data in a Materialized View
 --    REFRESH MATERIALIZED VIEW gmail_mview;
 
+REFRESH MATERIALIZED VIEW gmail_mview;
+
 --    4D: Delete a Materialized View
 --    DROP MATERIALIZED VIEW gmail_mview;
+
+DROP MATERIALIZED VIEW gmail_mview;
 
 
 
@@ -95,20 +121,36 @@ select top(5) * from gmail_view order by created_at DESC;
 -- EXERCISES: Answer using the techniques from above.
 --------------------------------------------------------
 
--- 1. Find out how much money each user has spent in total, but using a view. 
+-- 1. Find out how much money each user has spent in total, but using a view.
 -- Let's go through the process step by step.
 -- Step A: Join the orders and line_items tables (on the order_id column):
 select * from orders o join line_items li on o.order_id = li.order_id;
 
+SELECT * FROM orders o
+JOIN line_items li ON o.order_id = li.order_id;
+
 --- Step B: Try to save it as a view (it will give an error because the 2 order_id columns have the same name):
 create view money_view as select * from orders o join line_items li on o.order_id = li.order_id;
+
+CREATE VIEW money_view AS
+SELECT * FROM orders o
+JOIN line_items li ON o.order_id = li.order_id;
+
 
 --- Step C: Rewrite the join by specifying all the columns, giving an alias to the list_items table's order_id (so it's li_order_id):
 --- Step D: Save the updated join as a view and it will work!
 DROP VIEW money_view;
-create view money_view as select o.order_id, li.order_id as li_order_id, user_id, created_at, ship_name, ship_address, ship_city, ship_state, ship_zipcode, 
+create view money_view as select o.order_id, li.order_id as li_order_id, user_id, created_at, ship_name, ship_address, ship_city, ship_state, ship_zipcode,
    line_item_id, product_id, price, quantity, status from orders o join line_items li on o.order_id = li.order_id;
 
+DROP VIEW money_view;
+CREATE VIEW money_view AS
+SELECT o.order_id, li.order_id as li_order_id FROM orders o
+JOIN line_items li on o.order_id = li.order_id;
 
 --- Step E: Query the view to find out how much money each user has spent in total (you'll have to use a GROUP BY)
 select sum(price * quantity) as total_spent, user_id from money_view group by user_id;
+
+SELECT SUM(price * quantity) AS total_spent, user_id
+FROM money_view
+GROUP BY user_id;
