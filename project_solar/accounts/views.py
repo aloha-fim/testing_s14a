@@ -78,3 +78,8 @@ def account_bookings():
 @accounts.route('/agent_bookings')
 def agent_bookings():
     return render_template('accounts/agent-bookings.html')
+
+
+@accounts.route('/account_listings')
+def account_listings():
+    return render_template('accounts/account-listings.html')
