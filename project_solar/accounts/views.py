@@ -81,5 +81,7 @@ def agent_bookings():
 
 
 @accounts.route('/account_listings')
+@login_required
 def account_listings():
-    return render_template('accounts/account-listings.html')
+    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.user_id == current_user.id, ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc())
+    return render_template('accounts/account-listings.html',posts=posts)
