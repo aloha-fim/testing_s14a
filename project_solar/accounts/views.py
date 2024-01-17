@@ -79,7 +79,7 @@ def account_bookings():
 def agent_bookings():
     return render_template('accounts/agent-bookings.html')
 
-
+# listing(s) of hosts
 @accounts.route('/account_listings')
 @login_required
 def account_listings():
