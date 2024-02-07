@@ -7,6 +7,7 @@ from project_solar.models import ListingPost, ListingSecondPost, ListingPictures
 from project_solar.listings.forms import ListingPostForm, ListingSecondPostForm, ListingPictureForm
 from project_solar.listings.picture_handler import add_listing_pic
 from project_solar.listings.picture_format import allowed_file
+from project_solar.listings.googleai_handler import get_gemini_response, input_image_setup
 import os
 #from dotenv import load_dotenv
 import google.generativeai as genai
@@ -32,8 +33,6 @@ stripe_keys = {
 stripe.api_key = stripe_keys["secret_key"]
 
 #load_dotenv() ## load all the environment variables
-
-genai.configure(api_key=os.environ("GOOGLE_API_KEY"))
 
 
 @listings.route("/config")
@@ -199,29 +198,9 @@ def details(listing_id):
 
 
 @listings.route('/test', methods=['GET','POST'])
-## Function to load Google Gemini Pro Vision API And get response
-def get_gemini_repsonse(input,image,prompt):
-    model=genai.GenerativeModel('gemini-pro-vision')
-    response=model.generate_content([input,image[0],prompt])
-    return response.text
-
-def input_image_setup(uploaded_file):
-    # Check if a file has been uploaded
-    if uploaded_file is not None:
-        # Read the file into bytes
-        bytes_data = uploaded_file.getvalue()
-
-        image_parts = [
-            {
-                "mime_type": uploaded_file.type,  # Get the mime type of the uploaded file
-                "data": bytes_data
-            }
-        ]
-        return image_parts
-    else:
-        raise FileNotFoundError("No file uploaded")
-
 def test():
+    genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
+
     if request.method == 'POST':
         if 'file' not in request.files:
             return jsonify({"error": "No file in the request"}), 400
@@ -249,10 +228,13 @@ def test():
 
         question = request.form['question']
 
-        image_data=input_image_setup(filename)
-        response=get_gemini_repsonse(input_prompt,image_data,question)
 
-        return render_template('test.html', response=response)
+        image_data=input_image_setup(filename)
+        response=get_gemini_response(input_prompt,image_data,question)
+
+        return render_template('listings/test.html', response=response)
+
+    return render_template('listings/test.html')
 
 
 @listings.route('/results_list')
