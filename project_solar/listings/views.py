@@ -1,4 +1,4 @@
-from flask import render_template, url_for, flash, abort, request, redirect, Blueprint, current_app, jsonify
+from flask import render_template, url_for, flash, abort, request, redirect, Blueprint, current_app, jsonify, Response
 from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 from PIL import Image
@@ -213,6 +213,10 @@ def test():
         filename = secure_filename(file.filename)
         file.save(filename)
 
+        #with open(filename, "wb") as f:
+        #    f.write(filename.getbuffer())
+
+
         input_prompt="""
         You are an expert in nutritionist where you need to see the food items from the image
                and calculate the total calories, also provide the details of every food items with calories intake
@@ -229,8 +233,9 @@ def test():
         question = request.form['question']
 
 
-        image_data=input_image_setup(filename)
-        response=get_gemini_response(input_prompt,image_data,question)
+        #image_data=input_image_setup(filename)
+        #response=get_gemini_response(input_prompt,image_data,question)
+        response=get_gemini_response(input_prompt,filename,question)
 
         return render_template('listings/test.html', response=response)
 
