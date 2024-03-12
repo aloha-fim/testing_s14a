@@ -9,14 +9,14 @@ def load_user(user_id):
     return User.query.get(user_id)
 
 class User(db.Model,UserMixin):
-    
+
     __tablename__ = 'users'
 
     id = db.Column(db.Integer,primary_key=True)
     profile_image = db.Column(db.String(64),nullable=False, default='default.png')
     email = db.Column(db.String(64),unique=True,index=True)
     username = db.Column(db.String(64),unique=True,index=True)
-    password_hash = db.Column(db.String(128))
+    password_hash = db.Column(db.String(255))
 
     posts = db.relationship('SolarPost',backref='author',lazy=True)
     #listing_posts = db.relationship('ListingPost',backref='author',lazy=True)
@@ -30,13 +30,13 @@ class User(db.Model,UserMixin):
 
     def check_password(self,password):
         return check_password_hash(self.password_hash,password)
-    
+
     def __repr__(self):
         return f"Username {self.username}"
 
 
 class StripeCustomer(db.Model):
-    
+
     users = db.relationship(User)
 
     id = db.Column(db.Integer, primary_key=True)
@@ -51,10 +51,10 @@ class StripeCustomer(db.Model):
 
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date} -- {self.listing_id}"
-    
+
 
 class SolarPost(db.Model):
-    
+
     users = db.relationship(User)
 
     id = db.Column(db.Integer, primary_key=True)
@@ -71,10 +71,10 @@ class SolarPost(db.Model):
 
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date} -- {self.title}"
-    
+
 
 class ListingPost(db.Model):
-    
+
     users = db.relationship(User)
 
     id = db.Column(db.Integer, primary_key=True)
@@ -115,13 +115,13 @@ class ListingPost(db.Model):
 
 
 class ListingSecondPost(db.Model):
-    
+
     users = db.relationship(User)
     #listing_main_post = db.relationship('ListingPost',back_populates="listing_second_post")
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
-    
+
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     amenities = db.Column(db.String(140))
     listing_description = db.Column(db.String(140))
@@ -149,7 +149,7 @@ class ListingSecondPost(db.Model):
         return f"Post ID: {self.id} -- Date: {self.date}"
 
 class ListingPictures(db.Model):
-    
+
     users = db.relationship(User)
     #listing_main_post = db.relationship('ListingPost',back_populates="listing_picture_post")
 
@@ -159,7 +159,7 @@ class ListingPictures(db.Model):
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
     thumbnail_image = db.Column(db.String(1024))
     gallery_images = db.Column(ARRAY(db.String(1024)))
-    
+
     def __init__(self,thumbnail_image, gallery_images, user_id):
         self.thumbnail_image = thumbnail_image
         self.gallery_images = gallery_images

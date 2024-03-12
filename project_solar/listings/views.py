@@ -18,6 +18,8 @@ import stripe
 UPLOAD_FOLDER = 'static\listing_pics'
 DROPZONE_FOLDER = 'static\dropzone_pics'
 
+IMAGE_SHAPE = (450, 300)
+
 
 listings = Blueprint('listings',__name__, template_folder="templates")
 current_app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -242,7 +244,7 @@ def test():
     return render_template('listings/test.html')
 
 
-@listings.route('/results_list')
+@listings.route('/results_list',methods=['GET'])
 def results():
     page = request.args.get('page',1,type=int)
     posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc()).paginate(page=page,per_page=9)
@@ -339,9 +341,9 @@ def upload():
             #file.save(os.path.join(current_app.root_path, current_app.config['UPLOAD_FOLDER'], filename))
             #return redirect(url_for('uploaded_file',filename=filename))
 
-            output_size = (200,300)
+            output_size = (450,300)
 
-            pic = Image.open(file)
+            pic = Image.open(file).resize(IMAGE_SHAPE)
             pic.thumbnail(output_size)
             pic.save(filepath)
 
