@@ -243,7 +243,7 @@ def test():
 
     return render_template('listings/test.html')
 
-
+# goes to OTTO HI gpt
 @listings.route('/results_list',methods=['GET'])
 def results():
     page = request.args.get('page',1,type=int)
