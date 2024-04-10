@@ -244,6 +244,13 @@ def test():
     return render_template('listings/test.html')
 
 # goes to OTTO HI gpt
+@listings.route('/json_list',methods=['GET'])
+def json_list():
+
+    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc())
+
+    return jsonify(posts=posts)
+
 @listings.route('/results_list',methods=['GET'])
 def results():
     page = request.args.get('page',1,type=int)
