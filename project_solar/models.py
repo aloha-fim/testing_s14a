@@ -96,7 +96,7 @@ class ListingPost(db.Model):
     #listing_second_post = db.relationship('ListingSecondPost',back_populates="listing_main_post")
     #listing_picture_post = db.relationship('ListingPictures',back_populates="listing_main_post")
 
-    def __init__(self,listing_type,listing_name,amount_land,short_description,country,state,city,postal_code,street,longitude,latitude,user_id):
+    def __init__(self,listing_type,listing_name,amount_land,short_description,country,state,city,postal_code,street,longitude,latitude,user_id,id,date):
         self.listing_type = listing_type
         self.listing_name = listing_name
         self.amount_land = amount_land
@@ -109,6 +109,8 @@ class ListingPost(db.Model):
         self.longitude = longitude
         self.latitude = latitude
         self.user_id = user_id
+        self.id = id
+        self.date = date
 
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date}"
@@ -133,7 +135,7 @@ class ListingSecondPost(db.Model):
     discount = db.Column(db.String(140))
     additional_info = db.Column(db.String(140))
 
-    def __init__(self,amenities,listing_description,total_floor,total_room,room_area,room_name,room_price,discount,additional_info,user_id):
+    def __init__(self,amenities,listing_description,total_floor,total_room,room_area,room_name,room_price,discount,additional_info,user_id,date,id):
         self.amenities = amenities
         self.listing_description = listing_description
         self.total_floor = total_floor
@@ -144,6 +146,8 @@ class ListingSecondPost(db.Model):
         self.discount = discount
         self.additional_info = additional_info
         self.user_id = user_id
+        self.date = date
+        self.id = id
 
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date}"
@@ -160,10 +164,12 @@ class ListingPictures(db.Model):
     thumbnail_image = db.Column(db.String(1024))
     gallery_images = db.Column(ARRAY(db.String(1024)))
 
-    def __init__(self,thumbnail_image, gallery_images, user_id):
+    def __init__(self,thumbnail_image, gallery_images, user_id, date, id):
         self.thumbnail_image = thumbnail_image
         self.gallery_images = gallery_images
         self.user_id = user_id
+        self.date = date
+        self.id = id
 
     def __repr__(self):
         return f"Post ID: {self.id} -- Date: {self.date}"

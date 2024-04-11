@@ -1,5 +1,6 @@
 # project_solar/__init__.py
 from flask import Flask
+from project_solar.json_serializable import JSONSerializable
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -11,7 +12,7 @@ load_dotenv(".env")
 
 
 app = Flask(__name__)
-
+JSONSerializable(app)
 
 #########################
 ###### DATABASE SETUP ###
@@ -32,10 +33,10 @@ app.app_context().push()
 
 ############################################################
 # START localhost virtual environment ######################
-# virtualenv venv for python 2.7 and Windows 
-# python3 -m venv venv for python 3+  
-# source venv/bin/activate 
-# .\venv\Scripts\activate for Windows  
+# virtualenv venv for python 2.7 and Windows
+# python3 -m venv venv for python 3+
+# source venv/bin/activate
+# .\venv\Scripts\activate for Windows
 # pip install -r requirements.txt for setup
 # pip freeze > requirements.txt for update after pip install
 # python3 app.py
@@ -45,7 +46,7 @@ app.app_context().push()
 # Flask DB commands after pip3 install migrate workflow ####
 # 1) flask db init / flask db stamp head
 # 2) flask db migrate -m "first migration"
-# 3) flask db upgrade   
+# 3) flask db upgrade
 # to push migrations
 # 4) python3 app.py
 ############################################################
@@ -68,7 +69,7 @@ login_manager.init_app(app)
 login_manager.login_view = 'users.login'
 
 
-# register blueprints and 
+# register blueprints and
 from project_solar.accounts.views import accounts
 from project_solar.core.views import core
 from project_solar.users.views import users

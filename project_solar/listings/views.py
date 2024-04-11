@@ -9,6 +9,7 @@ from project_solar.listings.picture_handler import add_listing_pic
 from project_solar.listings.picture_format import allowed_file
 from project_solar.listings.googleai_handler import get_gemini_response, input_image_setup
 import os
+import json
 #from dotenv import load_dotenv
 import google.generativeai as genai
 from PIL import Image
@@ -244,12 +245,32 @@ def test():
     return render_template('listings/test.html')
 
 # goes to OTTO HI gpt
-@listings.route('/json_list',methods=['GET'])
+@listings.route('/json_list',methods=['GET','POST'])
 def json_list():
 
-    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc())
+    #posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc())
 
-    return jsonify(posts=posts)
+    ## Option 1
+    #response = Response(
+    #    response=json.dumps(posts),
+    #    status=200,
+    #    mimetype='application/json'
+    #)
+    #return response
+
+    ## Option 2
+    #posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).order_by(ListingPost.date.desc())
+    #return jsonify(posts=posts)
+
+    ## Option 3
+    #return jsonify(db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).all())
+
+    ## Option 4
+    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).all()
+    results = [tuple(row) for row in posts]
+
+    json_string = json.dumps(results, default=str)
+    return json_string
 
 @listings.route('/results_list',methods=['GET'])
 def results():
