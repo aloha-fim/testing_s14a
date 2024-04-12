@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import ARRAY
+import json
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -113,7 +114,8 @@ class ListingPost(db.Model):
         self.date = date
 
     def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date}"
+        return f"Post_ID: {self.id} -- Date: {self.date} -- Listing_Type: {self.listing_type} -- Listing_Name: {self.listing_name} -- Amount_Land: {self.amount_land} -- Short_Description: {self.short_description} -- Country: {self.country} -- State: {self.state} -- City: {self.city} -- Postal_Code: {self.postal_code} -- Street: {self.street} -- Longitude: {self.longitude} -- Latitude: {self.latitude}"
+        #return json.dumps(self, default=jsonDefault, indent=4)
 
 
 class ListingSecondPost(db.Model):
@@ -150,7 +152,7 @@ class ListingSecondPost(db.Model):
         self.id = id
 
     def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date}"
+        return f"Post ID: {self.id} -- Amenities: {self.amenities} -- Listing_Description: {self.listing_description} -- Total_Floor: {self.total_floor} -- Total_Room: {self.total_room} -- Room_Area: {self.room_area} -- Room_Name: {self.room_name} -- Room_Price: {self.room_price} -- Discount: {self.discount} -- Additional_Info: {self.additional_info}"
 
 class ListingPictures(db.Model):
 
@@ -172,4 +174,4 @@ class ListingPictures(db.Model):
         self.id = id
 
     def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date}"
+        return f"Post ID: {self.id} -- Date: {self.date} -- Gallery_Images: {self.gallery_images}"
