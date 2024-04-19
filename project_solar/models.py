@@ -4,6 +4,8 @@ from flask_login import UserMixin
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import ARRAY
 import json
+from json import JSONEncoder
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -113,9 +115,12 @@ class ListingPost(db.Model):
         self.id = id
         self.date = date
 
-    def __repr__(self):
-        return f"Post_ID: {self.id} -- Date: {self.date} -- Listing_Type: {self.listing_type} -- Listing_Name: {self.listing_name} -- Amount_Land: {self.amount_land} -- Short_Description: {self.short_description} -- Country: {self.country} -- State: {self.state} -- City: {self.city} -- Postal_Code: {self.postal_code} -- Street: {self.street} -- Longitude: {self.longitude} -- Latitude: {self.latitude}"
-        #return json.dumps(self, default=jsonDefault, indent=4)
+    #def __repr__(self):
+    #    return f"Post_ID: {self.id}, Date: {self.date}, Listing_Type: {self.listing_type}, Listing_Name: {self.listing_name}, Amount_Land: {self.amount_land}, Short_Description: {self.short_description}, Country: {self.country}, State: {self.state}, City: {self.city}, Postal_Code: {self.postal_code}, Street: {self.street}, Longitude: {self.longitude}, Latitude: {self.latitude}"
+    #    #return json.dumps(self, default=jsonDefault, indent=4)
+
+    def reprJSON(self):
+        return dict(id=self.id, user_id=self.user_id, date=self.date, listing_type=self.listing_type, amount_land=self.amount_land, short_description=self.short_description, country=self.country, state=self.state, city=self.city, postal_code=self.postal_code, street=self.street, longitude=self.longitude, latitude=self.latitude)
 
 
 class ListingSecondPost(db.Model):
@@ -151,8 +156,13 @@ class ListingSecondPost(db.Model):
         self.date = date
         self.id = id
 
-    def __repr__(self):
-        return f"Post ID: {self.id} -- Amenities: {self.amenities} -- Listing_Description: {self.listing_description} -- Total_Floor: {self.total_floor} -- Total_Room: {self.total_room} -- Room_Area: {self.room_area} -- Room_Name: {self.room_name} -- Room_Price: {self.room_price} -- Discount: {self.discount} -- Additional_Info: {self.additional_info}"
+
+    #def __repr__(self):
+    #    return f"Post ID: {self.id}, Amenities: {self.amenities}, Listing_Description: {self.listing_description}, Total_Floor: {self.total_floor}, Total_Room: {self.total_room}, Room_Area: {self.room_area}, Room_Name: {self.room_name}, Room_Price: {self.room_price}, Discount: {self.discount}, Additional_Info: {self.additional_info}"
+
+    def reprJSON(self):
+        return dict(id=self.id, user_id=self.user_id, date=self.date, amenities=self.amenities, listing_description=self.listing_description, total_floor=self.total_floor, room_area=self.room_area, room_name=self.room_name, room_price=self.room_price, discount=self.discount, additional_info=self.additional_info)
+
 
 class ListingPictures(db.Model):
 
@@ -173,5 +183,16 @@ class ListingPictures(db.Model):
         self.date = date
         self.id = id
 
-    def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date} -- Gallery_Images: {self.gallery_images}"
+    #def __repr__(self):
+    #    return f"Post ID: {self.id}, Date: {self.date}, Gallery_Images: {self.gallery_images}"
+
+    def reprJSON(self):
+        return dict(id=self.id, user_id=self.user_id, date=self.date, thumbnail_image=self.thumbnail_image, gallery_images=self.gallery_images)
+
+
+class ComplexEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if hasattr(obj,'reprJSON'):
+            return obj.reprJSON()
+        else:
+            return json.JSONEncoder.default(self, obj)

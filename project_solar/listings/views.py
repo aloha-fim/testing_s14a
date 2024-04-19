@@ -3,7 +3,7 @@ from flask_login import current_user, login_required
 from werkzeug.utils import secure_filename
 from PIL import Image
 from project_solar import db
-from project_solar.models import ListingPost, ListingSecondPost, ListingPictures, StripeCustomer
+from project_solar.models import ListingPost, ListingSecondPost, ListingPictures, StripeCustomer, ComplexEncoder
 from project_solar.listings.forms import ListingPostForm, ListingSecondPostForm, ListingPictureForm
 from project_solar.listings.picture_handler import add_listing_pic
 from project_solar.listings.picture_format import allowed_file
@@ -269,8 +269,25 @@ def json_list():
     posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).all()
     results = [tuple(row) for row in posts]
 
-    json_string = json.dumps(results, default=str)
+    json_string = json.dumps(results, default=str, indent=4)
+
     return json_string
+
+
+# goes to OTTO HI gpt
+@listings.route('/json_list_test',methods=['GET','POST'])
+def json_list_test():
+
+
+    posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id,ListingPost.id==ListingPictures.id).all()
+    results = [tuple(row) for row in posts]
+
+    test = ListingPost()
+    #json_string = json.dumps(results, default=str, indent=4)
+    json_string = json.dumps(test.reprJSON(), cls=ComplexEncoder)
+
+    return json_string
+
 
 @listings.route('/results_list',methods=['GET'])
 def results():
