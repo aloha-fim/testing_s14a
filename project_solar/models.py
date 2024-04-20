@@ -119,8 +119,30 @@ class ListingPost(db.Model):
     #    return f"Post_ID: {self.id}, Date: {self.date}, Listing_Type: {self.listing_type}, Listing_Name: {self.listing_name}, Amount_Land: {self.amount_land}, Short_Description: {self.short_description}, Country: {self.country}, State: {self.state}, City: {self.city}, Postal_Code: {self.postal_code}, Street: {self.street}, Longitude: {self.longitude}, Latitude: {self.latitude}"
     #    #return json.dumps(self, default=jsonDefault, indent=4)
 
+    def __iter__(self):
+        yield {
+            "listing_type": self.listing_type,
+            "listing_name": self.listing_name,
+            "amount_land": self.amount_land,
+            "width": self.short_description,
+            "height": self.country,
+            "state": self.state,
+            "city": self.city,
+            "postal_code": self.postal_code,
+            "street": self.street,
+            "longitude": self.longitude,
+            "latitude": self.latitude,
+            "user_id": self.user_id,
+            "id": self.id,
+            "date": self.date
+        }
+
+    def __str__(self):
+        return json.dumps(self, ensure_ascii=False, cls=ComplexEncoder, default=str)
+
+
     def reprJSON(self):
-        return dict(id=self.id, user_id=self.user_id, date=self.date, listing_type=self.listing_type, amount_land=self.amount_land, short_description=self.short_description, country=self.country, state=self.state, city=self.city, postal_code=self.postal_code, street=self.street, longitude=self.longitude, latitude=self.latitude)
+        return dict(listing_type=self.listing_type, listing_name = self.listing_name, amount_land=self.amount_land, short_description=self.short_description, country=self.country, state=self.state, city=self.city, postal_code=self.postal_code, street=self.street, longitude=self.longitude, latitude=self, user_id = self.user_id, id=self.id, date=self.date)
 
 
 class ListingSecondPost(db.Model):
@@ -191,8 +213,26 @@ class ListingPictures(db.Model):
 
 
 class ComplexEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if hasattr(obj,'reprJSON'):
-            return obj.reprJSON()
+    #def default(self, obj):
+    #    if hasattr(obj,'reprJSON'):
+    #        return obj.reprJSON()
+    #    else:
+    #        return json.JSONEncoder.default(self, obj)
+
+
+    def default(
+        self,
+        o,
+    ):
+        """
+        A custom default encoder.
+        In reality this should work for nearly any iterable.
+        """
+        try:
+            iterable = iter(o)
+        except TypeError:
+            pass
         else:
-            return json.JSONEncoder.default(self, obj)
+            return list(iterable)
+        # Let the base class default method raise the TypeError
+        return json.JSONEncoder.default(self, o)
