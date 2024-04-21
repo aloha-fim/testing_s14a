@@ -99,21 +99,21 @@ class ListingPost(db.Model):
     #listing_second_post = db.relationship('ListingSecondPost',back_populates="listing_main_post")
     #listing_picture_post = db.relationship('ListingPictures',back_populates="listing_main_post")
 
-    def __init__(self,listing_type,listing_name,amount_land,short_description,country,state,city,postal_code,street,longitude,latitude,user_id,id,date):
-        self.listing_type = listing_type
-        self.listing_name = listing_name
-        self.amount_land = amount_land
-        self.short_description = short_description
-        self.country = country
-        self.state = state
-        self.city = city
-        self.postal_code = postal_code
-        self.street = street
-        self.longitude = longitude
-        self.latitude = latitude
-        self.user_id = user_id
-        self.id = id
-        self.date = date
+    #def __init__(self,listing_type,listing_name,amount_land,short_description,country,state,city,postal_code,street,longitude,latitude,user_id,id,date):
+    #    self.listing_type = listing_type
+    #    self.listing_name = listing_name
+    #    self.amount_land = amount_land
+    #    self.short_description = short_description
+    #    self.country = country
+    #    self.state = state
+    #    self.city = city
+    #    self.postal_code = postal_code
+    #    self.street = street
+    #    self.longitude = longitude
+    #    self.latitude = latitude
+    #    self.user_id = user_id
+    #    self.id = id
+    #    self.date = date
 
     #def __repr__(self):
     #    return f"Post_ID: {self.id}, Date: {self.date}, Listing_Type: {self.listing_type}, Listing_Name: {self.listing_name}, Amount_Land: {self.amount_land}, Short_Description: {self.short_description}, Country: {self.country}, State: {self.state}, City: {self.city}, Postal_Code: {self.postal_code}, Street: {self.street}, Longitude: {self.longitude}, Latitude: {self.latitude}"

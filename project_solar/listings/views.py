@@ -282,11 +282,12 @@ def json_list_test():
     #posts = db.session.query(ListingPost,ListingSecondPost,ListingPictures).filter(ListingPost.id==ListingSecondPost.id).filter(ListingPost.id==ListingPictures.id).all()
     #posts = db.session.query(ListingPost).first()
     #results = [tuple(row) for row in posts]
+    #https://stackoverflow.com/questions/5160077/encoding-nested-python-object-in-json
     #https://stackoverflow.com/questions/70972292/python-typeerror-object-is-not-iterable
-    test = ListingPost(listing_type="1", listing_name="2", amount_land="3", short_description="4", country="5", state="6", city="7", postal_code="8", street="9", longitude="10", latitude="11", user_id="user_id", id="id", date="14")
+    #test = ListingPost(listing_type="1", listing_name="2", amount_land="3", short_description="4", country="5", state="6", city="7", postal_code="8", street="9", longitude="10", latitude="11", user_id="user_id", id="id", date="14")
     #test = ListingPost(listing_type=posts.listing_type, listing_name=posts.listing_type, amount_land=posts.amount_land, short_description=posts.short_description, country=posts.country, state=posts.state, city=posts.city, postal_code=posts.postal_code, street=posts.street, longitude=posts.longitude, latitude=posts.latitude, user_id=posts.latitude, id=posts.id, date=posts.date)
     #json_string = json.dumps(results, default=str, indent=4)
-    #test = ListingPost()
+    test = ListingPost()
     #for post in posts:
     json_string = json.dumps(test.reprJSON(), cls=ComplexEncoder)
     #json_string = json.dumps(posts, cls=ComplexEncoder, indent=4, sort_keys=True, default=str)
