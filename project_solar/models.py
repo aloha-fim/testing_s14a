@@ -124,8 +124,8 @@ class ListingPost(db.Model):
             "listing_type": self.listing_type,
             "listing_name": self.listing_name,
             "amount_land": self.amount_land,
-            "width": self.short_description,
-            "height": self.country,
+            "short_description": self.short_description,
+            "country": self.country,
             "state": self.state,
             "city": self.city,
             "postal_code": self.postal_code,
@@ -133,16 +133,16 @@ class ListingPost(db.Model):
             "longitude": self.longitude,
             "latitude": self.latitude,
             "user_id": self.user_id,
-            "id": self.id,
-            "date": self.date
+            "id": self.id
         }
 
     def __str__(self):
         return json.dumps(self, ensure_ascii=False, cls=ComplexEncoder, default=str)
+        #return json.dumps(self, ensure_ascii=False, cls=ComplexEncoder, default=str)
 
 
     def reprJSON(self):
-        return dict(listing_type=self.listing_type, listing_name = self.listing_name, amount_land=self.amount_land, short_description=self.short_description, country=self.country, state=self.state, city=self.city, postal_code=self.postal_code, street=self.street, longitude=self.longitude, latitude=self, user_id = self.user_id, id=self.id, date=self.date)
+        return dict(listing_type=self.listing_type, listing_name = self.listing_name, amount_land=self.amount_land, short_description=self.short_description, country=self.country, state=self.state, city=self.city, postal_code=self.postal_code, street=self.street, longitude=self.longitude, latitude=self.latitude, user_id = self.user_id, id=self.id)
 
 
 class ListingSecondPost(db.Model):
